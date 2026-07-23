@@ -1,59 +1,86 @@
 # Motionly
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.22.
+**AI-native motion graphics for creators and builders.**
 
-## Development server
+Motionly turns plain-language prompts into polished motion graphics. Describe the animation you want, refine the scene with AI-assisted edits, and export production-ready visuals without manually building every keyframe from scratch.
 
-To start a local development server, run:
+<p>
+  <a href="https://www.producthunt.com/products/motionly">
+    <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1202670&theme=dark" alt="Motionly on Product Hunt" height="54" />
+  </a>
+</p>
 
-```bash
-ng serve
-```
+[Live Editor](https://motionly-tau.vercel.app/editor) | [Documentation](https://motionly.mintlify.app/) | [npm](https://www.npmjs.com/package/@coppsary/motionly) | [GitHub](https://github.com/COPPSARY/motionly)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## What Is Motionly?
 
-## Code scaffolding
+Motionly is a motion graphics editor built around intent instead of timelines. You write what you want to happen, and Motionly helps create, adjust, and export the animation.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+It is useful for product demos, launch videos, social content, explainers, UI motion, creator clips, and fast visual experiments where you want clean motion without spending hours on manual animation work.
 
-```bash
-ng generate component component-name
-```
+## Highlights
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- **Prompt to animation**: generate motion graphics from natural language.
+- **AI-assisted editing**: refine timing, easing, layout, and scene behavior through prompts.
+- **Smart starting points**: begin from AI-curated motion ideas instead of a blank canvas.
+- **Production-ready exports**: render animations for use across platforms.
+- **Fast iteration**: move from idea to preview quickly, then keep polishing.
 
-```bash
-ng generate --help
-```
+## Try It
 
-## Building
+The fastest way to experience Motionly is through the hosted editor:
 
-To build the project run:
+**Open the editor:** https://motionly-tau.vercel.app/editor
 
-```bash
-ng build
-```
+## Install
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Create a new Motionly project with the npm package:
 
 ```bash
-ng test
+npx @coppsary/motionly init my-video
 ```
 
-## Running end-to-end tests
+Package page:
 
-For end-to-end (e2e) testing, run:
+https://www.npmjs.com/package/@coppsary/motionly
 
-```bash
-ng e2e
-```
+## Documentation
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+The docs include guides and reference material for getting started with Motionly:
 
-## Additional Resources
+https://motionly.mintlify.app/
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Project Links
+
+- **Product Hunt**: https://www.producthunt.com/products/motionly  
+  Support the launch, see the product listing, and share feedback.
+
+- **Live editor**: https://motionly-tau.vercel.app/editor  
+  Try Motionly directly in the browser.
+
+- **Documentation**: https://motionly.mintlify.app/  
+  Learn how to use the product and package.
+
+- **npm package**: https://www.npmjs.com/package/@coppsary/motionly  
+  Install and create Motionly projects from the command line.
+
+- **GitHub repository**: https://github.com/COPPSARY/motionly  
+  Follow development, open issues, and contribute.
+
+## Contributing
+
+Contributions are welcome. Good places to help include:
+
+- improving the editor experience
+- reporting bugs or confusing flows
+- improving documentation
+- sharing examples made with Motionly
+- suggesting export, template, or AI-editing improvements
+
+If you find a bug or have a feature idea, open an issue in the GitHub repository:
+
+https://github.com/COPPSARY/motionly
+
+## License
+
+Please check the repository license before using or redistributing Motionly.
