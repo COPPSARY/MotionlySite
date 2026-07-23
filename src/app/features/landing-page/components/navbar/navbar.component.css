@@ -1,0 +1,155 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  padding: 0.75rem 1.5rem;
+  /* Translucent blurred default (Raycast-style) */
+  background: color-mix(in srgb, var(--motionly-bg) 55%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: background 200ms ease, border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+/* Scrolled state: subtle solid background + bottom border */
+.navbar--scrolled {
+  background: color-mix(in srgb, var(--motionly-bg-elevated) 92%, transparent);
+  border-bottom-color: var(--motionly-border);
+  box-shadow: var(--motionly-shadow-sm);
+}
+
+.navbar__brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--motionly-text-primary);
+}
+
+.navbar__logo {
+  display: block;
+  height: 28px;
+  width: auto;
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+}
+
+.navbar__link {
+  text-decoration: none;
+  color: var(--motionly-text-secondary);
+}
+
+.navbar__link:hover {
+  color: var(--motionly-text-primary);
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar__icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--motionly-text-secondary);
+}
+
+.navbar__icon-link:hover {
+  color: var(--motionly-text-primary);
+}
+
+/* Below tablet width, give the nav links their own full-width row so the
+   brand, links, and actions never overlap or get clipped. */
+@media (max-width: 768px) {
+  .navbar {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      "brand actions"
+      "links links";
+    justify-content: stretch;
+    gap: 0.75rem;
+    padding: 0.625rem 1rem 0.75rem;
+  }
+
+  .navbar__brand {
+    grid-area: brand;
+    justify-self: start;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    justify-content: center;
+  }
+
+  .navbar__logo {
+    height: 26px;
+  }
+
+  .navbar__actions {
+    grid-area: actions;
+    justify-self: end;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  .navbar__links {
+    grid-area: links;
+    order: 3;
+    justify-self: center;
+    width: auto;
+    max-width: 100%;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    border: 1px solid var(--motionly-border);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--motionly-surface) 72%, transparent);
+  }
+
+  .navbar__link {
+    display: inline-flex;
+    min-height: 2.25rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.95rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--motionly-text-secondary);
+  }
+
+  .navbar__link:hover,
+  .navbar__link:focus-visible {
+    color: var(--motionly-text-primary);
+    background: var(--motionly-surface-hover);
+  }
+}
+
+/* At narrow mobile widths, shrink the persistent CTAs so they never force
+   horizontal overflow next to the brand. */
+@media (max-width: 480px) {
+  .navbar {
+    gap: 0.625rem;
+    padding-inline: 0.75rem;
+  }
+
+  .navbar__actions {
+    gap: 0.375rem;
+  }
+
+  .navbar__link {
+    min-width: 6rem;
+    padding-inline: 0.75rem;
+  }
+}

@@ -1,0 +1,93 @@
+.features {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 7rem 1.5rem;
+  background: var(--motionly-bg);
+  overflow: hidden;
+}
+
+/* Soft accent glow backdrop behind the section, built from existing accent tokens. */
+.features__glow {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(48rem, 90%);
+  height: 24rem;
+  background: radial-gradient(
+    ellipse at center,
+    var(--motionly-accent) 0%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  opacity: 0.16;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.features__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.5rem;
+  max-width: 64rem;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .features {
+    padding: 4.5rem 1rem;
+  }
+
+  .features__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border-radius: var(--motionly-radius-md);
+  border: 1px solid var(--motionly-border);
+  background: var(--motionly-surface);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.feature-card:hover {
+  border-color: var(--motionly-border-strong);
+  background: var(--motionly-surface-hover);
+}
+
+.feature-card__icon {
+  display: inline-flex;
+  width: 1.75rem;
+  height: 1.75rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--motionly-accent);
+}
+
+.feature-card__icon-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.75;
+}
+
+.feature-card__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--motionly-text-primary);
+}
+
+.feature-card__description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--motionly-text-secondary);
+  margin: 0;
+}

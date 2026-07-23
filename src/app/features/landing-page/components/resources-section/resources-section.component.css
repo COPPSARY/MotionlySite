@@ -1,0 +1,26 @@
+.resources {
+  display: flex;
+  justify-content: center;
+  padding: 7rem 1.5rem;
+  /* Alternating tone: sits between showcase (bg-elevated) and footer (bg-elevated),
+     so use surface to stay visually distinct from both neighbors. */
+  background: var(--motionly-surface);
+}
+
+.resources__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.5rem;
+  max-width: 64rem;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .resources {
+    padding: 4.5rem 1rem;
+  }
+
+  .resources__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,109 @@
+.showcase {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  background: var(--motionly-bg-elevated);
+}
+
+.showcase__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 64rem;
+  text-align: center;
+}
+
+.showcase__heading {
+  font-size: clamp(1.75rem, 4vw + 1rem, 2.25rem);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--motionly-text-primary);
+  overflow-wrap: break-word;
+}
+
+.showcase__subheading {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--motionly-text-secondary);
+  margin: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.showcase__steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.showcase__step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  border-radius: var(--motionly-radius-md);
+  border: 1px solid var(--motionly-border);
+  background: var(--motionly-surface);
+}
+
+.showcase__step-number {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--motionly-accent);
+}
+
+.showcase__step-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--motionly-text-primary);
+}
+
+.showcase__step-description {
+  font-size: 0.925rem;
+  line-height: 1.55;
+  color: var(--motionly-text-secondary);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .showcase__steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--motionly-radius-sm);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.btn--primary {
+  color: var(--motionly-accent-contrast);
+  background: var(--motionly-accent-gradient);
+  border: 1px solid transparent;
+}
+
+.btn--primary:hover {
+  opacity: 0.92;
+}
+
+@media (max-width: 640px) {
+  .showcase {
+    padding: 3rem 1rem;
+  }
+}

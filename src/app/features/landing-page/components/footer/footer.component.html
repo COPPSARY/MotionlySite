@@ -1,0 +1,32 @@
+<footer class="footer">
+  <div class="footer__content" [appScrollReveal]="0">
+    <img class="footer__logo" [src]="logoSrc" alt="Motionly" width="120" height="24" />
+
+    <ul class="footer__links">
+      @for (link of links; track link.id) {
+        <li>
+          <a
+            class="footer__link"
+            [href]="link.url"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ link.title }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <a
+      class="footer__github-link"
+      [href]="githubUrl"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Motionly on GitHub"
+    >
+      GitHub
+    </a>
+
+    <p class="footer__copyright">© {{ year }} Motionly. All rights reserved.</p>
+  </div>
+</footer>

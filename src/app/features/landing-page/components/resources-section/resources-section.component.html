@@ -1,0 +1,7 @@
+<section class="resources">
+  <div class="resources__grid" [appScrollReveal]="0">
+    @for (resource of resources; track resource.id; let i = $index) {
+      <app-external-link-card [resource]="resource" [appScrollReveal]="i * 80" />
+    }
+  </div>
+</section>

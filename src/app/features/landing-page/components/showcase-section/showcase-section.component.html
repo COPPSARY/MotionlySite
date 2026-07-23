@@ -1,0 +1,28 @@
+<section class="showcase">
+  <div class="showcase__content" [appScrollReveal]="0">
+    <h2 class="showcase__heading">Animation as code, in three steps.</h2>
+    <p class="showcase__subheading">
+      From a plain-language prompt to a production-ready motion graphics
+      export — no keyframes required.
+    </p>
+
+    <ol class="showcase__steps">
+      @for (item of steps; track item.id; let i = $index) {
+        <li class="showcase__step" [appScrollReveal]="i * 80">
+          <span class="showcase__step-number">{{ item.step }}</span>
+          <h3 class="showcase__step-title">{{ item.title }}</h3>
+          <p class="showcase__step-description">{{ item.description }}</p>
+        </li>
+      }
+    </ol>
+
+    <a
+      class="btn btn--primary"
+      [href]="editorUrl"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Open the live editor
+    </a>
+  </div>
+</section>

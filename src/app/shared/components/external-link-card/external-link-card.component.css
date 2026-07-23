@@ -1,0 +1,38 @@
+.link-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border-radius: var(--motionly-radius-md);
+  border: 1px solid var(--motionly-border);
+  background: var(--motionly-surface);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.link-card:hover,
+.link-card:focus-visible {
+  border-color: var(--motionly-border-strong);
+  background: var(--motionly-surface-hover);
+}
+
+.link-card__icon {
+  flex-shrink: 0;
+  color: var(--motionly-accent);
+}
+
+.link-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.link-card__title {
+  font-weight: 600;
+  color: var(--motionly-text-primary);
+}
+
+.link-card__description {
+  color: var(--motionly-text-secondary);
+}

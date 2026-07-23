@@ -1,0 +1,56 @@
+.star-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--motionly-radius-sm);
+  border: 1px solid var(--motionly-border);
+  background: var(--motionly-surface);
+  color: var(--motionly-text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.star-badge:hover,
+.star-badge:focus-visible {
+  border-color: var(--motionly-border-strong);
+  color: var(--motionly-text-primary);
+}
+
+.star-badge__icon {
+  flex-shrink: 0;
+}
+
+.star-badge__stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding-left: 0.4rem;
+  border-left: 1px solid var(--motionly-border);
+  color: var(--motionly-text-primary);
+}
+
+.star-badge__star-icon {
+  color: var(--motionly-accent);
+}
+
+.star-badge__count {
+  min-width: 1.35rem;
+  text-align: left;
+}
+
+.star-badge__stars--loading {
+  color: var(--motionly-text-secondary);
+}
+
+/* Compact variant: icon + count only (used in tight spaces like the navbar). */
+.star-badge--compact .star-badge__label {
+  display: none;
+}
+
+.star-badge--compact {
+  padding: 0.35rem 0.6rem;
+}

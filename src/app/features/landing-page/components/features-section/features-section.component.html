@@ -1,0 +1,27 @@
+<section class="features">
+  <div class="features__glow" aria-hidden="true"></div>
+  <div class="features__grid" [appScrollReveal]="0">
+    @for (feature of features; track feature.id; let i = $index) {
+      <article class="feature-card" [appScrollReveal]="i * 80">
+        <span class="feature-card__icon" aria-hidden="true">
+          @switch (feature.icon) {
+            @case ('sparkles') {
+              <svg class="feature-card__icon-svg" lucideSparkles></svg>
+            }
+            @case ('wand') {
+              <svg class="feature-card__icon-svg" lucideWand></svg>
+            }
+            @case ('layout-template') {
+              <svg class="feature-card__icon-svg" lucideLayoutTemplate></svg>
+            }
+            @case ('download') {
+              <svg class="feature-card__icon-svg" lucideDownload></svg>
+            }
+          }
+        </span>
+        <h3 class="feature-card__title">{{ feature.title }}</h3>
+        <p class="feature-card__description">{{ feature.description }}</p>
+      </article>
+    }
+  </div>
+</section>

@@ -1,0 +1,25 @@
+.ph-badge {
+  display: inline-flex;
+  line-height: 0;
+  border-radius: var(--motionly-radius-sm);
+  transition: box-shadow 0.15s ease;
+}
+
+.ph-badge:hover,
+.ph-badge:focus-visible {
+  box-shadow: var(--motionly-accent-glow);
+}
+
+.ph-badge img {
+  display: block;
+  width: 250px;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--motionly-radius-sm);
+}
+
+.ph-badge--compact img {
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+}

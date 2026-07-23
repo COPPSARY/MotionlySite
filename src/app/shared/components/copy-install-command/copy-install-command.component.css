@@ -1,0 +1,46 @@
+.copy-install {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.625rem 0.625rem 0.625rem 1rem;
+  border-radius: var(--motionly-radius-sm);
+  border: 1px solid var(--motionly-border);
+  background: var(--motionly-surface);
+  max-width: 100%;
+}
+
+.copy-install__command {
+  font-family: monospace;
+  color: var(--motionly-text-primary);
+  overflow-wrap: break-word;
+  word-break: break-all;
+  min-width: 0;
+}
+
+.copy-install__button {
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--motionly-radius-sm);
+  border: 1px solid var(--motionly-border-strong);
+  background: transparent;
+  color: var(--motionly-text-secondary);
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.copy-install__button:hover,
+.copy-install__button:focus-visible {
+  border-color: var(--motionly-accent);
+  color: var(--motionly-accent);
+}
+
+.copy-install--unavailable .copy-install__command {
+  user-select: all;
+}
+
+.copy-install--unavailable {
+  border-color: var(--motionly-border-strong);
+}
