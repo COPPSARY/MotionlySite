@@ -4,19 +4,42 @@ import {
   Component,
   signal,
 } from '@angular/core';
-import { ProductHuntBadgeComponent } from '../../../../shared/components/product-hunt-badge/product-hunt-badge.component';
+import { RouterLink } from '@angular/router';
+import {
+  LucideBookOpen,
+  LucideDownload,
+  LucideHome,
+  LucideInfo,
+  LucidePackage,
+  LucidePlay,
+  LucideRocket,
+  LucideTerminal,
+} from '@lucide/angular';
 import { GithubStarBadgeComponent } from '../../../../shared/components/github-star-badge/github-star-badge.component';
+import { EXTERNAL_LINKS } from '../../../../shared/constants/external-links';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ProductHuntBadgeComponent, GithubStarBadgeComponent],
+  imports: [
+    RouterLink,
+    GithubStarBadgeComponent,
+    LucideBookOpen,
+    LucideDownload,
+    LucideHome,
+    LucideInfo,
+    LucidePackage,
+    LucidePlay,
+    LucideRocket,
+    LucideTerminal,
+  ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
   readonly logoSrc = 'logo.svg';
+  readonly links = EXTERNAL_LINKS;
 
   /** Whether the page has been scrolled past the "condense" threshold. Drives the scrolled background/border. */
   protected readonly scrolled = signal(false);

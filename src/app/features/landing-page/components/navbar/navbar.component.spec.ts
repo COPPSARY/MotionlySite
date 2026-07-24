@@ -1,5 +1,7 @@
 import { ApplicationRef } from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { NavbarComponent } from './navbar.component';
 import { EXTERNAL_LINKS } from '../../../../shared/constants/external-links';
 
@@ -7,6 +9,7 @@ describe('NavbarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [NavbarComponent],
+      providers: [provideRouter([]), provideHttpClient()],
     }).compileComponents();
   });
 
@@ -30,16 +33,30 @@ describe('NavbarComponent', () => {
     expect(githubLink?.getAttribute('rel')).toBe('noopener noreferrer');
   });
 
-  it('should render an anchor link to #features and an anchor link to #resources', () => {
+  it('should render primary links and grouped Product Hunt, Demo, and Install actions', () => {
     const fixture = TestBed.createComponent(NavbarComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
 
-    const featuresLink = compiled.querySelector<HTMLAnchorElement>('a[href="#features"]');
-    const resourcesLink = compiled.querySelector<HTMLAnchorElement>('a[href="#resources"]');
+    const aboutLink = compiled.querySelector<HTMLAnchorElement>('a[href="/about"]');
+    const getStartedLink = compiled.querySelector<HTMLAnchorElement>('a[href="/getting-started"]');
+    const docsLink = compiled.querySelector<HTMLAnchorElement>(`a[href="${EXTERNAL_LINKS.docs}"]`);
+    const productHuntLink = compiled.querySelector<HTMLAnchorElement>(
+      `a[href="${EXTERNAL_LINKS.productHunt}"]`,
+    );
+    const demoLink = compiled.querySelector<HTMLAnchorElement>(`a[href="${EXTERNAL_LINKS.editor}"]`);
+    const npmLink = compiled.querySelector<HTMLAnchorElement>(`a[href="${EXTERNAL_LINKS.npm}"]`);
+    const installLink = compiled.querySelector<HTMLAnchorElement>('a[href="/getting-started"]');
 
-    expect(featuresLink).withContext('#features anchor should exist').not.toBeNull();
-    expect(resourcesLink).withContext('#resources anchor should exist').not.toBeNull();
+    expect(compiled.querySelector<HTMLAnchorElement>('a[href="#features"]')).toBeNull();
+    expect(aboutLink).withContext('/about link should exist').not.toBeNull();
+    expect(getStartedLink).withContext('/getting-started link should exist').not.toBeNull();
+    expect(docsLink).withContext('docs link should exist').not.toBeNull();
+    expect(productHuntLink).withContext('Product Hunt link should exist').not.toBeNull();
+    expect(demoLink).withContext('demo link should exist').not.toBeNull();
+    expect(npmLink).withContext('npm link should exist').not.toBeNull();
+    expect(installLink).withContext('Install route should exist').not.toBeNull();
+    expect(compiled.querySelector('details.navbar__menu')).not.toBeNull();
   });
 
   /**
@@ -86,6 +103,7 @@ describe('NavbarComponent', () => {
 
       await TestBed.configureTestingModule({
         imports: [NavbarComponent],
+        providers: [provideRouter([]), provideHttpClient()],
       }).compileComponents();
     });
 

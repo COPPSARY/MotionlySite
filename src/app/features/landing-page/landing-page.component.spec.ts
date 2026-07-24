@@ -1,4 +1,6 @@
+import { provideHttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import * as fc from 'fast-check';
 import { LandingPageComponent } from './landing-page.component';
 import { RESOURCE_LINKS } from '../../shared/constants/external-links';
@@ -7,6 +9,7 @@ describe('LandingPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [LandingPageComponent],
+      providers: [provideRouter([]), provideHttpClient()],
     }).compileComponents();
   });
 
@@ -34,10 +37,10 @@ describe('LandingPageComponent', () => {
       .map((href) => href.slice(1))
       .filter((id) => id.length > 0);
 
-    // Sanity check: the navbar/hero should have produced at least the known
-    // anchors (top, features, resources) so this test isn't vacuous.
+    // Sanity check: the navbar/hero should have produced the known in-page
+    // anchors so this test isn't vacuous. Install is a route now.
     expect(hashIds.length).withContext('should discover at least one in-page anchor').toBeGreaterThan(0);
-    expect(hashIds).toEqual(jasmine.arrayContaining(['top', 'features', 'resources']));
+    expect(hashIds).toEqual(jasmine.arrayContaining(['top', 'features']));
 
     fc.assert(
       fc.property(fc.constantFrom(...hashIds), (id) => {
@@ -53,8 +56,8 @@ describe('LandingPageComponent', () => {
    * Integration test: badge and resource card cardinality
    * Validates: Requirements 1.2, 3.1, 6.1
    *
-   * The rendered tree contains exactly one Product Hunt badge in the navbar,
-   * one in the hero section, and exactly one resource card per ResourceKind.
+   * The rendered tree contains exactly one Product Hunt badge in the hero
+   * section and exactly one resource card per ResourceKind.
    */
   it('renders exactly one Product Hunt badge in the navbar, one in the hero, and one resource card per ResourceKind', () => {
     const fixture = TestBed.createComponent(LandingPageComponent);
@@ -63,11 +66,9 @@ describe('LandingPageComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
 
     const badges = compiled.querySelectorAll('app-product-hunt-badge');
-    expect(badges.length).withContext('expected exactly two product hunt badges').toBe(2);
+    expect(badges.length).withContext('expected exactly one product hunt badge').toBe(1);
 
-    const navbarBadge = compiled.querySelector('app-navbar app-product-hunt-badge');
     const heroBadge = compiled.querySelector('app-hero-section app-product-hunt-badge');
-    expect(navbarBadge).withContext('expected a product hunt badge inside the navbar').not.toBeNull();
     expect(heroBadge).withContext('expected a product hunt badge inside the hero section').not.toBeNull();
 
     const resourceCards = compiled.querySelectorAll('app-external-link-card');

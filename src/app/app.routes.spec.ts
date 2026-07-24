@@ -1,14 +1,17 @@
+import { provideHttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import * as fc from 'fast-check';
 import { routes } from './app.routes';
 import { LandingPageComponent } from './features/landing-page/landing-page.component';
+import { GettingStartedPageComponent } from './features/getting-started/getting-started-page.component';
+import { AboutPageComponent } from './features/about/about-page.component';
 
 describe('app.routes', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [provideRouter(routes)],
+      providers: [provideRouter(routes), provideHttpClient()],
     });
   });
 
@@ -30,7 +33,9 @@ describe('app.routes', () => {
 
     await fc.assert(
       fc.asyncProperty(
-        fc.stringMatching(/^[a-zA-Z0-9_-]+$/).filter((s) => s.length > 0),
+        fc
+          .stringMatching(/^[a-zA-Z0-9_-]+$/)
+          .filter((s) => s.length > 0 && s !== 'getting-started' && s !== 'about'),
         async (path) => {
           const activatedComponent = await harness.navigateByUrl(`/${path}`);
 
@@ -43,5 +48,19 @@ describe('app.routes', () => {
       ),
       { numRuns: 25 },
     );
+  });
+
+  it('resolves /getting-started to the GettingStartedPageComponent', async () => {
+    const harness = await RouterTestingHarness.create();
+    const activatedComponent = await harness.navigateByUrl('/getting-started');
+
+    expect(activatedComponent).toBeInstanceOf(GettingStartedPageComponent);
+  });
+
+  it('resolves /about to the AboutPageComponent', async () => {
+    const harness = await RouterTestingHarness.create();
+    const activatedComponent = await harness.navigateByUrl('/about');
+
+    expect(activatedComponent).toBeInstanceOf(AboutPageComponent);
   });
 });

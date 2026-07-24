@@ -1,26 +1,69 @@
 .resources {
   display: flex;
   justify-content: center;
-  padding: 7rem 1.5rem;
-  /* Alternating tone: sits between showcase (bg-elevated) and footer (bg-elevated),
-     so use surface to stay visually distinct from both neighbors. */
-  background: var(--motionly-surface);
+  padding: 5rem 1.5rem;
+  background: transparent;
+}
+
+.resources__inner {
+  display: grid;
+  grid-template-columns: 0.7fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  width: min(70rem, 100%);
+}
+
+.resources__copy {
+  position: sticky;
+  top: 7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.resources__eyebrow {
+  margin: 0;
+  color: var(--motionly-text-muted);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.resources__copy h2 {
+  margin: 0;
+  font-size: 2.55rem;
+  line-height: 1.03;
+  letter-spacing: 0;
+}
+
+.resources__copy p:last-child {
+  margin: 0;
+  color: var(--motionly-text-secondary);
+  line-height: 1.65;
 }
 
 .resources__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  gap: 1.5rem;
-  max-width: 64rem;
+  grid-template-columns: 1fr;
   width: 100%;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 820px) {
   .resources {
     padding: 4.5rem 1rem;
   }
 
+  .resources__inner,
   .resources__grid {
     grid-template-columns: 1fr;
+  }
+
+  .resources__copy {
+    position: static;
+  }
+
+  .resources__copy h2 {
+    font-size: 2.3rem;
   }
 }

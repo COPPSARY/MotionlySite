@@ -2,27 +2,27 @@ import { Feature } from '../models/landing.models';
 
 export const FEATURES: readonly Feature[] = [
   {
-    id: 'prompt-to-animation',
-    title: 'Prompt to animation',
-    description: 'Describe the motion you want in plain language and Motionly generates production-ready animation keyframes.',
-    icon: 'sparkles',
+    id: 'visual-editor',
+    title: 'Ask for the first draft',
+    description: 'Give an agent your story, copy, timing, and assets. Motionly gives it a project format that stays editable.',
+    icon: 'mouse-pointer',
   },
   {
-    id: 'ai-scene-editing',
-    title: 'AI-assisted scene editing',
-    description: 'Ask the AI to adjust timing, easing, or layout of any element and see the scene update instantly.',
-    icon: 'wand',
+    id: 'motion-source',
+    title: 'Review readable source',
+    description: 'Generated scenes live in a version-friendly .motion file, so diffs and follow-up prompts stay precise.',
+    icon: 'code',
   },
   {
-    id: 'smart-templates',
-    title: 'Smart templates',
-    description: 'Start from AI-curated motion templates tailored to your content instead of a blank canvas.',
-    icon: 'layout-template',
+    id: 'timeline',
+    title: 'Refine visually',
+    description: 'Open the agent draft on a canvas and timeline, then adjust layers, timing, easing, and playback by hand.',
+    icon: 'timeline',
   },
   {
-    id: 'export-anywhere',
-    title: 'Export anywhere',
-    description: 'Render your motion graphics to common video and animation formats ready for any platform.',
+    id: 'mp4-export',
+    title: 'Ship the final video',
+    description: 'Export MP4 locally after the visual pass, with project assets and source still sitting beside your code.',
     icon: 'download',
   },
 ];

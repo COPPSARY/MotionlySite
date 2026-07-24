@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { EXTERNAL_LINKS, RESOURCE_LINKS } from '../../../../shared/constants/external-links';
 import { ResourceLink } from '../../../../shared/models/landing.models';
 import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reveal.directive';
@@ -6,7 +7,7 @@ import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reve
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [ScrollRevealDirective],
+  imports: [RouterLink, ScrollRevealDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css',
@@ -14,6 +15,7 @@ import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reve
 export class FooterComponent {
   readonly logoSrc = 'logo.svg';
   readonly links: readonly ResourceLink[] = RESOURCE_LINKS;
-  readonly githubUrl = EXTERNAL_LINKS.github;
+  readonly contactProfileUrl = EXTERNAL_LINKS.contactProfile;
+  readonly contactEmailUrl = EXTERNAL_LINKS.contactEmail;
   readonly year = new Date().getFullYear();
 }
