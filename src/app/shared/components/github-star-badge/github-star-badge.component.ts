@@ -34,9 +34,9 @@ export class GithubStarBadgeComponent {
 
   readonly githubUrl = EXTERNAL_LINKS.github;
   readonly stars = this.starsService.stars;
+  private readonly fallbackStarCount = 61;
   protected readonly formattedStars = computed(() => {
-    const count = this.stars();
-    return count === null ? null : formatStarCount(count);
+    return formatStarCount(this.stars() ?? this.fallbackStarCount);
   });
 
   constructor() {
@@ -45,7 +45,6 @@ export class GithubStarBadgeComponent {
   }
 
   protected readonly starsLabel = computed(() => {
-    const count = this.formattedStars();
-    return count === null ? 'Loading GitHub stars' : `${count} GitHub stars`;
+    return `${this.formattedStars()} GitHub stars`;
   });
 }

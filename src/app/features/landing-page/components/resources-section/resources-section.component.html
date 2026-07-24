@@ -1,7 +1,18 @@
 <section class="resources">
-  <div class="resources__grid" [appScrollReveal]="0">
-    @for (resource of resources; track resource.id; let i = $index) {
-      <app-external-link-card [resource]="resource" [appScrollReveal]="i * 80" />
-    }
+  <div class="resources__inner">
+    <div class="resources__copy" [appScrollReveal]="0">
+      <p class="resources__eyebrow">Open source and local-first</p>
+      <h2>Use Motionly where your work already lives.</h2>
+      <p>
+        Create projects from npm, keep assets beside the source, review changes
+        in Git, and send finished motion graphics to MP4.
+      </p>
+    </div>
+
+    <div class="resources__grid" [appScrollReveal]="80">
+      @for (resource of resources; track resource.id; let i = $index) {
+        <app-external-link-card [resource]="resource" [appScrollReveal]="i * 60" />
+      }
+    </div>
   </div>
 </section>

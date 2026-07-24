@@ -1,31 +1,47 @@
 <footer class="footer">
   <div class="footer__content" [appScrollReveal]="0">
-    <img class="footer__logo" [src]="logoSrc" alt="Motionly" width="120" height="24" />
+    <div class="footer__brand">
+      <a class="footer__brand-link" routerLink="/" aria-label="Motionly home">
+        <img class="footer__logo" [src]="logoSrc" alt="" width="28" height="28" />
+        <span>Motionly</span>
+      </a>
+      <p>AI-native motion graphics editor.</p>
+    </div>
 
-    <ul class="footer__links">
-      @for (link of links; track link.id) {
-        <li>
-          <a
-            class="footer__link"
-            [href]="link.url"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {{ link.title }}
-          </a>
-        </li>
-      }
-    </ul>
+    <div class="footer__columns">
+      <div>
+        <h2>Links</h2>
+        <ul class="footer__links">
+          <li><a class="footer__link" routerLink="/about">About</a></li>
+          @for (link of links; track link.id) {
+            <li>
+              <a
+                class="footer__link"
+                [href]="link.url"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {{ link.title }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
 
-    <a
-      class="footer__github-link"
-      [href]="githubUrl"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Motionly on GitHub"
-    >
-      GitHub
-    </a>
+      <div>
+        <h2>Contact</h2>
+        <ul class="footer__links">
+          <li>
+            <a class="footer__link" [href]="contactProfileUrl" target="_blank" rel="noopener noreferrer">
+              GitHub organization
+            </a>
+          </li>
+          <li>
+            <a class="footer__link" [href]="contactEmailUrl">coppsary&#64;gmail.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
 
     <p class="footer__copyright">© {{ year }} Motionly. All rights reserved.</p>
   </div>

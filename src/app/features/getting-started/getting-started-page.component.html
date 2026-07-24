@@ -1,0 +1,105 @@
+<main class="guide">
+  <nav class="guide__nav" aria-label="Getting started navigation">
+    <a class="guide__back" routerLink="/">
+      <svg lucideArrowLeft aria-hidden="true"></svg>
+      Home
+    </a>
+    <div class="guide__nav-links">
+      <a href="#install">Install</a>
+      <a href="#assets">Assets</a>
+      <a [href]="docsUrl" target="_blank" rel="noopener noreferrer">Docs</a>
+    </div>
+    <app-product-hunt-badge size="compact" />
+  </nav>
+
+  <header class="guide__hero">
+    <div class="guide__hero-copy">
+      <p class="guide__eyebrow">Motionly install</p>
+      <h1>Install Motionly locally.</h1>
+      <p>
+        Create a local project, run the editor, and keep your images, video,
+        SVGs, GIFs, and audio inside the project <code>assets/</code> folder.
+      </p>
+      <div class="guide__actions">
+        <a class="btn btn--primary" href="#install">
+          <svg lucideTerminal aria-hidden="true"></svg>
+          Install
+        </a>
+        <a class="btn btn--secondary" [href]="demoUrl" target="_blank" rel="noopener noreferrer">
+          <svg lucidePlay aria-hidden="true"></svg>
+          Try Demo
+        </a>
+      </div>
+    </div>
+
+    <video
+      class="guide__video"
+      src="installation1.mp4"
+      controls
+      preload="metadata"
+      playsinline
+      aria-label="Motionly installation and setup video"
+    ></video>
+  </header>
+
+  <section id="install" class="guide__section" aria-labelledby="install-title">
+    <div class="guide__section-heading">
+      <svg lucideTerminal aria-hidden="true"></svg>
+      <div>
+        <h2 id="install-title">Install locally</h2>
+        <p>Requires Node.js 20.19.0 or newer, npm, and FFmpeg on PATH for MP4 export.</p>
+      </div>
+    </div>
+    <app-copy-install-command [command]="installCommand" />
+    <div class="guide__code-grid">
+      <div>
+        <h3>Return to a project</h3>
+        <app-copy-install-command [command]="devCommand" />
+      </div>
+      <div>
+        <h3>Open the editor only</h3>
+        <app-copy-install-command [command]="editorCommand" />
+      </div>
+    </div>
+  </section>
+
+  <section id="assets" class="guide__section" aria-labelledby="project-structure-title">
+    <div class="guide__section-heading">
+      <svg lucideFolder aria-hidden="true"></svg>
+      <div>
+        <h2 id="project-structure-title">Assets folder</h2>
+        <p>Put project media in <code>assets/</code> and reference it from <code>project.motion</code>.</p>
+      </div>
+    </div>
+    <div class="guide__structure">
+      <pre><code>my-video/
+  project.motion
+  assets/
+    logo.svg
+    product-shot.png
+    soundtrack.mp3</code></pre>
+      <ul>
+        <li>Place images, videos, SVGs, GIFs, Lottie files, and audio in <code>assets/</code>.</li>
+        <li>Use clear filenames and keep original aspect ratios.</li>
+        <li>Save visual edits back to <code>project.motion</code> for version control.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="guide__final" aria-labelledby="next-title">
+    <h2 id="next-title">Need more?</h2>
+    <p>
+      The full documentation covers SVG animation, keyframes, easing, assets,
+      export formats, and the Motionly agent prompt template.
+    </p>
+    <div class="guide__actions">
+      <a class="btn btn--primary" [href]="docsUrl" target="_blank" rel="noopener noreferrer">
+        <svg lucideBookOpen aria-hidden="true"></svg>
+        Read Documentation
+      </a>
+      <a class="btn btn--secondary" [href]="githubUrl" target="_blank" rel="noopener noreferrer">
+        GitHub
+      </a>
+    </div>
+  </section>
+</main>

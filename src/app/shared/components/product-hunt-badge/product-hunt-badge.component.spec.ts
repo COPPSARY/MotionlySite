@@ -35,7 +35,7 @@ describe('ProductHuntBadgeComponent', () => {
 
         expect(anchor?.getAttribute('href')).toBe(EXTERNAL_LINKS.productHuntEmbed);
         expect(img?.getAttribute('src')).toBe(
-          'https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1202670&theme=dark&t=1784794416535',
+          'https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1202670&theme=light&t=1784869687158',
         );
       }),
     );

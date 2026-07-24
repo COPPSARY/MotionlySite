@@ -5,19 +5,21 @@
   padding: 0.4rem 0.7rem;
   border-radius: var(--motionly-radius-sm);
   border: 1px solid var(--motionly-border);
-  background: var(--motionly-surface);
+  background: var(--motionly-shell);
+  box-shadow: var(--motionly-shell-shadow);
   color: var(--motionly-text-secondary);
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1;
-  transition: border-color 0.15s ease, color 0.15s ease;
+  transition: border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .star-badge:hover,
 .star-badge:focus-visible {
   border-color: var(--motionly-border-strong);
   color: var(--motionly-text-primary);
+  box-shadow: var(--motionly-accent-glow);
 }
 
 .star-badge__icon {
@@ -40,10 +42,6 @@
 .star-badge__count {
   min-width: 1.35rem;
   text-align: left;
-}
-
-.star-badge__stars--loading {
-  color: var(--motionly-text-secondary);
 }
 
 /* Compact variant: icon + count only (used in tight spaces like the navbar). */
