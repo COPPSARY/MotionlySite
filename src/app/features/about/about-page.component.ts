@@ -5,6 +5,15 @@ import { NavbarComponent } from '../landing-page/components/navbar/navbar.compon
 import { FooterComponent } from '../landing-page/components/footer/footer.component';
 import { EXTERNAL_LINKS } from '../../shared/constants/external-links';
 
+const COPPSARY_MEMBERS = [
+  { name: 'Reaksa', github: 'PromSereyreaksa' },
+  { name: 'Davann', github: 'imposter-dot-com' },
+  { name: 'Ilong', github: 'Chea-Ilong' },
+  { name: 'Panha', github: 'Nhaaa4' },
+  { name: 'Sophanith', github: 'nithkidd' },
+  { name: 'Heang', github: 'Bunheang360' },
+] as const;
+
 @Component({
   selector: 'app-about-page',
   standalone: true,
@@ -16,6 +25,11 @@ import { EXTERNAL_LINKS } from '../../shared/constants/external-links';
 export class AboutPageComponent {
   readonly docsUrl = EXTERNAL_LINKS.docs;
   readonly githubUrl = EXTERNAL_LINKS.github;
+  readonly members = COPPSARY_MEMBERS.map((member) => ({
+    ...member,
+    url: `https://github.com/${member.github}`,
+    avatar: `https://github.com/${member.github}.png`,
+  }));
 
   constructor(title: Title, meta: Meta) {
     const pageTitle = 'About Motionly - AI motion graphics editor';

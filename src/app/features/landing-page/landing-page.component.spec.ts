@@ -56,10 +56,10 @@ describe('LandingPageComponent', () => {
    * Integration test: badge and resource card cardinality
    * Validates: Requirements 1.2, 3.1, 6.1
    *
-   * The rendered tree contains exactly one Product Hunt badge in the hero
-   * section and exactly one resource card per ResourceKind.
+   * The rendered tree contains exactly one Product Hunt badge in the navbar
+   * and exactly one resource card per ResourceKind.
    */
-  it('renders exactly one Product Hunt badge in the navbar, one in the hero, and one resource card per ResourceKind', () => {
+  it('renders exactly one Product Hunt badge in the navbar and one resource card per ResourceKind', () => {
     const fixture = TestBed.createComponent(LandingPageComponent);
     fixture.detectChanges();
 
@@ -68,8 +68,9 @@ describe('LandingPageComponent', () => {
     const badges = compiled.querySelectorAll('app-product-hunt-badge');
     expect(badges.length).withContext('expected exactly one product hunt badge').toBe(1);
 
-    const heroBadge = compiled.querySelector('app-hero-section app-product-hunt-badge');
-    expect(heroBadge).withContext('expected a product hunt badge inside the hero section').not.toBeNull();
+    const navbarBadge = compiled.querySelector('app-navbar app-product-hunt-badge');
+    expect(navbarBadge).withContext('expected a product hunt badge inside the navbar').not.toBeNull();
+    expect(compiled.querySelector('app-hero-section app-product-hunt-badge')).toBeNull();
 
     const resourceCards = compiled.querySelectorAll('app-external-link-card');
     expect(resourceCards.length)

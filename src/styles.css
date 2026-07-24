@@ -74,6 +74,44 @@ a {
   color: inherit;
 }
 
+.motionly-noise-bg {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.motionly-noise-bg::before,
+.motionly-noise-bg::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: '';
+}
+
+.motionly-noise-bg::before {
+  z-index: -2;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(138, 180, 255, 0.16), transparent 34%),
+    radial-gradient(circle at 88% 28%, rgba(124, 247, 197, 0.12), transparent 32%),
+    radial-gradient(circle at 56% 100%, rgba(255, 255, 255, 0.07), transparent 40%),
+    rgba(8, 9, 11, 0.56);
+}
+
+.motionly-noise-bg::after {
+  z-index: -1;
+  opacity: 0.13;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.75) 0 1px, transparent 1px),
+    radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.55) 0 1px, transparent 1px);
+  background-size: 12px 12px, 17px 17px;
+  mix-blend-mode: overlay;
+}
+
+.motionly-noise-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* Responsive media defaults: images/svgs never exceed their container width. */
 img,
 svg,
@@ -105,5 +143,39 @@ video {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .feature-card__icon-svg,
+  .feature-card__scene * {
+    animation: none;
+  }
+}
+
+@keyframes icon-float {
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes scene-draw {
+  0%,
+  18% {
+    stroke-dashoffset: 140;
+  }
+  48%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scene-glow {
+  50% {
+    fill: rgba(245, 247, 250, 0.09);
+  }
+}
+
+@keyframes scene-shift {
+  50% {
+    transform: translate(8px, 8px);
   }
 }

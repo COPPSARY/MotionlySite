@@ -3,7 +3,15 @@
     <div class="hero__headline-wrap">
       <h1 class="hero__headline">
         <span>Create editable</span>
-        <span>animations with AI.</span>
+        <span>
+          animations with
+          <span class="hero__pointer-highlight">
+            AI Agents
+            <svg class="hero__pointer" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z" />
+            </svg>
+          </span>
+        </span>
       </h1>
     </div>
     <p class="hero__subheadline">
@@ -12,9 +20,6 @@
     </p>
 
     <app-copy-install-command [command]="installCommand" />
-    <div class="hero__proof" aria-label="Motionly package and launch links">
-      <app-product-hunt-badge size="featured" />
-    </div>
   </div>
 
   <div class="hero__preview" [appScrollReveal]="120">

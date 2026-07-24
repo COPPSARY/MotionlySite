@@ -7,6 +7,15 @@ import { ShowcaseSectionComponent } from './components/showcase-section/showcase
 import { ResourcesSectionComponent } from './components/resources-section/resources-section.component';
 import { FooterComponent } from './components/footer/footer.component';
 
+const COPPSARY_MEMBERS = [
+  { name: 'Reaksa', github: 'PromSereyreaksa' },
+  { name: 'Davann', github: 'imposter-dot-com' },
+  { name: 'Ilong', github: 'Chea-Ilong' },
+  { name: 'Panha', github: 'Nhaaa4' },
+  { name: 'Sophanith', github: 'nithkidd' },
+  { name: 'Heang', github: 'Bunheang360' },
+] as const;
+
 @Component({
   selector: 'app-landing-page',
   standalone: true,
@@ -23,6 +32,12 @@ import { FooterComponent } from './components/footer/footer.component';
   styleUrl: './landing-page.component.css',
 })
 export class LandingPageComponent {
+  readonly members = COPPSARY_MEMBERS.map((member) => ({
+    ...member,
+    url: `https://github.com/${member.github}`,
+    avatar: `https://github.com/${member.github}.png`,
+  }));
+
   constructor(title: Title, meta: Meta) {
     const pageTitle = 'Motionly - AI-native motion graphics editor';
     const description =

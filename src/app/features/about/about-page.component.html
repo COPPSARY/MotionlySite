@@ -46,6 +46,27 @@
       </article>
     </section>
 
+    <section class="about__team" aria-labelledby="about-team-title">
+      <h2 id="about-team-title">Built with love by COPPSARY</h2>
+      <div class="about__team-avatars" aria-label="COPPSARY members">
+        @for (member of members; track member.github) {
+          <a
+            class="about__team-member"
+            [href]="member.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="member.name + ' on GitHub'"
+          >
+            <span class="about__team-tooltip" aria-hidden="true">
+              <strong>{{ member.name }}</strong>
+              <span>{{ member.github }}</span>
+            </span>
+            <img [src]="member.avatar" [alt]="member.name" width="56" height="56" loading="lazy" />
+          </a>
+        }
+      </div>
+    </section>
+
     <section class="about__links" aria-label="About page links">
       <a [href]="docsUrl" target="_blank" rel="noopener noreferrer">Read the documentation</a>
       <a [href]="githubUrl" target="_blank" rel="noopener noreferrer">View Motionly on GitHub</a>

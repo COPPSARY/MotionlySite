@@ -7,9 +7,8 @@
 
 .showcase__content {
   display: grid;
-  gap: 2rem;
-  max-width: 70rem;
-  width: 100%;
+  gap: 1rem;
+  width: min(74rem, 100%);
 }
 
 .showcase__copy {
@@ -17,6 +16,13 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 1.25rem;
+  width: 100%;
+  padding: 1.5rem;
+  border: 1px solid var(--motionly-border);
+  border-radius: var(--motionly-radius-md);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--motionly-shell-shadow);
   text-align: left;
 }
 
@@ -48,71 +54,38 @@
   overflow-wrap: break-word;
 }
 
-.showcase__rail {
-  display: grid;
-  gap: 0.85rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--motionly-border);
-}
-
-.showcase__agents {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-}
-
-.showcase__agent {
+.showcase__docs-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  min-height: 2.35rem;
-  padding: 0 0.75rem;
-  border: 1px solid var(--motionly-border);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.035);
-  color: var(--motionly-text-primary);
-  font-weight: 700;
-}
-
-.showcase__agent img {
-  width: 1.35rem;
-  height: 1.35rem;
-}
-
-.showcase__agent--more {
-  color: var(--motionly-text-secondary);
-  font-weight: 650;
-}
-
-.showcase__skill-link {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.45rem;
-  width: fit-content;
-  max-width: 100%;
-  min-height: 2.55rem;
-  padding: 0 0.95rem;
-  border: 1px solid var(--motionly-border);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.035);
+  gap: 0.35rem;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--motionly-border-strong);
+  border-radius: var(--motionly-radius-sm);
+  background: rgba(255, 255, 255, 0.045);
   color: var(--motionly-text-primary);
   font-weight: 700;
   text-decoration: none;
-  transition: border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  transition: border-color 0.15s ease, color 0.15s ease;
 }
 
-.showcase__skill-link span {
-  color: var(--motionly-text-secondary);
-  font-weight: 600;
+.showcase__docs-link svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex: 0 0 auto;
 }
 
-.showcase__skill-link:hover,
-.showcase__skill-link:focus-visible {
+.showcase__docs-link:hover,
+.showcase__docs-link:focus-visible {
   border-color: var(--motionly-accent);
   color: var(--motionly-accent);
-  box-shadow: var(--motionly-accent-glow);
+}
+
+.showcase__inline-logo {
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  margin-inline: 0.1rem;
+  vertical-align: -0.18em;
 }
 
 @media (max-width: 768px) {

@@ -42,7 +42,7 @@ describe('NavbarComponent', () => {
     const getStartedLink = compiled.querySelector<HTMLAnchorElement>('a[href="/getting-started"]');
     const docsLink = compiled.querySelector<HTMLAnchorElement>(`a[href="${EXTERNAL_LINKS.docs}"]`);
     const productHuntLink = compiled.querySelector<HTMLAnchorElement>(
-      `a[href="${EXTERNAL_LINKS.productHunt}"]`,
+      `a[href="${EXTERNAL_LINKS.productHuntEmbed}"]`,
     );
     const demoLink = compiled.querySelector<HTMLAnchorElement>(`a[href="${EXTERNAL_LINKS.editor}"]`);
     const npmLink = compiled.querySelector<HTMLAnchorElement>(`a[href="${EXTERNAL_LINKS.npm}"]`);
