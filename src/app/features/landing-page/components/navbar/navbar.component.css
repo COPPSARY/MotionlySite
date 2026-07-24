@@ -130,7 +130,8 @@
 
 .navbar__link svg,
 .navbar__action-link svg,
-.navbar__menu-panel svg {
+.navbar__menu-panel svg,
+.navbar__toggle svg {
   width: 1rem;
   height: 1rem;
   flex: 0 0 auto;
@@ -151,19 +152,31 @@
   min-width: 0;
 }
 
+.navbar__toggle,
+.navbar__mobile-badges {
+  display: none;
+}
+
+.navbar__toggle {
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border: 1px solid var(--motionly-border);
+  border-radius: var(--motionly-radius-sm);
+  background: var(--motionly-shell);
+  color: var(--motionly-text-primary);
+  cursor: pointer;
+}
+
 @media (max-width: 1100px) {
   .navbar {
-    grid-template-columns: auto minmax(0, 1fr);
-    grid-template-areas:
-      "brand actions"
-      "links links";
+    grid-template-columns: auto minmax(0, 1fr) auto;
     justify-content: stretch;
-    gap: 0.75rem;
     width: min(calc(100% - 1rem), 76rem);
   }
 
   .navbar__brand {
-    grid-area: brand;
     justify-self: start;
     min-width: 2.75rem;
     min-height: 2.75rem;
@@ -174,36 +187,66 @@
     height: 26px;
   }
 
-  .navbar__actions {
-    grid-area: actions;
-  }
-
-  .navbar__links {
-    grid-area: links;
-    justify-content: flex-start;
-    width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
-    padding-bottom: 0.25rem;
-    scrollbar-width: none;
-  }
-
-  .navbar__links::-webkit-scrollbar {
-    display: none;
-  }
 }
 
 @media (max-width: 640px) {
   .navbar {
+    grid-template-columns: auto auto;
     gap: 0.625rem;
     padding-inline: 0.75rem;
+  }
+
+  .navbar__links {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    display: none;
+    grid-template-columns: 1fr;
+    justify-content: stretch;
+    gap: 0.25rem;
+    padding: 0.6rem;
+    border: 1px solid var(--motionly-border);
+    border-radius: var(--motionly-radius-md);
+    background: rgba(8, 9, 11, 0.94);
+    box-shadow: var(--motionly-shell-shadow);
+    backdrop-filter: blur(16px);
+  }
+
+  .navbar__links--open {
+    display: grid;
+  }
+
+  .navbar__link,
+  .navbar__action-link,
+  .navbar__menu-panel a {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .navbar__menu-panel {
+    position: static;
+    margin-top: 0.25rem;
+    box-shadow: none;
   }
 
   .navbar__actions {
     gap: 0.375rem;
   }
 
+  .navbar__actions app-product-hunt-badge,
   .navbar__actions app-github-star-badge {
     display: none;
+  }
+
+  .navbar__toggle,
+  .navbar__mobile-badges {
+    display: inline-flex;
+  }
+
+  .navbar__mobile-badges {
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    padding-top: 0.35rem;
   }
 }

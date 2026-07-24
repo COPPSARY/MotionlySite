@@ -65,15 +65,23 @@
 
 .footer__link {
   display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   border-radius: var(--motionly-radius-sm);
   color: var(--motionly-text-secondary);
   text-decoration: none;
-  transition: color 0.15s ease, box-shadow 0.15s ease;
+  transition: color 0.15s ease;
+}
+
+.footer__link svg {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
 }
 
 .footer__link:hover {
   color: var(--motionly-text-primary);
-  box-shadow: var(--motionly-accent-glow);
+  cursor: pointer;
 }
 
 .footer__copyright {

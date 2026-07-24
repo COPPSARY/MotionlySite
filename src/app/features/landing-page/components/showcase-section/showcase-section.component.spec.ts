@@ -8,19 +8,22 @@ describe('ShowcaseSectionComponent', () => {
     }).compileComponents();
   });
 
-  it('should render the supported agent logos without extra step cards', () => {
+  it('should render inline agent logos and the docs link without extra step cards', () => {
     const fixture = TestBed.createComponent(ShowcaseSectionComponent);
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelectorAll('.showcase__agent').length).toBe(4);
-    expect(compiled.textContent).toContain('More providers');
-    const skillLink = compiled.querySelector<HTMLAnchorElement>('.showcase__skill-link');
-    expect(skillLink?.textContent).toContain('Read the skill install docs');
+    expect(compiled.querySelectorAll('.showcase__inline-logo').length).toBe(3);
+    expect(compiled.textContent).toContain('and more');
+    expect(compiled.textContent).toContain('Please refer to the');
+
+    const skillLink = compiled.querySelector<HTMLAnchorElement>('.showcase__subheading a');
+    expect(skillLink?.textContent).toContain('documentation');
     expect(skillLink?.href).toContain('/agents/ai-authoring#install-the-skill');
     expect(compiled.textContent).not.toContain('npx @coppsary/motionly skills add');
     expect(compiled.querySelector('.showcase__step')).toBeNull();
     expect(compiled.querySelector('.showcase__install')).toBeNull();
+    expect(compiled.querySelector('.showcase__agent')).toBeNull();
   });
 
   it('should not render a demo video in the showcase section (no duplicate of the hero video)', () => {

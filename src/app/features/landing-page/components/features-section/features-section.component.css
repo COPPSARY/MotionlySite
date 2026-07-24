@@ -153,15 +153,12 @@
 
 .feature-card__icon {
   display: inline-flex;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 1.55rem;
+  height: 1.55rem;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  border: 1px solid var(--motionly-border);
-  border-radius: 0.7rem;
-  background: rgba(255, 255, 255, 0.055);
-  color: var(--motionly-text-secondary);
+  color: var(--motionly-text-primary);
 }
 
 .feature-card__icon-svg {
@@ -169,6 +166,7 @@
   width: 100%;
   height: 100%;
   stroke-width: 1.55;
+  animation: icon-float 3s ease-in-out infinite;
 }
 
 .feature-card__top {
@@ -208,9 +206,37 @@
   stroke-width: 3;
 }
 
-.feature-card__visual rect,
-.feature-card__visual circle {
+.scene__panel,
+.scene__pulse,
+.scene__dot {
   fill: rgba(245, 247, 250, 0.055);
+}
+
+.feature-card__scene * {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.scene__line,
+.scene__clip,
+.scene__spark,
+.scene__bracket,
+.scene__arrow,
+.scene__arrow-head {
+  stroke-dasharray: 140;
+  animation: scene-draw 3s ease-in-out infinite;
+}
+
+.scene__panel {
+  animation: scene-glow 4s ease-in-out infinite;
+}
+
+.scene__cursor,
+.scene__pulse,
+.scene__scan,
+.scene__marker,
+.scene__dot {
+  animation: scene-shift 3.2s ease-in-out infinite;
 }
 
 .feature-card--mouse-pointer {
