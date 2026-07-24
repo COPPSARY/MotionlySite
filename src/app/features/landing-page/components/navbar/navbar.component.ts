@@ -6,13 +6,11 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
+  LucideArrowUpRight,
   LucideBookOpen,
-  LucideDownload,
   LucideHome,
   LucideInfo,
   LucideMenu,
-  LucidePackage,
-  LucidePlay,
   LucideTerminal,
   LucideX,
 } from '@lucide/angular';
@@ -28,13 +26,11 @@ import { EXTERNAL_LINKS } from '../../../../shared/constants/external-links';
     RouterLink,
     GithubStarBadgeComponent,
     ProductHuntBadgeComponent,
+    LucideArrowUpRight,
     LucideBookOpen,
-    LucideDownload,
     LucideHome,
     LucideInfo,
     LucideMenu,
-    LucidePackage,
-    LucidePlay,
     LucideTerminal,
     LucideX,
   ],

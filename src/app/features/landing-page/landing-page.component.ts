@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { EXTERNAL_LINKS } from '../../shared/constants/external-links';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeroSectionComponent } from './components/hero-section/hero-section.component';
 import { FeaturesSectionComponent } from './components/features-section/features-section.component';
@@ -32,6 +33,7 @@ const COPPSARY_MEMBERS = [
   styleUrl: './landing-page.component.css',
 })
 export class LandingPageComponent {
+  readonly repositoryUrl = EXTERNAL_LINKS.github;
   readonly members = COPPSARY_MEMBERS.map((member) => ({
     ...member,
     url: `https://github.com/${member.github}`,

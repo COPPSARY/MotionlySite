@@ -53,8 +53,7 @@
   min-width: 0;
 }
 
-.navbar__link,
-.navbar__action-link {
+.navbar__link {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -68,69 +67,7 @@
   white-space: nowrap;
 }
 
-.navbar__menu {
-  position: relative;
-}
-
-.navbar__menu summary {
-  cursor: pointer;
-  list-style: none;
-}
-
-.navbar__menu summary::-webkit-details-marker {
-  display: none;
-}
-
-.navbar__menu summary::after {
-  content: '';
-  width: 0.38rem;
-  height: 0.38rem;
-  margin-left: 0.15rem;
-  border-right: 1px solid currentColor;
-  border-bottom: 1px solid currentColor;
-  transform: translateY(-0.12rem) rotate(45deg);
-}
-
-.navbar__menu-panel {
-  position: absolute;
-  right: 0;
-  top: calc(100% + 0.55rem);
-  display: grid;
-  min-width: 12rem;
-  padding: 0.45rem;
-  border: 1px solid var(--motionly-border);
-  border-radius: var(--motionly-radius-md);
-  background: rgba(8, 9, 11, 0.92);
-  box-shadow: var(--motionly-shell-shadow);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-}
-
-.navbar__menu:not([open]) .navbar__menu-panel {
-  display: none;
-}
-
-.navbar__menu-panel a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  min-height: 2.35rem;
-  padding: 0 0.65rem;
-  border-radius: var(--motionly-radius-sm);
-  color: var(--motionly-text-secondary);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 650;
-}
-
-.navbar__menu-panel a:hover {
-  color: var(--motionly-text-primary);
-  background: rgba(255, 255, 255, 0.055);
-}
-
 .navbar__link svg,
-.navbar__action-link svg,
-.navbar__menu-panel svg,
 .navbar__toggle svg {
   width: 1rem;
   height: 1rem;
@@ -138,8 +75,7 @@
   stroke-width: 1.8;
 }
 
-.navbar__link:hover,
-.navbar__action-link:hover {
+.navbar__link:hover {
   color: var(--motionly-text-primary);
   background: rgba(255, 255, 255, 0.055);
 }
@@ -217,17 +153,9 @@
     display: grid;
   }
 
-  .navbar__link,
-  .navbar__action-link,
-  .navbar__menu-panel a {
+  .navbar__link {
     width: 100%;
     justify-content: flex-start;
-  }
-
-  .navbar__menu-panel {
-    position: static;
-    margin-top: 0.25rem;
-    box-shadow: none;
   }
 
   .navbar__actions {
