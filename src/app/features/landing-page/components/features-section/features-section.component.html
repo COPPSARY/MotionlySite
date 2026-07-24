@@ -1,12 +1,17 @@
 <section class="features">
   <div class="features__inner">
     <div class="features__copy" [appScrollReveal]="0">
-      <p class="features__eyebrow">Live editor</p>
-      <h2>Try the Motionly editor.</h2>
-      <p>
-        Click around the canvas, timeline, inspector, and source view in the
-        embedded editor.
-      </p>
+      <h2>Meet Motionly.</h2>
+      <div class="features__description">
+        <p>
+          Try the editor directly. Click around the canvas, timeline,
+          inspector, and source view.
+        </p>
+        <a class="features__editor-link motionly-noise-bg" [href]="editorUrl" target="_blank" rel="noopener noreferrer">
+          Open Editor
+          <svg lucideArrowUpRight aria-hidden="true"></svg>
+        </a>
+      </div>
     </div>
 
     <figure class="features__editor" [appScrollReveal]="80">
@@ -23,7 +28,7 @@
 
     <div class="features__workflow" [appScrollReveal]="120">
       <div class="features__workflow-copy">
-        <p class="features__eyebrow">Core workflow</p>
+        <p class="features__eyebrow">Features</p>
         <h2>Everything stays editable.</h2>
       </div>
 

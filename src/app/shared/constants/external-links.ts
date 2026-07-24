@@ -7,7 +7,7 @@ export const EXTERNAL_LINKS = {
   github: 'https://github.com/COPPSARY/Motionly',
   docs: 'https://motionly.mintlify.app/',
   npm: 'https://www.npmjs.com/package/@coppsary/motionly',
-  editor: 'https://motionly-tau.vercel.app/editor',
+  editor: 'https://app.motionly.site/',
   contactProfile: 'https://github.com/COPPSARY',
   contactEmail: 'mailto:coppsary@gmail.com',
 } as const;

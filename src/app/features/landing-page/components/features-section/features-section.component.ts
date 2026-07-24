@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import {
+  LucideArrowUpRight,
   LucideCode2,
   LucideDownload,
   LucideMousePointer2,
@@ -17,6 +18,7 @@ import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reve
   standalone: true,
   imports: [
     ScrollRevealDirective,
+    LucideArrowUpRight,
     LucideCode2,
     LucideDownload,
     LucideMousePointer2,

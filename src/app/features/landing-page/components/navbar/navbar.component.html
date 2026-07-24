@@ -21,23 +21,10 @@
       <svg lucideBookOpen aria-hidden="true"></svg>
       Documentation
     </a>
-    <details class="navbar__menu">
-      <summary class="navbar__action-link">More</summary>
-      <div class="navbar__menu-panel">
-        <a [href]="links.editor" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">
-          <svg lucidePlay aria-hidden="true"></svg>
-          Demo
-        </a>
-        <a [href]="links.npm" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">
-          <svg lucidePackage aria-hidden="true"></svg>
-          npm package
-        </a>
-        <a routerLink="/getting-started" (click)="closeMenu()">
-          <svg lucideDownload aria-hidden="true"></svg>
-          Install
-        </a>
-      </div>
-    </details>
+    <a class="navbar__link" [href]="links.editor" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">
+      Editor
+      <svg lucideArrowUpRight aria-hidden="true"></svg>
+    </a>
     <div class="navbar__mobile-badges">
       <app-product-hunt-badge size="compact" />
       <app-github-star-badge size="compact" />
