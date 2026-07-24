@@ -1,20 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
-/*
- * Motionly design tokens
- * A dark, AI-native motion graphics aesthetic — deep near-black surfaces
- * with a cyan → electric-blue accent gradient. Deliberately avoids
- * purple/violet (Raycast's signature accent) to keep Motionly's branding
- * distinct.
- */
+/* Motionly design tokens: neutral dark UI, logo gradient only as a soft accent. */
 :root {
   color-scheme: dark;
 
   /* Backgrounds */
-  --motionly-bg: #06080b;
-  --motionly-bg-elevated: #0b0e13;
-  --motionly-surface: #10151c;
-  --motionly-surface-hover: #161c25;
+  --motionly-bg: linear-gradient(180deg, #111216 0%, #07080a 46%, #020203 100%);
+  --motionly-bg-elevated: transparent;
+  --motionly-surface: rgba(12, 14, 18, 0.78);
+  --motionly-surface-hover: rgba(18, 21, 27, 0.9);
+  --motionly-shell: rgba(10, 11, 13, 0.82);
 
   /* Borders */
   --motionly-border: rgba(255, 255, 255, 0.08);
@@ -25,16 +20,21 @@
   --motionly-text-secondary: rgba(245, 247, 250, 0.72);
   --motionly-text-muted: rgba(245, 247, 250, 0.5);
 
-  /* Accent — cyan to electric-blue gradient */
-  --motionly-accent: #22d3ee;
-  --motionly-accent-secondary: #3b82f6;
-  --motionly-accent-gradient: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
-  --motionly-accent-contrast: #04141a;
+  --motionly-accent: rgba(245, 247, 250, 0.84);
+  --motionly-logo-start: #8ab4ff;
+  --motionly-logo-end: #7cf7c5;
+  --motionly-accent-gradient: linear-gradient(135deg, var(--motionly-logo-start), var(--motionly-logo-end));
+  --motionly-accent-contrast: #050608;
 
   /* Shadows / glow */
   --motionly-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --motionly-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
-  --motionly-accent-glow: 0 0 40px rgba(34, 211, 238, 0.25);
+  --motionly-accent-glow:
+    0 0 0 1px rgba(138, 180, 255, 0.18),
+    0 0 26px rgba(124, 247, 197, 0.08);
+  --motionly-shell-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 18px 42px rgba(0, 0, 0, 0.32);
 
   /* Typography */
   --motionly-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
@@ -63,6 +63,7 @@ body {
 
 body {
   background: var(--motionly-bg);
+  background-attachment: fixed;
   color: var(--motionly-text-primary);
   font-family: var(--motionly-font-sans);
   -webkit-font-smoothing: antialiased;

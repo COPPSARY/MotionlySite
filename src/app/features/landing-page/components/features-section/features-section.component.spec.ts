@@ -25,10 +25,13 @@ describe('FeaturesSectionComponent', () => {
 
     const compiled = fixture.nativeElement as HTMLElement;
     const icons = compiled.querySelectorAll('.feature-card__icon svg');
+    const iconText = Array.from(compiled.querySelectorAll('.feature-card__icon'))
+      .map((icon) => icon.textContent ?? '')
+      .join('');
 
     expect(icons.length).toBe(FEATURES.length);
     for (const feature of FEATURES) {
-      expect(compiled.textContent).not.toContain(feature.icon);
+      expect(iconText).not.toContain(feature.icon);
     }
   });
 

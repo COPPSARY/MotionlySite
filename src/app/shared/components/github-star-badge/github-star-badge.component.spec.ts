@@ -26,7 +26,7 @@ describe('GithubStarBadgeComponent', () => {
     }).compileComponents();
   });
 
-  it('renders the GitHub link and keeps a visible star slot while loading', async () => {
+  it('renders the GitHub link and fallback star count before the API responds', async () => {
     const fixture = TestBed.createComponent(GithubStarBadgeComponent);
     fixture.detectChanges();
     TestBed.inject(ApplicationRef).tick();
@@ -35,15 +35,13 @@ describe('GithubStarBadgeComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const anchor = compiled.querySelector<HTMLAnchorElement>('a.star-badge');
     const stars = compiled.querySelector<HTMLElement>('.star-badge__stars');
-    const count = compiled.querySelector<HTMLElement>('.star-badge__count');
 
     expect(anchor?.getAttribute('href')).toBe(EXTERNAL_LINKS.github);
     expect(anchor?.getAttribute('target')).toBe('_blank');
     expect(anchor?.getAttribute('rel')).toBe('noopener noreferrer');
     expect(stars).withContext('star slot should render before the API responds').not.toBeNull();
-    expect(stars?.classList.contains('star-badge__stars--loading')).toBeTrue();
-    expect(stars?.getAttribute('aria-label')).toBe('Loading GitHub stars');
-    expect(count?.textContent?.trim()).toBe('...');
+    expect(stars?.getAttribute('aria-label')).toBe('61 GitHub stars');
+    expect(compiled.querySelector('.star-badge__count')?.textContent?.trim()).toBe('61');
     expect(starsService.load).toHaveBeenCalled();
   });
 
@@ -57,7 +55,6 @@ describe('GithubStarBadgeComponent', () => {
     const stars = compiled.querySelector<HTMLElement>('.star-badge__stars');
     const count = compiled.querySelector<HTMLElement>('.star-badge__count');
 
-    expect(stars?.classList.contains('star-badge__stars--loading')).toBeFalse();
     expect(stars?.getAttribute('aria-label')).toBe('57 GitHub stars');
     expect(count?.textContent?.trim()).toBe('57');
   });

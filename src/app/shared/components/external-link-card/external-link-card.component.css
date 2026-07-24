@@ -2,24 +2,24 @@
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  padding: 1.25rem;
-  border-radius: var(--motionly-radius-md);
-  border: 1px solid var(--motionly-border);
-  background: var(--motionly-surface);
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--motionly-border);
+  background: transparent;
   text-decoration: none;
   color: inherit;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .link-card:hover,
 .link-card:focus-visible {
   border-color: var(--motionly-border-strong);
-  background: var(--motionly-surface-hover);
+  background: transparent;
+  box-shadow: none;
 }
 
 .link-card__icon {
   flex-shrink: 0;
-  color: var(--motionly-accent);
+  color: var(--motionly-text-secondary);
 }
 
 .link-card__icon-svg {

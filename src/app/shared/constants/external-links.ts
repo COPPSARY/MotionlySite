@@ -8,6 +8,8 @@ export const EXTERNAL_LINKS = {
   docs: 'https://motionly.mintlify.app/',
   npm: 'https://www.npmjs.com/package/@coppsary/motionly',
   editor: 'https://motionly-tau.vercel.app/editor',
+  contactProfile: 'https://github.com/COPPSARY',
+  contactEmail: 'mailto:coppsary@gmail.com',
 } as const;
 
 export const RESOURCE_LINKS: readonly ResourceLink[] = [
@@ -26,17 +28,17 @@ export const RESOURCE_LINKS: readonly ResourceLink[] = [
     icon: 'github',
   },
   {
+    id: 'productHunt',
+    title: 'Product Hunt',
+    description: 'Follow the launch and community feedback.',
+    url: EXTERNAL_LINKS.productHunt,
+    icon: 'rocket',
+  },
+  {
     id: 'npm',
     title: 'npm package',
     description: '@coppsary/motionly on the npm registry.',
     url: EXTERNAL_LINKS.npm,
     icon: 'package',
-  },
-  {
-    id: 'editor',
-    title: 'Live Editor',
-    description: 'Try Motionly directly in your browser.',
-    url: EXTERNAL_LINKS.editor,
-    icon: 'play',
   },
 ];

@@ -1,15 +1,50 @@
 <nav class="navbar" [class.navbar--scrolled]="scrolled()">
-  <a class="navbar__brand" href="#top" aria-label="Motionly home">
+  <a class="navbar__brand" routerLink="/" aria-label="Motionly home">
     <img class="navbar__logo" [src]="logoSrc" alt="Motionly" width="120" height="28" />
+    <span class="navbar__brand-name">Motionly</span>
   </a>
 
   <div class="navbar__links">
-    <a class="navbar__link" href="#features">Features</a>
-    <a class="navbar__link" href="#resources">Resources</a>
+    <a class="navbar__link" href="#top">
+      <svg lucideHome aria-hidden="true"></svg>
+      Home
+    </a>
+    <a class="navbar__link" routerLink="/about">
+      <svg lucideInfo aria-hidden="true"></svg>
+      About
+    </a>
+    <a class="navbar__link" routerLink="/getting-started">
+      <svg lucideTerminal aria-hidden="true"></svg>
+      Get Started
+    </a>
+    <a class="navbar__link" [href]="links.docs" target="_blank" rel="noopener noreferrer">
+      <svg lucideBookOpen aria-hidden="true"></svg>
+      Documentation
+    </a>
+    <details class="navbar__menu">
+      <summary class="navbar__action-link">More</summary>
+      <div class="navbar__menu-panel">
+        <a [href]="links.productHunt" target="_blank" rel="noopener noreferrer">
+          <svg lucideRocket aria-hidden="true"></svg>
+          Product Hunt
+        </a>
+        <a [href]="links.editor" target="_blank" rel="noopener noreferrer">
+          <svg lucidePlay aria-hidden="true"></svg>
+          Demo
+        </a>
+        <a [href]="links.npm" target="_blank" rel="noopener noreferrer">
+          <svg lucidePackage aria-hidden="true"></svg>
+          npm package
+        </a>
+        <a routerLink="/getting-started">
+          <svg lucideDownload aria-hidden="true"></svg>
+          Install
+        </a>
+      </div>
+    </details>
   </div>
 
   <div class="navbar__actions">
     <app-github-star-badge size="compact" />
-    <app-product-hunt-badge size="compact" />
   </div>
 </nav>

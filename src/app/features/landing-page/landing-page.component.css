@@ -1,0 +1,61 @@
+#top,
+#features,
+#resources {
+  scroll-margin-top: 7rem;
+}
+
+.founder-note {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 1.5rem 5rem;
+  background: none;
+  box-shadow: none;
+  filter: none;
+}
+
+.founder-note__content {
+  max-width: 70rem;
+  width: 100%;
+  padding: 2.4rem 0;
+  text-align: center;
+  background: none;
+  box-shadow: none;
+  filter: none;
+}
+
+.founder-note blockquote {
+  max-width: 54rem;
+  margin: 0 auto;
+  background: none;
+  box-shadow: none;
+  filter: none;
+}
+
+.founder-note p {
+  margin: 0;
+  color: var(--motionly-text-primary);
+  font-size: 1.35rem;
+  line-height: 1.55;
+  text-shadow: none;
+}
+
+.founder-note footer {
+  margin-top: 1rem;
+  color: var(--motionly-text-secondary);
+  font-weight: 700;
+  text-shadow: none;
+}
+
+@media (max-width: 640px) {
+  .founder-note {
+    padding: 0 1rem 3rem;
+  }
+
+  .founder-note__content {
+    padding: 1.5rem;
+  }
+
+  .founder-note p {
+    font-size: 1.1rem;
+  }
+}

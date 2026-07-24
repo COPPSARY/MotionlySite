@@ -1,27 +1,101 @@
 <section class="features">
-  <div class="features__glow" aria-hidden="true"></div>
-  <div class="features__grid" [appScrollReveal]="0">
-    @for (feature of features; track feature.id; let i = $index) {
-      <article class="feature-card" [appScrollReveal]="i * 80">
-        <span class="feature-card__icon" aria-hidden="true">
-          @switch (feature.icon) {
-            @case ('sparkles') {
-              <svg class="feature-card__icon-svg" lucideSparkles></svg>
-            }
-            @case ('wand') {
-              <svg class="feature-card__icon-svg" lucideWand></svg>
-            }
-            @case ('layout-template') {
-              <svg class="feature-card__icon-svg" lucideLayoutTemplate></svg>
-            }
-            @case ('download') {
-              <svg class="feature-card__icon-svg" lucideDownload></svg>
-            }
-          }
-        </span>
-        <h3 class="feature-card__title">{{ feature.title }}</h3>
-        <p class="feature-card__description">{{ feature.description }}</p>
-      </article>
-    }
+  <div class="features__inner">
+    <div class="features__copy" [appScrollReveal]="0">
+      <p class="features__eyebrow">Live editor</p>
+      <h2>Try the Motionly editor.</h2>
+      <p>
+        Click around the canvas, timeline, inspector, and source view in the
+        embedded editor.
+      </p>
+    </div>
+
+    <figure class="features__editor" [appScrollReveal]="80">
+      <div class="features__editor-scale">
+        <iframe
+          [src]="editorEmbedUrl"
+          title="Motionly live editor"
+          width="1920"
+          height="954"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </figure>
+
+    <div class="features__workflow" [appScrollReveal]="120">
+      <div class="features__workflow-copy">
+        <p class="features__eyebrow">Core workflow</p>
+        <h2>Everything stays editable.</h2>
+      </div>
+
+      <div class="features__grid">
+        @for (feature of features; track feature.id; let i = $index) {
+          <article class="feature-card" [class]="'feature-card feature-card--' + feature.icon" [appScrollReveal]="i * 50">
+            <div class="feature-card__top">
+              <span class="feature-card__icon" aria-hidden="true">
+                @switch (feature.icon) {
+                  @case ('mouse-pointer') {
+                    <svg class="feature-card__icon-svg" lucideMousePointer2></svg>
+                  }
+                  @case ('code') {
+                    <svg class="feature-card__icon-svg" lucideCode2></svg>
+                  }
+                  @case ('timeline') {
+                    <svg class="feature-card__icon-svg" lucideTimerReset></svg>
+                  }
+                  @case ('download') {
+                    <svg class="feature-card__icon-svg" lucideDownload></svg>
+                  }
+                  @default {
+                    <svg class="feature-card__icon-svg" lucideSparkles></svg>
+                  }
+                }
+              </span>
+              <h3 class="feature-card__title">{{ feature.title }}</h3>
+            </div>
+
+            <p class="feature-card__description">{{ feature.description }}</p>
+
+            <div class="feature-card__visual" aria-hidden="true">
+              @switch (feature.icon) {
+                @case ('mouse-pointer') {
+                  <svg viewBox="0 0 320 180">
+                    <rect x="34" y="46" width="184" height="42" rx="14" />
+                    <rect x="74" y="104" width="168" height="30" rx="11" />
+                    <path d="M214 62h34M214 76h54" />
+                    <path d="M246 94l38 54 6-30 28-12z" />
+                  </svg>
+                }
+                @case ('code') {
+                  <svg viewBox="0 0 320 180">
+                    <rect x="56" y="42" width="208" height="96" rx="16" />
+                    <path d="M102 76 78 92l24 16" />
+                    <path d="m218 76 24 16-24 16" />
+                    <path d="m178 70-32 48" />
+                    <path d="M90 150h140" />
+                  </svg>
+                }
+                @case ('timeline') {
+                  <svg viewBox="0 0 320 180">
+                    <rect x="50" y="50" width="220" height="82" rx="18" />
+                    <path d="M84 80h42M84 104h82M184 80h52" />
+                    <path d="M72 150h176" />
+                    <path d="M102 150v-22M154 150v-36M206 150v-26" />
+                  </svg>
+                }
+                @default {
+                  <svg viewBox="0 0 320 180">
+                    <rect x="58" y="46" width="204" height="82" rx="18" />
+                    <path d="M160 34v72" />
+                    <path d="m132 78 28 28 28-28" />
+                    <path d="M102 150h116" />
+                    <path d="M236 70h18M236 88h28" />
+                  </svg>
+                }
+              }
+            </div>
+          </article>
+        }
+      </div>
+    </div>
   </div>
 </section>

@@ -17,7 +17,7 @@ describe('RESOURCE_LINKS', () => {
     const uniqueIds = new Set(ids);
     expect(uniqueIds.size).toBe(4);
 
-    const expectedKinds: ResourceKind[] = ['docs', 'github', 'npm', 'editor'];
+    const expectedKinds: ResourceKind[] = ['docs', 'github', 'productHunt', 'npm'];
     for (const kind of expectedKinds) {
       const matches = ids.filter((id) => id === kind);
       expect(matches.length).withContext(`expected exactly one "${kind}" entry`).toBe(1);
