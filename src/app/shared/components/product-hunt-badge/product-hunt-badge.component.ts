@@ -15,5 +15,5 @@ export class ProductHuntBadgeComponent {
 
   readonly href = EXTERNAL_LINKS.productHuntEmbed;
   readonly badgeSrc =
-    'https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1202670&theme=light&t=1784869687158';
+    'https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1202670&theme=dark&t=1784880184813';
 }

@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ProductHuntBadgeComponent } from '../../../../shared/components/product-hunt-badge/product-hunt-badge.component';
 import { CopyInstallCommandComponent } from '../../../../shared/components/copy-install-command/copy-install-command.component';
 import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reveal.directive';
 
@@ -8,7 +7,6 @@ import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reve
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    ProductHuntBadgeComponent,
     CopyInstallCommandComponent,
     ScrollRevealDirective,
   ],

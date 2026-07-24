@@ -12,7 +12,12 @@
       <div>
         <h2>Links</h2>
         <ul class="footer__links">
-          <li><a class="footer__link" routerLink="/about">About</a></li>
+          <li>
+            <a class="footer__link" routerLink="/about">
+              <svg lucideInfo aria-hidden="true"></svg>
+              About
+            </a>
+          </li>
           @for (link of links; track link.id) {
             <li>
               <a
@@ -21,6 +26,20 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
+                @switch (link.icon) {
+                  @case ('book') {
+                    <svg lucideBookOpen aria-hidden="true"></svg>
+                  }
+                  @case ('github') {
+                    <svg lucideGitBranch aria-hidden="true"></svg>
+                  }
+                  @case ('rocket') {
+                    <svg lucideRocket aria-hidden="true"></svg>
+                  }
+                  @case ('package') {
+                    <svg lucidePackage aria-hidden="true"></svg>
+                  }
+                }
                 {{ link.title }}
               </a>
             </li>
@@ -33,11 +52,15 @@
         <ul class="footer__links">
           <li>
             <a class="footer__link" [href]="contactProfileUrl" target="_blank" rel="noopener noreferrer">
+              <svg lucideGitBranch aria-hidden="true"></svg>
               GitHub organization
             </a>
           </li>
           <li>
-            <a class="footer__link" [href]="contactEmailUrl">coppsary&#64;gmail.com</a>
+            <a class="footer__link" [href]="contactEmailUrl">
+              <svg lucideMail aria-hidden="true"></svg>
+              coppsary&#64;gmail.com
+            </a>
           </li>
         </ul>
       </div>

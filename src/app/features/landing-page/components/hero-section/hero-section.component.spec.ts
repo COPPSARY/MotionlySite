@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HeroSectionComponent } from './hero-section.component';
 import { CopyInstallCommandComponent } from '../../../../shared/components/copy-install-command/copy-install-command.component';
-import { ProductHuntBadgeComponent } from '../../../../shared/components/product-hunt-badge/product-hunt-badge.component';
 
 describe('HeroSectionComponent', () => {
   beforeEach(async () => {
@@ -21,6 +20,17 @@ describe('HeroSectionComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
 
     expect(compiled.querySelector('.hero__ctas')).toBeNull();
+  });
+
+  it('should highlight AI Agents in the headline', () => {
+    const fixture = TestBed.createComponent(HeroSectionComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.textContent).toContain('animations with AI Agents');
+    expect(compiled.querySelector('.hero__pointer-highlight')?.textContent).toContain(
+      'AI Agents',
+    );
   });
 
   it('should pass the exact install command string to CopyInstallCommandComponent', () => {
@@ -65,22 +75,13 @@ describe('HeroSectionComponent', () => {
     expect(image?.alt).toContain('Motionly editing workflow');
   });
 
-  it('should still render the featured Product Hunt badge and install command', () => {
+  it('should render the install command without duplicating the Product Hunt badge', () => {
     const fixture = TestBed.createComponent(HeroSectionComponent);
     fixture.detectChanges();
 
-    // Product Hunt badge present (exactly one) and configured as the featured hero badge.
     const compiled = fixture.nativeElement as HTMLElement;
-    const badgeEls = compiled.querySelectorAll('app-product-hunt-badge');
-    expect(badgeEls.length).withContext('exactly one Product Hunt badge in the hero').toBe(1);
+    expect(compiled.querySelector('app-product-hunt-badge')).toBeNull();
 
-    const badgeDebugEl = fixture.debugElement.query(
-      (el) => el.componentInstance instanceof ProductHuntBadgeComponent,
-    );
-    const badgeInstance = badgeDebugEl.componentInstance as ProductHuntBadgeComponent;
-    expect(badgeInstance.size).toBe('featured');
-
-    // Install command component still present with the exact unchanged command.
     const copyInstallDebugEl = fixture.debugElement.query(
       (el) => el.componentInstance instanceof CopyInstallCommandComponent,
     );

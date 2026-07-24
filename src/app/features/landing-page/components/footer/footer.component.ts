@@ -1,5 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import {
+  LucideBookOpen,
+  LucideGitBranch,
+  LucideInfo,
+  LucideMail,
+  LucidePackage,
+  LucideRocket,
+} from '@lucide/angular';
 import { EXTERNAL_LINKS, RESOURCE_LINKS } from '../../../../shared/constants/external-links';
 import { ResourceLink } from '../../../../shared/models/landing.models';
 import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reveal.directive';
@@ -7,7 +15,16 @@ import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reve
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [RouterLink, ScrollRevealDirective],
+  imports: [
+    RouterLink,
+    ScrollRevealDirective,
+    LucideBookOpen,
+    LucideGitBranch,
+    LucideInfo,
+    LucideMail,
+    LucidePackage,
+    LucideRocket,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css',

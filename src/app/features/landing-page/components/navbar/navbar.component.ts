@@ -10,12 +10,14 @@ import {
   LucideDownload,
   LucideHome,
   LucideInfo,
+  LucideMenu,
   LucidePackage,
   LucidePlay,
-  LucideRocket,
   LucideTerminal,
+  LucideX,
 } from '@lucide/angular';
 import { GithubStarBadgeComponent } from '../../../../shared/components/github-star-badge/github-star-badge.component';
+import { ProductHuntBadgeComponent } from '../../../../shared/components/product-hunt-badge/product-hunt-badge.component';
 import { EXTERNAL_LINKS } from '../../../../shared/constants/external-links';
 
 @Component({
@@ -25,14 +27,16 @@ import { EXTERNAL_LINKS } from '../../../../shared/constants/external-links';
   imports: [
     RouterLink,
     GithubStarBadgeComponent,
+    ProductHuntBadgeComponent,
     LucideBookOpen,
     LucideDownload,
     LucideHome,
     LucideInfo,
+    LucideMenu,
     LucidePackage,
     LucidePlay,
-    LucideRocket,
     LucideTerminal,
+    LucideX,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
@@ -43,6 +47,15 @@ export class NavbarComponent {
 
   /** Whether the page has been scrolled past the "condense" threshold. Drives the scrolled background/border. */
   protected readonly scrolled = signal(false);
+  protected readonly menuOpen = signal(false);
+
+  protected closeMenu(): void {
+    this.menuOpen.set(false);
+  }
+
+  protected toggleMenu(): void {
+    this.menuOpen.update((open) => !open);
+  }
 
   constructor() {
     // SSR-safe: afterNextRender runs only in the browser, after the first render — never on the server.

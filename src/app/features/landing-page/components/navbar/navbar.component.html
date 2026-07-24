@@ -4,47 +4,62 @@
     <span class="navbar__brand-name">Motionly</span>
   </a>
 
-  <div class="navbar__links">
-    <a class="navbar__link" href="#top">
+  <div class="navbar__links" [class.navbar__links--open]="menuOpen()" id="site-navigation">
+    <a class="navbar__link" href="#top" (click)="closeMenu()">
       <svg lucideHome aria-hidden="true"></svg>
       Home
     </a>
-    <a class="navbar__link" routerLink="/about">
+    <a class="navbar__link" routerLink="/about" (click)="closeMenu()">
       <svg lucideInfo aria-hidden="true"></svg>
       About
     </a>
-    <a class="navbar__link" routerLink="/getting-started">
+    <a class="navbar__link" routerLink="/getting-started" (click)="closeMenu()">
       <svg lucideTerminal aria-hidden="true"></svg>
       Get Started
     </a>
-    <a class="navbar__link" [href]="links.docs" target="_blank" rel="noopener noreferrer">
+    <a class="navbar__link" [href]="links.docs" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">
       <svg lucideBookOpen aria-hidden="true"></svg>
       Documentation
     </a>
     <details class="navbar__menu">
       <summary class="navbar__action-link">More</summary>
       <div class="navbar__menu-panel">
-        <a [href]="links.productHunt" target="_blank" rel="noopener noreferrer">
-          <svg lucideRocket aria-hidden="true"></svg>
-          Product Hunt
-        </a>
-        <a [href]="links.editor" target="_blank" rel="noopener noreferrer">
+        <a [href]="links.editor" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">
           <svg lucidePlay aria-hidden="true"></svg>
           Demo
         </a>
-        <a [href]="links.npm" target="_blank" rel="noopener noreferrer">
+        <a [href]="links.npm" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">
           <svg lucidePackage aria-hidden="true"></svg>
           npm package
         </a>
-        <a routerLink="/getting-started">
+        <a routerLink="/getting-started" (click)="closeMenu()">
           <svg lucideDownload aria-hidden="true"></svg>
           Install
         </a>
       </div>
     </details>
+    <div class="navbar__mobile-badges">
+      <app-product-hunt-badge size="compact" />
+      <app-github-star-badge size="compact" />
+    </div>
   </div>
 
   <div class="navbar__actions">
+    <app-product-hunt-badge size="compact" />
     <app-github-star-badge size="compact" />
+    <button
+      class="navbar__toggle"
+      type="button"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="site-navigation"
+      aria-label="Toggle navigation"
+      (click)="toggleMenu()"
+    >
+      @if (menuOpen()) {
+        <svg lucideX aria-hidden="true"></svg>
+      } @else {
+        <svg lucideMenu aria-hidden="true"></svg>
+      }
+    </button>
   </div>
 </nav>

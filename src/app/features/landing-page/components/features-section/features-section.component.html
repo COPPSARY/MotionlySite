@@ -58,37 +58,47 @@
             <div class="feature-card__visual" aria-hidden="true">
               @switch (feature.icon) {
                 @case ('mouse-pointer') {
-                  <svg viewBox="0 0 320 180">
-                    <rect x="34" y="46" width="184" height="42" rx="14" />
-                    <rect x="74" y="104" width="168" height="30" rx="11" />
-                    <path d="M214 62h34M214 76h54" />
-                    <path d="M246 94l38 54 6-30 28-12z" />
+                  <svg class="feature-card__scene feature-card__scene--draft" viewBox="0 0 320 180">
+                    <rect class="scene__panel" x="32" y="38" width="186" height="50" rx="14" />
+                    <rect class="scene__panel scene__panel--second" x="68" y="104" width="166" height="34" rx="12" />
+                    <path class="scene__line scene__line--one" d="M56 63h92" />
+                    <path class="scene__line scene__line--two" d="M94 121h78" />
+                    <path class="scene__cursor" d="M235 82l48 68 8-36 31-14z" />
+                    <circle class="scene__pulse" cx="235" cy="82" r="10" />
                   </svg>
                 }
                 @case ('code') {
-                  <svg viewBox="0 0 320 180">
-                    <rect x="56" y="42" width="208" height="96" rx="16" />
-                    <path d="M102 76 78 92l24 16" />
-                    <path d="m218 76 24 16-24 16" />
-                    <path d="m178 70-32 48" />
-                    <path d="M90 150h140" />
+                  <svg class="feature-card__scene feature-card__scene--code" viewBox="0 0 320 180">
+                    <rect class="scene__panel" x="52" y="38" width="216" height="108" rx="16" />
+                    <path class="scene__line scene__line--one" d="M88 72h72" />
+                    <path class="scene__line scene__line--two" d="M88 98h104" />
+                    <path class="scene__line scene__line--three" d="M88 124h58" />
+                    <path class="scene__bracket scene__bracket--left" d="M210 74 188 92l22 18" />
+                    <path class="scene__bracket scene__bracket--right" d="m238 74 22 18-22 18" />
+                    <path class="scene__scan" d="M70 56h180" />
                   </svg>
                 }
                 @case ('timeline') {
-                  <svg viewBox="0 0 320 180">
-                    <rect x="50" y="50" width="220" height="82" rx="18" />
-                    <path d="M84 80h42M84 104h82M184 80h52" />
-                    <path d="M72 150h176" />
-                    <path d="M102 150v-22M154 150v-36M206 150v-26" />
+                  <svg class="feature-card__scene feature-card__scene--timeline" viewBox="0 0 320 180">
+                    <rect class="scene__panel" x="44" y="44" width="232" height="88" rx="18" />
+                    <path class="scene__clip scene__clip--one" d="M76 78h58" />
+                    <path class="scene__clip scene__clip--two" d="M152 78h88" />
+                    <path class="scene__clip scene__clip--three" d="M88 106h126" />
+                    <path class="scene__track" d="M66 152h188" />
+                    <path class="scene__marker scene__marker--one" d="M104 152v-22" />
+                    <path class="scene__marker scene__marker--two" d="M162 152v-42" />
+                    <path class="scene__marker scene__marker--three" d="M218 152v-28" />
                   </svg>
                 }
                 @default {
-                  <svg viewBox="0 0 320 180">
-                    <rect x="58" y="46" width="204" height="82" rx="18" />
-                    <path d="M160 34v72" />
-                    <path d="m132 78 28 28 28-28" />
-                    <path d="M102 150h116" />
-                    <path d="M236 70h18M236 88h28" />
+                  <svg class="feature-card__scene feature-card__scene--export" viewBox="0 0 320 180">
+                    <rect class="scene__panel" x="58" y="44" width="204" height="86" rx="18" />
+                    <path class="scene__arrow" d="M160 32v74" />
+                    <path class="scene__arrow-head" d="m132 78 28 28 28-28" />
+                    <path class="scene__bar" d="M102 150h116" />
+                    <path class="scene__spark scene__spark--one" d="M236 68h20" />
+                    <path class="scene__spark scene__spark--two" d="M236 90h34" />
+                    <circle class="scene__dot" cx="220" cy="54" r="5" />
                   </svg>
                 }
               }

@@ -19,6 +19,26 @@
         </blockquote>
       </div>
     </section>
+    <section class="team-love" aria-labelledby="team-love-title">
+      <h2 id="team-love-title">Built with love by COPPSARY</h2>
+      <div class="team-love__avatars" aria-label="COPPSARY members">
+        @for (member of members; track member.github) {
+          <a
+            class="team-love__member"
+            [href]="member.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="member.name + ' on GitHub'"
+          >
+            <span class="team-love__tooltip" aria-hidden="true">
+              <strong>{{ member.name }}</strong>
+              <span>{{ member.github }}</span>
+            </span>
+            <img [src]="member.avatar" [alt]="member.name" width="56" height="56" loading="lazy" />
+          </a>
+        }
+      </div>
+    </section>
     <section id="resources">
       <app-resources-section />
     </section>

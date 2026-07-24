@@ -1,28 +1,22 @@
 <section class="showcase">
   <div class="showcase__content" [appScrollReveal]="0">
-    <div class="showcase__copy">
+    <div class="showcase__copy motionly-noise-bg">
       <p class="showcase__eyebrow">Built for agentic AI</p>
       <h2 class="showcase__heading">Use the agent you already work with.</h2>
       <p class="showcase__subheading">
-        Install a Motionly skill, generate an editable draft, then refine it on
-        the canvas without losing the source file.
+        Install the Motionly skill for Codex
+        <img class="showcase__inline-logo" src="assets/codex-color.svg" alt="" loading="lazy" />,
+        Claude Code
+        <img class="showcase__inline-logo" src="assets/claude-code-color.svg" alt="" loading="lazy" />,
+        Antigravity
+        <img class="showcase__inline-logo" src="assets/antigravity-color.svg" alt="" loading="lazy" />,
+        and more. Generate an editable draft, then refine it on the canvas without losing the source file.
+        <a class="showcase__docs-link" [href]="skillDocsUrl" target="_blank" rel="noopener noreferrer">
+          <svg lucideBookOpen aria-hidden="true"></svg>
+          documentation
+        </a>
+        to add skills to your providers.
       </p>
-    </div>
-
-    <div class="showcase__rail">
-      <div class="showcase__agents" aria-label="AI coding agents">
-        @for (agent of agents; track agent.name) {
-          <span class="showcase__agent">
-            <img [src]="agent.src" [alt]="agent.name + ' logo'" loading="lazy" />
-            {{ agent.name }}
-          </span>
-        }
-        <span class="showcase__agent showcase__agent--more">More providers</span>
-      </div>
-      <a class="showcase__skill-link" [href]="skillDocsUrl" target="_blank" rel="noopener noreferrer">
-        <span>Need setup details?</span>
-        <strong>Read the skill install docs</strong>
-      </a>
     </div>
   </div>
 </section>

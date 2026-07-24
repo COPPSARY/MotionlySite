@@ -6,6 +6,7 @@
 
 .about__hero,
 .about__grid,
+.about__team,
 .about__links {
   width: min(100%, 70rem);
   margin: 0 auto;
@@ -104,6 +105,99 @@
   line-height: 1.65;
 }
 
+.about__team {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.about__team h2 {
+  margin: 0;
+  color: var(--motionly-text-primary);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+.about__team-avatars {
+  display: flex;
+  justify-content: center;
+  padding-top: 1.6rem;
+}
+
+.about__team-member {
+  position: relative;
+  display: inline-flex;
+  margin-right: -0.75rem;
+  color: var(--motionly-text-primary);
+  text-decoration: none;
+  transition: transform 0.18s ease, z-index 0.18s ease;
+}
+
+.about__team-member:last-child {
+  margin-right: 0;
+}
+
+.about__team-member:hover,
+.about__team-member:focus-visible {
+  z-index: 5;
+  transform: translateY(-0.18rem) scale(1.04);
+  outline: none;
+}
+
+.about__team-member img {
+  display: block;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--motionly-shell);
+  object-fit: cover;
+}
+
+.about__team-tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.75rem);
+  left: 50%;
+  display: grid;
+  min-width: max-content;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--motionly-border);
+  border-radius: var(--motionly-radius-sm);
+  background: rgba(8, 9, 11, 0.92);
+  box-shadow: var(--motionly-shell-shadow);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(0.4rem) scale(0.94);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.about__team-tooltip::after {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 0.55rem;
+  height: 0.55rem;
+  background: rgba(8, 9, 11, 0.92);
+  border-right: 1px solid var(--motionly-border);
+  border-bottom: 1px solid var(--motionly-border);
+  content: '';
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.about__team-tooltip strong {
+  font-size: 0.9rem;
+}
+
+.about__team-tooltip span {
+  color: var(--motionly-text-secondary);
+  font-size: 0.75rem;
+}
+
+.about__team-member:hover .about__team-tooltip,
+.about__team-member:focus-visible .about__team-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
 .about__links {
   display: flex;
   flex-wrap: wrap;
@@ -134,5 +228,10 @@
 
   .about__hero {
     grid-template-columns: 1fr;
+  }
+
+  .about__team-member img {
+    width: 3rem;
+    height: 3rem;
   }
 }

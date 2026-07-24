@@ -46,6 +46,103 @@
   text-shadow: none;
 }
 
+.team-love {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  width: min(74rem, calc(100% - 3rem));
+  margin: -3rem auto 4rem;
+  text-align: center;
+}
+
+.team-love h2 {
+  margin: 0;
+  color: var(--motionly-text-primary);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  letter-spacing: 0;
+}
+
+.team-love__avatars {
+  display: flex;
+  justify-content: center;
+  padding-top: 1.6rem;
+}
+
+.team-love__member {
+  position: relative;
+  display: inline-flex;
+  margin-right: -0.75rem;
+  color: var(--motionly-text-primary);
+  text-decoration: none;
+  transition: transform 0.18s ease, z-index 0.18s ease;
+}
+
+.team-love__member:last-child {
+  margin-right: 0;
+}
+
+.team-love__member:hover,
+.team-love__member:focus-visible {
+  z-index: 5;
+  transform: translateY(-0.18rem) scale(1.04);
+  outline: none;
+}
+
+.team-love__member img {
+  display: block;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--motionly-shell);
+  object-fit: cover;
+}
+
+.team-love__tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.75rem);
+  left: 50%;
+  display: grid;
+  min-width: max-content;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--motionly-border);
+  border-radius: var(--motionly-radius-sm);
+  background: rgba(8, 9, 11, 0.92);
+  box-shadow: var(--motionly-shell-shadow);
+  color: var(--motionly-text-primary);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(0.4rem) scale(0.94);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.team-love__tooltip::after {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 0.55rem;
+  height: 0.55rem;
+  background: rgba(8, 9, 11, 0.92);
+  border-right: 1px solid var(--motionly-border);
+  border-bottom: 1px solid var(--motionly-border);
+  content: '';
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.team-love__tooltip strong {
+  font-size: 0.9rem;
+}
+
+.team-love__tooltip span {
+  color: var(--motionly-text-secondary);
+  font-size: 0.75rem;
+}
+
+.team-love__member:hover .team-love__tooltip,
+.team-love__member:focus-visible .team-love__tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
 @media (max-width: 640px) {
   .founder-note {
     padding: 0 1rem 3rem;
@@ -57,5 +154,15 @@
 
   .founder-note p {
     font-size: 1.1rem;
+  }
+
+  .team-love {
+    width: min(100% - 2rem, 74rem);
+    margin: -1.5rem auto 3rem;
+  }
+
+  .team-love__member img {
+    width: 3rem;
+    height: 3rem;
   }
 }
