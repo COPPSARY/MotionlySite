@@ -41,7 +41,7 @@ export class GettingStartedPageComponent {
     const pageTitle = 'Install Motionly - Getting Started';
     const description =
       'Install Motionly, run the local AI motion graphics editor, organize assets, and export editable .motion animation projects to MP4.';
-    const url = 'https://motionly.site/getting-started';
+    const url = 'https://www.motionly.site/getting-started';
 
     title.setTitle(pageTitle);
     meta.updateTag({
