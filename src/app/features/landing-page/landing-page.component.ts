@@ -44,7 +44,7 @@ export class LandingPageComponent {
     const pageTitle = 'Motionly - AI-native motion graphics editor';
     const description =
       'Motionly is an open source AI-native motion graphics editor for visual animation editing, code animation workflows, SVG animation, local MP4 export, and readable .motion files.';
-    const url = 'https://motionly.site/';
+    const url = 'https://www.motionly.site/';
 
     title.setTitle(pageTitle);
     meta.updateTag({

@@ -35,7 +35,7 @@ export class AboutPageComponent {
     const pageTitle = 'About Motionly - AI motion graphics editor';
     const description =
       'Learn about Motionly, an AI-native motion graphics editor by COPPSARY for editable animation projects, prompt to MP4 workflows, visual editing, and readable .motion source files.';
-    const url = 'https://motionly.site/about';
+    const url = 'https://www.motionly.site/about';
 
     title.setTitle(pageTitle);
     meta.updateTag({
