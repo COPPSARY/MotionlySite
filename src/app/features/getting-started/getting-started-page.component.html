@@ -6,7 +6,9 @@
     </a>
     <div class="guide__nav-links">
       <a href="#install">Install</a>
+      <a href="#workflow">Workflow</a>
       <a href="#assets">Assets</a>
+      <a href="#faq">FAQ</a>
       <a [href]="docsUrl" target="_blank" rel="noopener noreferrer">Docs</a>
     </div>
     <app-product-hunt-badge size="compact" />
@@ -17,8 +19,15 @@
       <p class="guide__eyebrow">Motionly install</p>
       <h1>Install Motionly locally.</h1>
       <p>
-        Create a local project, run the editor, and keep your images, video,
-        SVGs, GIFs, and audio inside the project <code>assets/</code> folder.
+        Motionly is an open source AI motion graphics editor that runs on your
+        own machine. One command scaffolds a project, opens the local editor,
+        and gives you an editable <code>.motion</code> file you can animate
+        visually, hand to an AI agent, and export to MP4.
+      </p>
+      <p>
+        Keep your images, video, SVGs, GIFs, and audio inside the project
+        <code>assets/</code> folder so every animation stays portable and
+        version-controlled alongside your code.
       </p>
       <div class="guide__actions">
         <a class="btn btn--primary" href="#install">
@@ -42,6 +51,30 @@
     ></video>
   </header>
 
+  <section class="guide__intro" aria-label="Before you install">
+    <div>
+      <h2>Requirements</h2>
+      <ul>
+        <li><strong>Node.js 20.19.0 or newer</strong> and npm for the CLI and local editor.</li>
+        <li><strong>FFmpeg on your PATH</strong> to render the timeline to MP4.</li>
+        <li>Any modern browser — the editor runs at <code>localhost</code>.</li>
+      </ul>
+      <p>
+        No account, API key, or cloud upload is needed to install and edit. You
+        can create projects, animate, and preview fully offline.
+      </p>
+    </div>
+    <div>
+      <h2>What you get</h2>
+      <ul>
+        <li>A readable <code>project.motion</code> file describing scenes, layers, keyframes, and easing.</li>
+        <li>A visual canvas and timeline for adjusting position, timing, and motion by hand.</li>
+        <li>An <code>assets/</code> folder for local media instead of remote URLs.</li>
+        <li>Local MP4 export, so finished animations never leave your machine.</li>
+      </ul>
+    </div>
+  </section>
+
   <section id="install" class="guide__section" aria-labelledby="install-title">
     <div class="guide__section-heading">
       <svg lucideTerminal aria-hidden="true"></svg>
@@ -51,15 +84,66 @@
       </div>
     </div>
     <app-copy-install-command [command]="installCommand" />
+    <p>
+      This scaffolds a new folder called <code>my-video</code> containing a
+      starter <code>project.motion</code> file and an empty <code>assets/</code>
+      directory, then installs nothing globally — <code>npx</code> always pulls
+      the current published version of the package.
+    </p>
     <div class="guide__code-grid">
       <div>
         <h3>Return to a project</h3>
         <app-copy-install-command [command]="devCommand" />
+        <p>Reopens an existing project in the local editor with live preview.</p>
       </div>
       <div>
         <h3>Open the editor only</h3>
         <app-copy-install-command [command]="editorCommand" />
+        <p>Launches the editor without scaffolding, useful for quick experiments.</p>
       </div>
+    </div>
+  </section>
+
+  <section id="workflow" class="guide__section" aria-labelledby="workflow-title">
+    <div class="guide__section-heading">
+      <svg lucidePlay aria-hidden="true"></svg>
+      <div>
+        <h2 id="workflow-title">The Motionly workflow</h2>
+        <p>Generate a draft, edit it visually, then export — in four steps.</p>
+      </div>
+    </div>
+    <div class="guide__steps">
+      <article>
+        <h3>1. Describe the animation</h3>
+        <p>
+          Prompt Motionly with the motion you want — a logo reveal, a feature
+          walkthrough, a social clip — and it writes the scenes, layers, and
+          keyframes into your <code>.motion</code> project.
+        </p>
+      </article>
+      <article>
+        <h3>2. Edit on the canvas</h3>
+        <p>
+          Move layers, retime keyframes, and change easing directly in the
+          editor. Nothing is baked into an opaque render, so every property
+          stays adjustable.
+        </p>
+      </article>
+      <article>
+        <h3>3. Iterate with an AI agent</h3>
+        <p>
+          Because the project is readable text, agents like Claude Code, Codex,
+          or Antigravity can change one keyframe without rewriting the whole
+          animation.
+        </p>
+      </article>
+      <article>
+        <h3>4. Export to MP4</h3>
+        <p>
+          Render the timeline locally with FFmpeg and drop the result into a
+          launch page, a demo, or a social post.
+        </p>
+      </article>
     </div>
   </section>
 
@@ -82,7 +166,28 @@
         <li>Place images, videos, SVGs, GIFs, Lottie files, and audio in <code>assets/</code>.</li>
         <li>Use clear filenames and keep original aspect ratios.</li>
         <li>Save visual edits back to <code>project.motion</code> for version control.</li>
+        <li>Commit both the project file and the assets folder so teammates and agents get identical results.</li>
       </ul>
+    </div>
+  </section>
+
+  <section id="faq" class="guide__section" aria-labelledby="faq-title">
+    <div class="guide__section-heading">
+      <svg lucideBookOpen aria-hidden="true"></svg>
+      <div>
+        <h2 id="faq-title">Install FAQ</h2>
+        <p>Common questions about setting up and running Motionly.</p>
+      </div>
+    </div>
+    <div class="guide__faq">
+      @for (faq of faqs; track faq.question) {
+        <details>
+          <summary>
+            <h3>{{ faq.question }}</h3>
+          </summary>
+          <p>{{ faq.answer }}</p>
+        </details>
+      }
     </div>
   </section>
 
