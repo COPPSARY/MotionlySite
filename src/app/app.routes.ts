@@ -7,17 +7,17 @@ export const routes: Routes = [
   {
     path: '',
     component: LandingPageComponent,
-    title: 'Motionly - AI-native motion graphics editor',
+    title: 'Motionly - AI Motion Graphics Editor, Open Source',
   },
   {
     path: 'getting-started',
     component: GettingStartedPageComponent,
-    title: 'Get Started with Motionly',
+    title: 'Install Motionly - AI Motion Graphics Editor Setup',
   },
   {
     path: 'about',
     component: AboutPageComponent,
-    title: 'About Motionly',
+    title: 'About Motionly - Open Source AI Animation Tool',
   },
   { path: '**', redirectTo: '' },
 ];

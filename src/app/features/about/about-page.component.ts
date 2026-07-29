@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NavbarComponent } from '../landing-page/components/navbar/navbar.component';
 import { FooterComponent } from '../landing-page/components/footer/footer.component';
 import { EXTERNAL_LINKS } from '../../shared/constants/external-links';
+import { SeoService } from '../../shared/services/seo.service';
 
 const COPPSARY_MEMBERS = [
   { name: 'Reaksa', github: 'PromSereyreaksa' },
@@ -31,21 +31,27 @@ export class AboutPageComponent {
     avatar: `https://github.com/${member.github}.png`,
   }));
 
-  constructor(title: Title, meta: Meta) {
-    const pageTitle = 'About Motionly - AI motion graphics editor';
-    const description =
-      'Learn about Motionly, an AI-native motion graphics editor by COPPSARY for editable animation projects, prompt to MP4 workflows, visual editing, and readable .motion source files.';
-    const url = 'https://www.motionly.site/about';
-
-    title.setTitle(pageTitle);
-    meta.updateTag({
-      name: 'description',
-      content: description,
+  constructor() {
+    inject(SeoService).apply({
+      title: 'About Motionly - Open Source AI Animation Tool',
+      description:
+        'Motionly is an open source AI motion graphics editor by COPPSARY. See how AI animation drafts stay editable in .motion files and export to MP4.',
+      path: '/about',
+      keywords:
+        'about Motionly, COPPSARY, open source AI animation tool, editable AI motion graphics, .motion file format, AI video editor',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'AboutPage',
+        name: 'About Motionly',
+        url: 'https://www.motionly.site/about',
+        description:
+          'Motionly is an open source AI motion graphics editor built by COPPSARY for editable animation projects and local MP4 export.',
+        publisher: {
+          '@type': 'Organization',
+          name: 'COPPSARY',
+          url: 'https://github.com/COPPSARY',
+        },
+      },
     });
-    meta.updateTag({ property: 'og:title', content: pageTitle });
-    meta.updateTag({ property: 'og:description', content: description });
-    meta.updateTag({ property: 'og:url', content: url });
-    meta.updateTag({ name: 'twitter:title', content: pageTitle });
-    meta.updateTag({ name: 'twitter:description', content: description });
   }
 }

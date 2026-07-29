@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { EXTERNAL_LINKS } from '../../shared/constants/external-links';
+import { SeoService } from '../../shared/services/seo.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeroSectionComponent } from './components/hero-section/hero-section.component';
 import { FeaturesSectionComponent } from './components/features-section/features-section.component';
@@ -40,21 +40,31 @@ export class LandingPageComponent {
     avatar: `https://github.com/${member.github}.png`,
   }));
 
-  constructor(title: Title, meta: Meta) {
-    const pageTitle = 'Motionly - AI-native motion graphics editor';
-    const description =
-      'Motionly is an open source AI-native motion graphics editor for visual animation editing, code animation workflows, SVG animation, local MP4 export, and readable .motion files.';
-    const url = 'https://www.motionly.site/';
-
-    title.setTitle(pageTitle);
-    meta.updateTag({
-      name: 'description',
-      content: description,
+  constructor() {
+    inject(SeoService).apply({
+      title: 'Motionly - AI Motion Graphics Editor, Open Source',
+      description:
+        'Open source AI motion graphics editor. Turn prompts into editable animations, refine them visually on a timeline, and export MP4 locally.',
+      path: '/',
+      keywords:
+        'AI motion graphics editor, AI animation generator, text to animation, prompt to video, open source motion graphics software, SVG animation tool, MP4 export, motion graphics for developers, .motion file',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name: 'Motionly',
+        applicationCategory: 'MultimediaApplication',
+        operatingSystem: 'macOS, Windows, Linux',
+        url: 'https://www.motionly.site/',
+        image: 'https://www.motionly.site/social-preview.png',
+        description:
+          'Motionly is an open source AI motion graphics editor for editable animation projects, visual timeline editing, readable .motion files, and local MP4 export.',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        creator: {
+          '@type': 'Organization',
+          name: 'COPPSARY',
+          url: 'https://github.com/COPPSARY',
+        },
+      },
     });
-    meta.updateTag({ property: 'og:title', content: pageTitle });
-    meta.updateTag({ property: 'og:description', content: description });
-    meta.updateTag({ property: 'og:url', content: url });
-    meta.updateTag({ name: 'twitter:title', content: pageTitle });
-    meta.updateTag({ name: 'twitter:description', content: description });
   }
 }
