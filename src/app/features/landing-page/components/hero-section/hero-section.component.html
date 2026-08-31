@@ -1,34 +1,68 @@
 <section class="hero">
+  <div class="hero__background" aria-hidden="true">
+    <div class="hero__background-glow hero__background-glow--blue"></div>
+    <div class="hero__background-glow hero__background-glow--pink"></div>
+    <div class="hero__background-glow hero__background-glow--green"></div>
+    <div class="hero__background-grid"></div>
+    <div class="hero__background-beam hero__background-beam--one"></div>
+    <div class="hero__background-beam hero__background-beam--two"></div>
+    <span class="hero__background-particle hero__background-particle--one"></span>
+    <span class="hero__background-particle hero__background-particle--two"></span>
+    <span class="hero__background-particle hero__background-particle--three"></span>
+  </div>
   <div class="hero__content" [appScrollReveal]="0">
-    <div class="hero__headline-wrap">
-      <h1 class="hero__headline">
-        <span>Create editable</span>
-        <span>
-          animations with
-          <span class="hero__pointer-highlight">
-            AI Agents
-            <svg class="hero__pointer" viewBox="0 0 16 16" aria-hidden="true">
-              <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z" />
-            </svg>
-          </span>
-        </span>
-      </h1>
-    </div>
+    <h1 class="hero__headline">Showcase your product <span>professionally.</span></h1>
     <p class="hero__subheadline">
-      Motionly is an AI-native motion graphics editor that generates fully
-      customizable animation projects.
+      Paste your website or tell us about your brand and product. Describe how
+      you want the video to feel, and get a polished launch video in minutes.
     </p>
 
-    <app-copy-install-command [command]="installCommand" />
+    <form class="hero__composer" (ngSubmit)="submitPrompt()">
+      <label class="sr-only" for="motion-prompt">Describe your motion graphic</label>
+      <textarea
+        id="motion-prompt"
+        name="prompt"
+        [(ngModel)]="prompt"
+        rows="2"
+        [placeholder]="typedPrompt() || 'Describe your motion graphic...'"
+      ></textarea>
+      <div class="hero__composer-actions">
+        <div class="hero__asset-picker">
+          <button class="hero__round-button" type="button" aria-label="Add an asset" [attr.aria-expanded]="assetMenuOpen" (click)="toggleAssetMenu()"><svg lucidePlus aria-hidden="true"></svg></button>
+          @if (assetMenuOpen) {
+            <div class="hero__asset-menu">
+              <button type="button" (click)="chooseAsset('image')">Upload image</button>
+              <button type="button" (click)="chooseAsset('video')">Upload video</button>
+            </div>
+          }
+        </div>
+        @if (selectedAsset) { <span class="hero__asset-name" title="Attached asset">{{ selectedAsset }}</span> }
+        <button class="hero__enhance-button" type="button" aria-label="Enhance prompt" title="Enhance prompt" (click)="enhancePrompt()"><svg lucideSparkles aria-hidden="true"></svg></button>
+        <button class="hero__submit" type="submit" aria-label="Start creating"><svg lucideArrowUp aria-hidden="true"></svg></button>
+      </div>
+    </form>
+    <p class="hero__fine-print">Start from a prompt. Refine the timeline. Export the finished frame or video.</p>
   </div>
 
-  <div class="hero__preview" [appScrollReveal]="120">
-    <img
-      class="hero__preview-image"
-      src="project-showcase.gif"
-      width="960"
-      height="540"
-      alt="Motionly editing workflow preview"
-    />
+  <div class="hero__kinetic" aria-hidden="true" [appScrollReveal]="120">
+    <svg viewBox="0 0 800 150" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="motion-line-blue" x1="0" x2="1">
+          <stop offset="0" stop-color="#8ab4ff" stop-opacity="0" />
+          <stop offset="0.5" stop-color="#8ab4ff" />
+          <stop offset="1" stop-color="#7cf7c5" stop-opacity="0" />
+        </linearGradient>
+        <linearGradient id="motion-line-pink" x1="0" x2="1">
+          <stop offset="0" stop-color="#ff86d9" stop-opacity="0" />
+          <stop offset="0.5" stop-color="#ff86d9" />
+          <stop offset="1" stop-color="#8ab4ff" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <path class="hero__kinetic-line hero__kinetic-line--one" d="M400 75 C350 25 300 15 250 45 C205 72 180 125 125 125 C80 125 45 105 30 75 C45 45 80 25 125 25 C180 25 205 78 250 105 C300 135 350 125 400 75 C450 25 500 15 550 45 C595 72 620 125 675 125 C720 125 755 105 770 75 C755 45 720 25 675 25 C620 25 595 78 550 105 C500 135 450 125 400 75" />
+      <path class="hero__kinetic-line hero__kinetic-line--two" d="M400 75 C350 25 300 15 250 45 C205 72 180 125 125 125 C80 125 45 105 30 75 C45 45 80 25 125 25 C180 25 205 78 250 105 C300 135 350 125 400 75 C450 25 500 15 550 45 C595 72 620 125 675 125 C720 125 755 105 770 75 C755 45 720 25 675 25 C620 25 595 78 550 105 C500 135 450 125 400 75" />
+      <path class="hero__kinetic-line hero__kinetic-line--three" d="M400 75 C350 25 300 15 250 45 C205 72 180 125 125 125 C80 125 45 105 30 75 C45 45 80 25 125 25 C180 25 205 78 250 105 C300 135 350 125 400 75 C450 25 500 15 550 45 C595 72 620 125 675 125 C720 125 755 105 770 75 C755 45 720 25 675 25 C620 25 595 78 550 105 C500 135 450 125 400 75" />
+      <circle class="hero__kinetic-orb hero__kinetic-orb--one" cx="190" cy="75" r="4" />
+      <circle class="hero__kinetic-orb hero__kinetic-orb--two" cx="610" cy="75" r="3" />
+    </svg>
   </div>
 </section>

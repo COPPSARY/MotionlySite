@@ -1,8 +1,8 @@
 # Motionly
 
-**AI-native motion graphics for creators and builders.**
+**Web-native motion graphics for creators and builders.**
 
-Motionly turns plain-language prompts into polished motion graphics. Describe the animation you want, refine the scene with AI-assisted edits, and export production-ready visuals without manually building every keyframe from scratch.
+Motionly combines authored HTML/CSS compositions with GSAP timelines and a visual editor. Build polished motion graphics, refine the scene in the browser, and render production-ready visuals locally.
 
 <p>
   <a href="https://www.producthunt.com/products/motionly">
@@ -14,17 +14,17 @@ Motionly turns plain-language prompts into polished motion graphics. Describe th
 
 ## What Is Motionly?
 
-Motionly is a motion graphics editor built around intent instead of timelines. You write what you want to happen, and Motionly helps create, adjust, and export the animation.
+Motionly is a code-first motion graphics editor built around familiar web technologies. You author the visual source in HTML/CSS, choreograph it with GSAP, and refine the result visually.
 
 It is useful for product demos, launch videos, social content, explainers, UI motion, creator clips, and fast visual experiments where you want clean motion without spending hours on manual animation work.
 
 ## Highlights
 
-- **Prompt to animation**: generate motion graphics from natural language.
-- **AI-assisted editing**: refine timing, easing, layout, and scene behavior through prompts.
-- **Smart starting points**: begin from AI-curated motion ideas instead of a blank canvas.
-- **Production-ready exports**: render animations for use across platforms.
-- **Fast iteration**: move from idea to preview quickly, then keep polishing.
+- **HTML/CSS source**: build semantic scenes and components with normal web code.
+- **GSAP choreography**: control timing, easing, masks, stagger, and camera movement.
+- **Visual refinement**: inspect the mounted DOM and timeline in the editor.
+- **Production-ready rendering**: export frames or render MP4 locally with Chrome and FFmpeg.
+- **Fast iteration**: move from source to preview quickly, then keep polishing.
 
 ## Try It
 
@@ -34,10 +34,13 @@ The fastest way to experience Motionly is through the hosted editor:
 
 ## Install
 
-Create a new Motionly project with the npm package:
+Run the local editor from the repository:
 
 ```bash
-npx @coppsary/motionly init my-video
+git clone https://github.com/COPPSARY/Motionly.git
+cd Motionly
+npm install
+npm run dev
 ```
 
 Package page:

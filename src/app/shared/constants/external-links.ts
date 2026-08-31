@@ -34,11 +34,4 @@ export const RESOURCE_LINKS: readonly ResourceLink[] = [
     url: EXTERNAL_LINKS.productHunt,
     icon: 'rocket',
   },
-  {
-    id: 'npm',
-    title: 'npm package',
-    description: '@coppsary/motionly on the npm registry.',
-    url: EXTERNAL_LINKS.npm,
-    icon: 'package',
-  },
 ];

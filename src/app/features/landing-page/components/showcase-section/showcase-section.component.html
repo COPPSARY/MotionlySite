@@ -1,22 +1,29 @@
 <section class="showcase">
   <div class="showcase__content" [appScrollReveal]="0">
-    <div class="showcase__copy motionly-noise-bg">
-      <p class="showcase__eyebrow">Built for agentic AI</p>
-      <h2 class="showcase__heading">Use the agent you already work with.</h2>
+    <div class="showcase__copy">
+      <h2 class="showcase__heading">Your product, with a pulse.</h2>
       <p class="showcase__subheading">
-        Install the Motionly skill for Codex
-        <img class="showcase__inline-logo" src="assets/codex-color.svg" alt="" loading="lazy" />,
-        Claude Code
-        <img class="showcase__inline-logo" src="assets/claude-code-color.svg" alt="" loading="lazy" />,
-        Antigravity
-        <img class="showcase__inline-logo" src="assets/antigravity-color.svg" alt="" loading="lazy" />,
-        and more. Generate an editable draft, then refine it on the canvas without losing the source file.
+        Motionly turns your product story into polished motion ads with real
+        rhythm, direction, and detail — then lets you refine the result by chat.
         <a class="showcase__docs-link" [href]="skillDocsUrl" target="_blank" rel="noopener noreferrer">
           <svg lucideBookOpen aria-hidden="true"></svg>
           documentation
         </a>
-        to add skills to your providers.
+        for the full authoring workflow.
       </p>
+    </div>
+    <div class="showcase__visual" aria-label="Animated Motionly composition preview">
+      <div class="showcase__window">
+        <div class="showcase__window-bar"><span></span><span></span><span></span><b>motionly / launch-film</b><i>60 FPS</i></div>
+        <div class="showcase__scene">
+          <span class="showcase__scene-orbit showcase__scene-orbit--one"></span>
+          <span class="showcase__scene-orbit showcase__scene-orbit--two"></span>
+          <div class="showcase__scene-card"><small>SCENE 03</small><strong>Make it move.</strong><em>your product story</em></div>
+          <span class="showcase__scene-dot showcase__scene-dot--blue"></span>
+          <span class="showcase__scene-dot showcase__scene-dot--pink"></span>
+        </div>
+        <div class="showcase__timeline"><span></span><span></span><span></span><b></b></div>
+      </div>
     </div>
   </div>
 </section>

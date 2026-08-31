@@ -80,6 +80,28 @@
   background: rgba(255, 255, 255, 0.055);
 }
 
+.navbar__account {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  max-width: 11rem;
+  overflow: hidden;
+  color: var(--motionly-text-secondary);
+  font-size: 0.82rem;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navbar__account-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--motionly-logo-end);
+  box-shadow: 0 0 0.7rem var(--motionly-logo-end);
+}
+
 .navbar__actions {
   display: flex;
   align-items: center;

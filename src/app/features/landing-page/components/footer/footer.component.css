@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   padding: 3rem 1.5rem;
-  border-top: 1px solid var(--motionly-border);
   background: transparent;
 }
 
