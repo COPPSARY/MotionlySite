@@ -11,5 +11,5 @@ import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reve
   styleUrl: './showcase-section.component.css',
 })
 export class ShowcaseSectionComponent {
-  readonly skillDocsUrl = 'https://motionly.mintlify.app/agents/ai-authoring#install-the-skill';
+  readonly skillDocsUrl = 'https://motionly.mintlify.app/';
 }

@@ -1,11 +1,11 @@
 <section class="resources">
   <div class="resources__inner">
     <div class="resources__copy" [appScrollReveal]="0">
-      <p class="resources__eyebrow">Open source and local-first</p>
-      <h2>Use Motionly where your work already lives.</h2>
+      <p class="resources__eyebrow">Built for teams shipping</p>
+      <h2>Everything you need to make motion that moves.</h2>
       <p>
-        Create projects from npm, keep assets beside the source, review changes
-        in Git, and send finished motion graphics to MP4.
+        Turn your product story into polished motion ads, refine every detail by
+        chatting, and ship high-quality video for every channel.
       </p>
     </div>
 
@@ -13,6 +13,18 @@
       @for (resource of resources; track resource.id; let i = $index) {
         <app-external-link-card [resource]="resource" [appScrollReveal]="i * 60" />
       }
+    </div>
+
+    <div class="resources__cta" [appScrollReveal]="140">
+      <div>
+        <span>Free to start. No card required.</span>
+        <strong>Ready to ship your first ad?</strong>
+        <p>Paste your link, watch the ad build, then change anything by typing.</p>
+      </div>
+      <a class="resources__cta-link" [href]="editorUrl" (click)="openEditor($event)">
+        Open Motionly
+        <span aria-hidden="true">↗</span>
+      </a>
     </div>
   </div>
 </section>

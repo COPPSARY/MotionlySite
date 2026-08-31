@@ -1,0 +1,35 @@
+<main class="login-page">
+  <div class="login-page__orb login-page__orb--pink" aria-hidden="true"></div>
+  <div class="login-page__orb login-page__orb--blue" aria-hidden="true"></div>
+  <div class="login-page__orb login-page__orb--green" aria-hidden="true"></div>
+  <a class="login-page__brand" routerLink="/" aria-label="Motionly home">
+    <img src="logo.svg" alt="" width="34" height="34" />
+    <span>Motionly</span>
+  </a>
+  <section class="login-card" aria-labelledby="login-title">
+    <div class="login-card__mark"><img src="logo.svg" alt="" width="54" height="54" /></div>
+    <h1 id="login-title">Log in or sign up.</h1>
+    <p class="login-card__subtitle">Start turning your ideas into polished motion.</p>
+    <button class="login-google" type="button" (click)="loginWithGoogle()">
+      <svg class="login-google__logo" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="#4285F4" d="M21.6 12.23c0-.71-.06-1.4-.18-2.05H12v3.88h5.38a4.6 4.6 0 0 1-1.99 3.02v2.51h3.22c1.89-1.74 2.99-4.3 2.99-7.36Z" />
+        <path fill="#34A853" d="M12 22c2.7 0 4.96-.9 6.61-2.41l-3.22-2.51c-.9.6-2.05.96-3.39.96-2.61 0-4.82-1.76-5.61-4.13H3.06v2.59A9.98 9.98 0 0 0 12 22Z" />
+        <path fill="#FBBC05" d="M6.39 13.91A6 6 0 0 1 6.08 12c0-.66.11-1.3.31-1.91V7.5H3.06A10 10 0 0 0 2 12c0 1.61.39 3.13 1.06 4.5l3.33-2.59Z" />
+        <path fill="#EA4335" d="M12 5.96c1.47 0 2.79.51 3.83 1.51l2.87-2.87C16.96 2.96 14.7 2 12 2a9.98 9.98 0 0 0-8.94 5.5l3.33 2.59C7.18 7.72 9.39 5.96 12 5.96Z" />
+      </svg>
+      Continue with Google
+    </button>
+    <div class="login-divider"><span>or</span></div>
+    <form class="login-form" (ngSubmit)="continueToMotionly()">
+      <label for="login-email">Email</label>
+      <input id="login-email" name="email" type="email" placeholder="Email" autocomplete="email" [(ngModel)]="email" required />
+      <label for="login-password">Password</label>
+      <input id="login-password" name="password" type="password" placeholder="Password" autocomplete="current-password" [(ngModel)]="password" required />
+      @if (error()) { <p class="login-form__error" role="alert">{{ error() }}</p> }
+      <button class="login-card__button" type="submit" [disabled]="loading()">
+        {{ loading() ? 'Signing in…' : 'Sign in' }}
+        <svg lucideArrowRight aria-hidden="true"></svg>
+      </button>
+    </form>
+  </section>
+</main>

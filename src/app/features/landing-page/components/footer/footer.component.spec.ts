@@ -54,7 +54,7 @@ describe('FooterComponent', () => {
 
     expect(logoImg).withContext('footer logo <img> should exist').not.toBeNull();
     expect(logoImg?.getAttribute('src')).toBe('logo.svg');
-    expect(compiled.textContent).toContain('AI-native motion graphics editor.');
+    expect(compiled.textContent).toContain('HTML, CSS, and GSAP motion graphics editor.');
     expect(logoImg?.src.endsWith('logo.svg')).withContext('resolved src should end with logo.svg').toBe(true);
   });
 });

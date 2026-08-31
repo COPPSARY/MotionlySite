@@ -8,18 +8,17 @@ describe('ShowcaseSectionComponent', () => {
     }).compileComponents();
   });
 
-  it('should render inline agent logos and the docs link without extra step cards', () => {
+  it('should render the web authoring message and docs link without extra step cards', () => {
     const fixture = TestBed.createComponent(ShowcaseSectionComponent);
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelectorAll('.showcase__inline-logo').length).toBe(3);
-    expect(compiled.textContent).toContain('and more');
-    expect(compiled.textContent).toContain('Please refer to the');
+    expect(compiled.querySelectorAll('.showcase__inline-logo').length).toBe(0);
+    expect(compiled.textContent).toContain('HTML, CSS, JavaScript, and GSAP');
 
     const skillLink = compiled.querySelector<HTMLAnchorElement>('.showcase__subheading a');
     expect(skillLink?.textContent).toContain('documentation');
-    expect(skillLink?.href).toContain('/agents/ai-authoring#install-the-skill');
+    expect(skillLink?.href).toContain('motionly.mintlify.app');
     expect(compiled.textContent).not.toContain('npx @coppsary/motionly skills add');
     expect(compiled.querySelector('.showcase__step')).toBeNull();
     expect(compiled.querySelector('.showcase__install')).toBeNull();
