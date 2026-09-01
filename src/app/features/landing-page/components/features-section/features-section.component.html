@@ -4,10 +4,9 @@
       <h2>Try Motionly.</h2>
       <div class="features__description">
         <p>
-          Try the editor directly. Click around the canvas, timeline,
-          inspector, and source view.
+          Open the editor and explore the canvas, timeline, and source.
         </p>
-        <a class="features__editor-link motionly-noise-bg" [href]="editorUrl" (click)="openEditor($event)">
+        <a class="features__editor-link" [href]="editorUrl" (click)="openEditor($event)">
           Open Editor
           <svg lucideArrowUpRight aria-hidden="true"></svg>
         </a>
@@ -37,7 +36,7 @@
 
     <div class="features__workflow" [appScrollReveal]="120">
       <div class="features__workflow-copy">
-      <h2>With Motionly, everything stays editable.</h2>
+      <h2>With Motionly, everything stays <span class="heading-accent heading-typed">editable.</span></h2>
       </div>
 
       <div class="features__grid">

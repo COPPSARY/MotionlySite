@@ -1,28 +1,22 @@
 <nav class="navbar" [class.navbar--scrolled]="scrolled()">
   <a class="navbar__brand" routerLink="/" aria-label="Motionly home">
     <img class="navbar__logo" [src]="logoSrc" alt="Motionly" width="120" height="28" />
-    <span class="navbar__brand-name">Motionly</span>
   </a>
 
   <div class="navbar__links" [class.navbar__links--open]="menuOpen()" id="site-navigation">
     <a class="navbar__link" href="#top" (click)="closeMenu()">
       <svg lucideHome aria-hidden="true"></svg>
-      Home
+      <span>Home</span>
     </a>
-    <a class="navbar__link" href="#about" (click)="closeMenu()">
-      <svg lucideInfo aria-hidden="true"></svg>
-      About
-    </a>
-    <a class="navbar__link" href="#get-started" (click)="closeMenu()">
-      <svg lucideTerminal aria-hidden="true"></svg>
-      Get Started
-    </a>
-    <a class="navbar__link" [href]="links.docs" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">
-      <svg lucideBookOpen aria-hidden="true"></svg>
-      Documentation
+    <a class="navbar__link" routerLink="/pricing" routerLinkActive="navbar__link--active" (click)="closeMenu()">
+      <svg class="navbar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v10M15 9.5c-.7-.5-1.5-.75-2.5-.75h-1a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-1c-1 0-1.8-.25-2.5-.75" />
+      </svg>
+      <span>Pricing</span>
     </a>
     <a class="navbar__link" [href]="links.editor" (click)="openEditor($event)">
-      Editor
+      <span>Editor</span>
       <svg lucideArrowUpRight aria-hidden="true"></svg>
     </a>
     @if (currentUser(); as user) {
@@ -33,7 +27,7 @@
     } @else {
       <a class="navbar__link" routerLink="/login" (click)="closeMenu()">
         <svg lucideLogIn aria-hidden="true"></svg>
-        Log in
+        <span>Log in</span>
       </a>
     }
     <div class="navbar__mobile-badges">

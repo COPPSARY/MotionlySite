@@ -20,6 +20,7 @@
     "@angular/platform-server": "^19.2.0",
     "@angular/router": "^19.2.0",
     "@angular/ssr": "^19.2.22",
+    "@fontsource/poppins": "^5.3.0",
     "@lucide/angular": "^1.26.0",
     "@vercel/analytics": "^2.0.1",
     "express": "^4.18.2",

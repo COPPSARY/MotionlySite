@@ -7,10 +7,10 @@
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: 0.75rem 1rem;
+  gap: var(--motionly-space-3) var(--motionly-space-4);
   width: min(calc(100% - 2rem), 76rem);
   margin: 0 auto;
-  padding: 0.75rem 1.25rem;
+  padding: var(--motionly-space-3) var(--motionly-space-5);
   background: rgba(8, 9, 11, 0.56);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
@@ -29,7 +29,7 @@
 .navbar__brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: var(--motionly-space-2);
   text-decoration: none;
   color: var(--motionly-text-primary);
   font-weight: 750;
@@ -49,7 +49,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
+  gap: var(--motionly-space-1);
   min-width: 0;
 }
 
@@ -58,7 +58,7 @@
   align-items: center;
   gap: 0.35rem;
   min-height: 2.2rem;
-  padding: 0 0.55rem;
+  padding: 0 var(--motionly-space-2);
   border-radius: var(--motionly-radius-sm);
   text-decoration: none;
   color: var(--motionly-text-secondary);
@@ -76,8 +76,26 @@
 }
 
 .navbar__link:hover {
-  color: var(--motionly-text-primary);
-  background: rgba(255, 255, 255, 0.055);
+  color: var(--motionly-logo-end);
+  background: transparent;
+}
+
+.navbar__link:hover span {
+  color: transparent;
+  background: var(--motionly-accent-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.navbar__link:hover svg {
+  color: var(--motionly-logo-end);
+  stroke: var(--motionly-logo-end);
+}
+
+.navbar__link-icon {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
 }
 
 .navbar__account {

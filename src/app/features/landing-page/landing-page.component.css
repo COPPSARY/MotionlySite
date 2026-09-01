@@ -1,8 +1,33 @@
+#top {
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(
+      180deg,
+      #171a22 0%,
+      #11141a 18%,
+      #0b0d12 42%,
+      #060709 68%,
+      #020203 100%
+    );
+}
+
 #top,
 #get-started,
 #about,
 #resources {
   scroll-margin-top: 7rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--motionly-section-gap);
+}
+
+main > app-features-section,
+main > app-showcase-section {
+  display: block;
 }
 
 .problem {
@@ -21,7 +46,7 @@
   max-width: 21ch;
   margin: 0;
   color: var(--motionly-text-primary);
-  font-size: clamp(2.4rem, 5.5vw, 4.25rem);
+  font-size: var(--motionly-type-section);
   line-height: 1.02;
   text-align: center;
 }
@@ -51,14 +76,20 @@
   border-left: 1px solid var(--motionly-border);
 }
 
-.problem__points span {
-  color: var(--motionly-text-muted);
-  font-family: monospace;
-  font-size: 0.75rem;
+.problem__point-icon {
+  width: 1.7rem;
+  height: 1.7rem;
+  color: var(--motionly-logo-end);
+  transition: transform 300ms var(--motionly-ease-standard), color 300ms ease;
+}
+
+.problem__points article:hover .problem__point-icon {
+  color: var(--motionly-logo-start);
+  transform: translateY(-0.2rem) rotate(-6deg);
 }
 
 .problem__points h3 {
-  margin: 2.5rem 0 0.75rem;
+  margin: 1.5rem 0 0.75rem;
   color: var(--motionly-text-primary);
   font-size: 1.2rem;
 }
@@ -72,7 +103,7 @@
 .workflow { padding: 6rem 1.5rem 7rem; }
 .workflow__heading { display: grid; justify-items: center; gap: 0.8rem; max-width: 44rem; margin: 0 auto 4rem; text-align: center; }
 .workflow__eyebrow { margin: 0; color: var(--motionly-logo-end); font-size: 0.72rem; font-weight: 750; letter-spacing: 0.18em; text-transform: uppercase; }
-.workflow__heading h2 { margin: 0; color: var(--motionly-text-primary); font-size: clamp(2.35rem, 5vw, 4.25rem); line-height: 1; letter-spacing: -0.06em; }
+.workflow__heading h2 { margin: 0; color: var(--motionly-text-primary); font-size: var(--motionly-type-section); line-height: 1; letter-spacing: -0.06em; }
 .workflow__heading > p:last-child { max-width: 32rem; margin: 0; color: var(--motionly-text-secondary); line-height: 1.6; }
 .workflow__timeline { position: relative; display: grid; gap: 3.5rem; width: min(68rem, 100%); margin: 0 auto; }
 .workflow__line { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: linear-gradient(180deg, transparent, var(--motionly-border-strong) 12%, var(--motionly-border-strong) 88%, transparent); transform: translateX(-50%); }
@@ -148,6 +179,138 @@
   color: var(--motionly-text-secondary);
   font-weight: 700;
   text-shadow: none;
+}
+
+.testimonials {
+  display: flex;
+  justify-content: center;
+  padding: var(--motionly-space-12) var(--motionly-content-padding) var(--motionly-space-16);
+}
+
+.testimonials__content {
+  width: min(58rem, 100%);
+  text-align: center;
+}
+
+.testimonials__eyebrow {
+  margin: 0 0 var(--motionly-space-4);
+  color: var(--motionly-logo-end);
+  font-size: var(--motionly-type-small);
+  font-weight: var(--motionly-weight-bold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.testimonials h2 {
+  margin: 0;
+  color: var(--motionly-text-primary);
+  font-size: var(--motionly-type-subheading);
+  font-weight: var(--motionly-weight-bold);
+  letter-spacing: -0.05em;
+}
+
+.testimonials__stage {
+  min-height: 12rem;
+  display: grid;
+  place-items: center;
+  margin-top: var(--motionly-space-10);
+  padding: var(--motionly-space-8) var(--motionly-space-6);
+  border-top: 1px solid var(--motionly-border);
+  border-bottom: 1px solid var(--motionly-border);
+}
+
+.testimonials blockquote {
+  max-width: 48rem;
+  margin: 0;
+}
+
+.testimonials blockquote p {
+  margin: 0;
+  color: var(--motionly-text-primary);
+  font-size: clamp(1.15rem, 2.2vw, 1.65rem);
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+  animation: testimonial-arrive 500ms var(--motionly-ease-standard) both;
+}
+
+.testimonials footer {
+  display: grid;
+  gap: 0.2rem;
+  margin-top: var(--motionly-space-6);
+}
+
+.testimonials footer strong {
+  color: var(--motionly-text-primary);
+  font-weight: var(--motionly-weight-semibold);
+}
+
+.testimonials footer span {
+  color: var(--motionly-text-muted);
+  font-size: var(--motionly-type-small);
+}
+
+.testimonials__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--motionly-space-6);
+  margin-top: var(--motionly-space-6);
+}
+
+.testimonials__controls > button {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--motionly-border-strong);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--motionly-text-secondary);
+  cursor: pointer;
+  transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.testimonials__controls > button:hover,
+.testimonials__controls > button:focus-visible {
+  border-color: var(--motionly-logo-end);
+  color: var(--motionly-logo-end);
+  transform: translateY(-2px);
+}
+
+.testimonials__controls svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.testimonials__dots {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.testimonials__dots button {
+  width: 0.42rem;
+  height: 0.42rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--motionly-border-strong);
+  cursor: pointer;
+  transition: width 180ms ease, border-radius 180ms ease, background 180ms ease;
+}
+
+.testimonials__dots button:hover,
+.testimonials__dots button:focus-visible,
+.testimonials__dots .testimonials__dot--active {
+  width: 1.25rem;
+  border-radius: 1rem;
+  background: linear-gradient(90deg, var(--motionly-logo-start), var(--motionly-logo-end));
+  outline: none;
+}
+
+@keyframes testimonial-arrive {
+  from { opacity: 0; transform: translateY(0.45rem); }
+  to { opacity: 1; transform: none; }
 }
 
 .team-love {
@@ -757,6 +920,7 @@
 }
 .workflow__roadmap {
   position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -772,10 +936,12 @@
   content: '';
   background: var(--motionly-border-strong);
   opacity: 0.7;
+  z-index: 0;
+  pointer-events: none;
 }
 .workflow__roadmap-progress {
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   top: 50%;
   left: 1.1rem;
   height: 1px;
@@ -785,6 +951,7 @@
   box-shadow: 0 0 0.65rem var(--motionly-logo-end);
   transform: translateY(-50%);
   transition: width 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
 }
 .workflow__roadmap-step {
   position: relative;
@@ -803,6 +970,7 @@
   letter-spacing: 0.06em;
   transition: border-color 300ms ease, color 300ms ease, box-shadow 300ms ease, transform 300ms ease;
   cursor: pointer;
+  pointer-events: auto;
 }
 .workflow__roadmap-step--past {
   border-color: var(--motionly-logo-start);

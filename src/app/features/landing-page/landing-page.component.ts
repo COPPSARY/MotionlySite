@@ -1,4 +1,4 @@
-import { afterNextRender, ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, signal } from '@angular/core';
+import { afterNextRender, ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnDestroy, signal } from '@angular/core';
 import { EXTERNAL_LINKS } from '../../shared/constants/external-links';
 import { SeoService } from '../../shared/services/seo.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -18,6 +18,27 @@ const COPPSARY_MEMBERS = [
   { name: 'Heang', github: 'Bunheang360' },
 ] as const;
 
+const TESTIMONIALS = [
+  {
+    quote:
+      'I spent hours looking for the right starting point for a feature promotion. Motionly helps me create the direction, then shape the details until it feels right.',
+    author: 'Prom Sereyreaksa',
+    role: 'Founder, Motionly',
+  },
+  {
+    quote:
+      'The best part is that the first generation is not the finish line. I can adjust the scenes and pacing directly instead of rewriting the same prompt.',
+    author: 'Early Motionly user',
+    role: 'Product team',
+  },
+  {
+    quote:
+      'Motionly gives the speed of generative video without taking away the decisions that make a launch feel like your product.',
+    author: 'Motionly community',
+    role: 'Early access feedback',
+  },
+] as const;
+
 @Component({
   selector: 'app-landing-page',
   standalone: true,
@@ -34,7 +55,7 @@ const COPPSARY_MEMBERS = [
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css',
 })
-export class LandingPageComponent {
+export class LandingPageComponent implements OnDestroy {
   private readonly changeDetector = inject(ChangeDetectorRef);
   readonly repositoryUrl = EXTERNAL_LINKS.github;
   readonly members = COPPSARY_MEMBERS.map((member) => ({
@@ -42,9 +63,18 @@ export class LandingPageComponent {
     url: `https://github.com/${member.github}`,
     avatar: `https://github.com/${member.github}.png`,
   }));
+  readonly testimonials = TESTIMONIALS;
+  readonly activeTestimonial = signal(0);
   readonly activeWorkflowStep = signal(0);
   private workflowTrack?: HTMLElement;
   private workflowSection?: HTMLElement;
+  private testimonialTimer?: number;
+
+  ngOnDestroy(): void {
+    if (this.testimonialTimer !== undefined && typeof window !== 'undefined') {
+      window.clearInterval(this.testimonialTimer);
+    }
+  }
 
   constructor() {
     inject(SeoService).apply({
@@ -80,11 +110,28 @@ export class LandingPageComponent {
       }
       window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
 
+      this.testimonialTimer = window.setInterval(() => this.nextTestimonial(), 6500);
+
       this.workflowTrack = document.querySelector<HTMLElement>('.workflow__timeline') ?? undefined;
       this.workflowSection = document.querySelector<HTMLElement>('.workflow') ?? undefined;
       if (!this.workflowTrack || !this.workflowSection) return;
       this.updateWorkflowStep();
     });
+  }
+
+  nextTestimonial(): void {
+    this.activeTestimonial.update((index) => (index + 1) % this.testimonials.length);
+    this.changeDetector.markForCheck();
+  }
+
+  previousTestimonial(): void {
+    this.activeTestimonial.update((index) => (index - 1 + this.testimonials.length) % this.testimonials.length);
+    this.changeDetector.markForCheck();
+  }
+
+  goToTestimonial(index: number): void {
+    this.activeTestimonial.set(Math.max(0, Math.min(this.testimonials.length - 1, index)));
+    this.changeDetector.markForCheck();
   }
 
   updateWorkflowStep(): void {
@@ -105,9 +152,10 @@ export class LandingPageComponent {
     this.changeDetector.markForCheck();
     const trackBounds = this.workflowTrack.getBoundingClientRect();
     const panelBounds = targetPanel.getBoundingClientRect();
-    const targetLeft = Math.max(0, this.workflowTrack.scrollLeft + panelBounds.left - trackBounds.left);
+    const targetLeft = Math.max(
+      0,
+      this.workflowTrack.scrollLeft + panelBounds.left - trackBounds.left,
+    );
     this.workflowTrack.scrollLeft = targetLeft;
-    targetPanel.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'start' });
-    this.updateWorkflowStep();
   }
 }
