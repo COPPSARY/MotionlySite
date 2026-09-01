@@ -2,48 +2,85 @@
   <app-navbar />
   <main>
     <app-hero-section />
-    <section class="problem" aria-labelledby="problem-title">
+    <section id="about" class="problem" aria-labelledby="problem-title">
       <div class="problem__inner">
         <h2 id="problem-title">
-          Why We Built a New Motion Format
+          Why teams use Motionly
         </h2>
         <p class="problem__lead">
-          We wanted a workflow where you can generate drafts with AI, edit them
-          visually on a timeline, and scale them with code—without losing
-          editability.
+          Move from a product idea to a polished launch video without starting
+          from a blank canvas or giving up control of the final details.
         </p>
         <div class="problem__points">
           <article>
             <span>01</span>
-            <h3>High barrier to create</h3>
+              <h3>Start with your story</h3>
             <p>
-              Creating custom motion graphics usually requires specialized
-              tools and skills, making it difficult for small teams to produce
-              polished animations.
+              Paste your website or describe your product, audience, and launch
+              moment in plain language.
             </p>
           </article>
           <article>
             <span>02</span>
-            <h3>Black-box output is hard to change</h3>
+              <h3>Shape the direction</h3>
             <p>
-              Most AI animation tools hand back a finished render or opaque
-              code you cannot inspect. When the timing is slightly off, there
-              is nothing to edit—only a prompt to run again and hope.
+              Choose the tone, pacing, and visual direction, then refine the
+              composition on the canvas and timeline.
             </p>
           </article>
           <article>
             <span>03</span>
-            <h3>Hard to scale video production</h3>
+              <h3>Make it feel finished</h3>
             <p>
-              Creating more animations often means repeating the same manual
-              process, making it difficult to produce consistent, reusable
-              content at scale.
+              Keep the source editable while Motionly handles the motion system
+              behind every polished scene.
             </p>
           </article>
         </div>
       </div>
     </section>
-    <section id="features">
+    <section id="get-started" class="workflow" aria-labelledby="workflow-title">
+      <div class="workflow__pin">
+        <div class="workflow__heading" [appScrollReveal]="0">
+          <p class="workflow__eyebrow">How Motionly works</p>
+          <h2 id="workflow-title">From idea to launch-ready motion.</h2>
+          <p>Follow the flow from your product story to a polished video you can keep refining.</p>
+        </div>
+        <div class="workflow__roadmap" aria-label="Motionly workflow progress">
+          <span class="workflow__roadmap-progress" [style.width.%]="(activeWorkflowStep() / 3) * 100"></span>
+          <button class="workflow__roadmap-step" type="button" aria-label="Go to step 1" [class.workflow__roadmap-step--active]="activeWorkflowStep() === 0" [class.workflow__roadmap-step--past]="activeWorkflowStep() > 0" (click)="goToWorkflowStep(0)">01</button>
+          <button class="workflow__roadmap-step" type="button" aria-label="Go to step 2" [class.workflow__roadmap-step--active]="activeWorkflowStep() === 1" [class.workflow__roadmap-step--past]="activeWorkflowStep() > 1" (click)="goToWorkflowStep(1)">02</button>
+          <button class="workflow__roadmap-step" type="button" aria-label="Go to step 3" [class.workflow__roadmap-step--active]="activeWorkflowStep() === 2" [class.workflow__roadmap-step--past]="activeWorkflowStep() > 2" (click)="goToWorkflowStep(2)">03</button>
+          <button class="workflow__roadmap-step" type="button" aria-label="Go to step 4" [class.workflow__roadmap-step--active]="activeWorkflowStep() === 3" (click)="goToWorkflowStep(3)">04</button>
+        </div>
+        <div class="workflow__timeline" (scroll)="updateWorkflowStep()">
+          <div class="workflow__line" aria-hidden="true"><span></span></div>
+          <article class="workflow__step workflow__step--idea" [class.workflow__step--active]="activeWorkflowStep() === 0" [appScrollReveal]="40">
+          <div class="workflow__visual workflow__visual--story" aria-hidden="true">
+            <div class="workflow__prompt-card">
+              <div class="workflow__prompt-top"><span class="workflow__prompt-dot"></span><span>Motionly</span><i></i><i></i><i></i></div>
+              <div class="workflow__prompt-body"><span class="workflow__prompt-text">Create a bold launch video for our new product...</span><b class="workflow__prompt-caret"></b></div>
+              <div class="workflow__prompt-footer"><span>Enhance prompt</span><strong>↑</strong></div>
+            </div>
+          </div>
+          <div class="workflow__copy"><span class="workflow__number">01</span><h3>Bring the idea</h3><p>Paste your site or describe your product. Motionly turns a simple brief into the first motion direction.</p></div>
+          </article>
+          <article class="workflow__step workflow__step--reverse" [class.workflow__step--active]="activeWorkflowStep() === 1" [appScrollReveal]="100">
+          <div class="workflow__visual workflow__visual--direction" aria-hidden="true"><i></i><i></i><i></i><span></span><b>tone</b><b>pace</b><b>style</b></div>
+          <div class="workflow__copy"><span class="workflow__number">02</span><h3>Set the direction</h3><p>Choose the feeling, pacing, and visual style that fits your product.</p></div>
+          </article>
+          <article class="workflow__step" [class.workflow__step--active]="activeWorkflowStep() === 2" [appScrollReveal]="160">
+          <div class="workflow__visual workflow__visual--timeline" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
+          <div class="workflow__copy"><span class="workflow__number">03</span><h3>Shape the motion</h3><p>Refine scenes, timing, easing, and transitions on the visual timeline.</p></div>
+          </article>
+          <article class="workflow__step workflow__step--reverse" [class.workflow__step--active]="activeWorkflowStep() === 3" [appScrollReveal]="220">
+          <div class="workflow__visual workflow__visual--launch" aria-hidden="true"><div class="workflow__launch-frame"><span class="workflow__launch-export">↓</span><i></i><i></i><i></i></div><strong>READY TO POST</strong></div>
+          <div class="workflow__copy"><span class="workflow__number">04</span><h3>Export the final cut</h3><p>Preview the finished video, export it in the right format, and post it wherever your audience is.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section>
       <app-features-section />
     </section>
     <app-showcase-section />
@@ -88,6 +125,45 @@
           </svg>
           View repository
         </a>
+      </div>
+    </section>
+    <section id="faq" class="faq" aria-labelledby="faq-title">
+      <div class="faq__inner">
+        <h2 id="faq-title">Get to know Motionly</h2>
+        <div class="faq__list">
+          <details>
+            <summary>What can I create with Motionly?</summary>
+            <p>Motion ads, product launches, feature announcements, demos, and short-form videos built around your real product.</p>
+          </details>
+          <details>
+            <summary>How does it start?</summary>
+            <p>Paste your product link or describe your brand and launch moment. Motionly uses that context to shape the first ad.</p>
+          </details>
+          <details>
+            <summary>Can I change the result?</summary>
+            <p>Yes. Tell Motionly what to change — the hook, pacing, scene, voiceover, or visual direction — and keep refining by chat.</p>
+          </details>
+          <details>
+            <summary>Do I need motion-design experience?</summary>
+            <p>No. Start with a sentence, choose a direction, and make adjustments in plain language.</p>
+          </details>
+          <details>
+            <summary>What does the finished ad include?</summary>
+            <p>A polished motion composition built around your product, with scenes, pacing, and visual direction ready to refine.</p>
+          </details>
+          <details>
+            <summary>Can I use the videos for paid ads?</summary>
+            <p>Yes. Create launch videos and variations for social posts, paid campaigns, product pages, and demos.</p>
+          </details>
+          <details>
+            <summary>Which formats can I make?</summary>
+            <p>Shape your output for the channels where your audience already is, from vertical short-form video to wider product demos.</p>
+          </details>
+          <details>
+            <summary>Do I need a card to try Motionly?</summary>
+            <p>No. Start free, explore the workflow, and see the first direction before committing to anything.</p>
+          </details>
+        </div>
       </div>
     </section>
     <section id="resources">

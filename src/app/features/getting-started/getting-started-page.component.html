@@ -19,15 +19,14 @@
       <p class="guide__eyebrow">Motionly install</p>
       <h1>Install Motionly locally.</h1>
       <p>
-        Motionly is an open source AI motion graphics editor that runs on your
-        own machine. One command scaffolds a project, opens the local editor,
-        and gives you an editable <code>.motion</code> file you can animate
-        visually, hand to an AI agent, and export to MP4.
+        Motionly is an open source HTML and GSAP motion graphics editor that runs
+        on your own machine. A normal web project gives you an editable HTML
+        composition, a scoped stylesheet, and a JavaScript timeline you can
+        refine visually and render to video.
       </p>
       <p>
-        Keep your images, video, SVGs, GIFs, and audio inside the project
-        <code>assets/</code> folder so every animation stays portable and
-        version-controlled alongside your code.
+        Keep your composition files and media together so every animation stays
+        portable and version-controlled alongside your code.
       </p>
       <div class="guide__actions">
         <a class="btn btn--primary" href="#install">
@@ -67,9 +66,9 @@
     <div>
       <h2>What you get</h2>
       <ul>
-        <li>A readable <code>project.motion</code> file describing scenes, layers, keyframes, and easing.</li>
+        <li>An HTML template, scoped CSS file, and GSAP timeline describing the composition.</li>
         <li>A visual canvas and timeline for adjusting position, timing, and motion by hand.</li>
-        <li>An <code>assets/</code> folder for local media instead of remote URLs.</li>
+        <li>Local media files that can be referenced directly by the browser composition.</li>
         <li>Local MP4 export, so finished animations never leave your machine.</li>
       </ul>
     </div>
@@ -85,21 +84,20 @@
     </div>
     <app-copy-install-command [command]="installCommand" />
     <p>
-      This scaffolds a new folder called <code>my-video</code> containing a
-      starter <code>project.motion</code> file and an empty <code>assets/</code>
-      directory, then installs nothing globally — <code>npx</code> always pulls
-      the current published version of the package.
+      Clone the repository, install its dependencies, and open the editor locally.
+      The composition source stays in normal HTML, CSS, JavaScript, and TypeScript
+      files that can be inspected and committed with the rest of your project.
     </p>
     <div class="guide__code-grid">
       <div>
         <h3>Return to a project</h3>
         <app-copy-install-command [command]="devCommand" />
-        <p>Reopens an existing project in the local editor with live preview.</p>
+        <p>Starts the local editor with live preview.</p>
       </div>
       <div>
         <h3>Open the editor only</h3>
         <app-copy-install-command [command]="editorCommand" />
-        <p>Launches the editor without scaffolding, useful for quick experiments.</p>
+        <p>Renders the bundled composition frame by frame through Chrome and FFmpeg.</p>
       </div>
     </div>
   </section>
@@ -109,16 +107,16 @@
       <svg lucidePlay aria-hidden="true"></svg>
       <div>
         <h2 id="workflow-title">The Motionly workflow</h2>
-        <p>Generate a draft, edit it visually, then export — in four steps.</p>
+        <p>Author a composition, edit it visually, then export — in four steps.</p>
       </div>
     </div>
     <div class="guide__steps">
       <article>
         <h3>1. Describe the animation</h3>
         <p>
-          Prompt Motionly with the motion you want — a logo reveal, a feature
-          walkthrough, a social clip — and it writes the scenes, layers, and
-          keyframes into your <code>.motion</code> project.
+          Describe the motion you want — a logo reveal, feature walkthrough, or
+          social clip — then author the scenes and choreography in HTML/CSS and
+          a GSAP timeline.
         </p>
       </article>
       <article>
@@ -130,11 +128,10 @@
         </p>
       </article>
       <article>
-        <h3>3. Iterate with an AI agent</h3>
+        <h3>3. Iterate in source</h3>
         <p>
-          Because the project is readable text, agents like Claude Code, Codex,
-          or Antigravity can change one keyframe without rewriting the whole
-          animation.
+          Because the project is readable web code, you can inspect a scene or
+          adjust one timeline tween without rewriting the whole animation.
         </p>
       </article>
       <article>
@@ -152,12 +149,14 @@
       <svg lucideFolder aria-hidden="true"></svg>
       <div>
         <h2 id="project-structure-title">Assets folder</h2>
-        <p>Put project media in <code>assets/</code> and reference it from <code>project.motion</code>.</p>
+        <p>Keep project media beside the HTML composition and reference it from the browser DOM.</p>
       </div>
     </div>
     <div class="guide__structure">
       <pre><code>my-video/
-  project.motion
+  composition.html
+  timeline.js
+  index.ts
   assets/
     logo.svg
     product-shot.png
@@ -165,8 +164,8 @@
       <ul>
         <li>Place images, videos, SVGs, GIFs, Lottie files, and audio in <code>assets/</code>.</li>
         <li>Use clear filenames and keep original aspect ratios.</li>
-        <li>Save visual edits back to <code>project.motion</code> for version control.</li>
-        <li>Commit both the project file and the assets folder so teammates and agents get identical results.</li>
+        <li>Keep visual source and timeline changes in version control.</li>
+        <li>Commit the source and assets together so teammates get identical results.</li>
       </ul>
     </div>
   </section>
@@ -194,8 +193,8 @@
   <section class="guide__final" aria-labelledby="next-title">
     <h2 id="next-title">Need more?</h2>
     <p>
-      The full documentation covers SVG animation, keyframes, easing, assets,
-      export formats, and the Motionly agent prompt template.
+      The full documentation covers HTML composition authoring, SVG animation,
+      GSAP presets, easing, browser rendering, and video export.
     </p>
     <div class="guide__actions">
       <a class="btn btn--primary" [href]="docsUrl" target="_blank" rel="noopener noreferrer">

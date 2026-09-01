@@ -1,13 +1,13 @@
 <section class="features">
   <div class="features__inner">
     <div class="features__copy" [appScrollReveal]="0">
-      <h2>Meet Motionly.</h2>
+      <h2>Try Motionly.</h2>
       <div class="features__description">
         <p>
           Try the editor directly. Click around the canvas, timeline,
           inspector, and source view.
         </p>
-        <a class="features__editor-link motionly-noise-bg" [href]="editorUrl" target="_blank" rel="noopener noreferrer">
+        <a class="features__editor-link motionly-noise-bg" [href]="editorUrl" (click)="openEditor($event)">
           Open Editor
           <svg lucideArrowUpRight aria-hidden="true"></svg>
         </a>
@@ -16,20 +16,28 @@
 
     <figure class="features__editor" [appScrollReveal]="80">
       <div class="features__editor-scale">
-        <iframe
-          [src]="editorEmbedUrl"
-          title="Motionly live editor"
-          width="1920"
-          height="954"
-          loading="lazy"
-        ></iframe>
+        @if (isAuthenticated()) {
+          <iframe
+            [src]="editorEmbedUrl"
+            title="Motionly live editor"
+            width="1920"
+            height="954"
+            loading="lazy"
+          ></iframe>
+        } @else {
+          <div class="features__editor-login">
+            <svg lucideSparkles aria-hidden="true"></svg>
+            <h3>Sign in to open the editor</h3>
+            <p>Your Motionly workspace is waiting.</p>
+            <a [routerLink]="['/login']" [queryParams]="{ returnUrl: '/editor' }">Log in to continue <svg lucideArrowUpRight aria-hidden="true"></svg></a>
+          </div>
+        }
       </div>
     </figure>
 
     <div class="features__workflow" [appScrollReveal]="120">
       <div class="features__workflow-copy">
-        <p class="features__eyebrow">Features</p>
-        <h2>Everything stays editable.</h2>
+      <h2>With Motionly, everything stays editable.</h2>
       </div>
 
       <div class="features__grid">

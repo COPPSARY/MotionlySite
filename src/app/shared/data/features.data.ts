@@ -3,20 +3,20 @@ import { Feature } from '../models/landing.models';
 export const FEATURES: readonly Feature[] = [
   {
     id: 'first-draft',
-    title: 'Ask for the First Draft',
-    description: 'Give an AI agent your story, copy, timing, and assets. Instead of returning a flat, un-editable video file where a single typo forces a complete rerender, Motionly generates a structured project format where every element stays fully editable.',
+    title: 'Author the first draft',
+    description: 'Start with normal HTML and scoped CSS. Build semantic scenes and components that stay readable, portable, and ready to animate.',
     icon: 'mouse-pointer',
   },
   {
     id: 'visual-refine',
-    title: 'Visual Overrides & Refine',
-    description: 'Skip the token-burning code scripts and steep learning curves. Your agent draft loads instantly onto a visual canvas and timeline, letting you adjust layers, timing, easing, and playback by hand—no complex code tweaking or design suite mastery required.',
+    title: 'Direct the timeline',
+    description: 'Use GSAP to choreograph reveals, masks, stagger, camera movement, and scene handoffs, then refine the mounted composition visually in the editor.',
     icon: 'timeline',
   },
   {
     id: 'final-video',
-    title: 'Ship the Final Video',
-    description: 'Export your high-quality MP4 locally after the visual pass. Because the entire system runs on a clean, structured schema behind the scenes, you can easily feed dynamic data directly into the project structure to scale video variations, auto-generate personalized product demos, and keep your production assets sitting cleanly right beside your development stack.',
+    title: 'Render the final cut',
+    description: 'Preview and scrub the exact browser DOM used for export. Capture PNG frames in the editor or render a deterministic MP4 locally with Chrome and FFmpeg.',
     icon: 'download',
   },
 ];

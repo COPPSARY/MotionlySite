@@ -1,5 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CopyInstallCommandComponent } from '../../../../shared/components/copy-install-command/copy-install-command.component';
+import { afterNextRender, ChangeDetectionStrategy, Component, inject, OnDestroy, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LucideArrowUp, LucidePlus, LucideSparkles } from '@lucide/angular';
+import { AuthService } from '../../../../shared/services/auth.service';
 import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reveal.directive';
 
 @Component({
@@ -7,12 +10,94 @@ import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reve
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    CopyInstallCommandComponent,
+    FormsModule,
     ScrollRevealDirective,
+    LucideArrowUp,
+    LucidePlus,
+    LucideSparkles,
   ],
   templateUrl: './hero-section.component.html',
   styleUrl: './hero-section.component.css',
 })
-export class HeroSectionComponent {
-  readonly installCommand = 'npx @coppsary/motionly init my-video';
+export class HeroSectionComponent implements OnDestroy {
+  private readonly router = inject(Router);
+  private readonly auth = inject(AuthService);
+  prompt = '';
+  assetMenuOpen = false;
+  selectedAsset = '';
+  readonly typedPrompt = signal('');
+  private typingTimer?: number;
+  private assetInput?: HTMLInputElement;
+  private readonly examples = [
+    'Create a cinematic launch video for my new product...',
+    'Turn this feature update into a bold motion ad...',
+    'Make a clean product demo with energetic transitions...',
+  ];
+
+  constructor() {
+    afterNextRender(() => this.startPromptTyping());
+  }
+
+  ngOnDestroy(): void {
+    if (this.typingTimer !== undefined) window.clearInterval(this.typingTimer);
+    this.assetInput?.remove();
+  }
+
+  toggleAssetMenu(): void {
+    this.assetMenuOpen = !this.assetMenuOpen;
+  }
+
+  chooseAsset(kind: 'image' | 'video'): void {
+    this.assetMenuOpen = false;
+    this.assetInput?.remove();
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = kind === 'image' ? 'image/*,.svg' : 'video/*';
+    input.addEventListener('change', () => {
+      const file = input.files?.[0];
+      if (file) this.selectedAsset = file.name;
+      input.remove();
+      this.assetInput = undefined;
+    });
+    this.assetInput = input;
+    input.click();
+  }
+
+  private startPromptTyping(): void {
+    let exampleIndex = 0;
+    let characterIndex = 0;
+    let deleting = false;
+    this.typingTimer = window.setInterval(() => {
+      const example = this.examples[exampleIndex] ?? '';
+      if (!deleting) {
+        characterIndex += 1;
+        this.typedPrompt.set(example.slice(0, characterIndex));
+        if (characterIndex === example.length) deleting = true;
+      } else {
+        characterIndex -= 1;
+        this.typedPrompt.set(example.slice(0, characterIndex));
+        if (characterIndex === 0) {
+          deleting = false;
+          exampleIndex = (exampleIndex + 1) % this.examples.length;
+        }
+      }
+    }, 62);
+  }
+
+  async submitPrompt(): Promise<void> {
+    const returnUrl = `/editor?prompt=${encodeURIComponent(this.prompt.trim())}`;
+    if (!await this.auth.currentUser()) {
+      this.auth.setPendingReturnUrl(returnUrl);
+      void this.router.navigate(['/login'], { queryParams: { returnUrl } });
+      return;
+    }
+    window.location.href = `https://app.motionly.site/?prompt=${encodeURIComponent(this.prompt.trim())}`;
+  }
+
+  enhancePrompt(): void {
+    const prompt = this.prompt.trim();
+    this.prompt = prompt
+      ? `${prompt} Make it polished, cinematic, and aligned with the brand.`
+      : 'Create a polished, cinematic launch video that feels aligned with my brand.';
+  }
 }

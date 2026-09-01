@@ -9,11 +9,11 @@
       <svg lucideHome aria-hidden="true"></svg>
       Home
     </a>
-    <a class="navbar__link" routerLink="/about" (click)="closeMenu()">
+    <a class="navbar__link" href="#about" (click)="closeMenu()">
       <svg lucideInfo aria-hidden="true"></svg>
       About
     </a>
-    <a class="navbar__link" routerLink="/getting-started" (click)="closeMenu()">
+    <a class="navbar__link" href="#get-started" (click)="closeMenu()">
       <svg lucideTerminal aria-hidden="true"></svg>
       Get Started
     </a>
@@ -21,10 +21,21 @@
       <svg lucideBookOpen aria-hidden="true"></svg>
       Documentation
     </a>
-    <a class="navbar__link" [href]="links.editor" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">
+    <a class="navbar__link" [href]="links.editor" (click)="openEditor($event)">
       Editor
       <svg lucideArrowUpRight aria-hidden="true"></svg>
     </a>
+    @if (currentUser(); as user) {
+      <span class="navbar__account" title="Signed in">
+        <span class="navbar__account-dot" aria-hidden="true"></span>
+        {{ user.displayName || user.email }}
+      </span>
+    } @else {
+      <a class="navbar__link" routerLink="/login" (click)="closeMenu()">
+        <svg lucideLogIn aria-hidden="true"></svg>
+        Log in
+      </a>
+    }
     <div class="navbar__mobile-badges">
       <app-product-hunt-badge size="compact" />
       <app-github-star-badge size="compact" />
