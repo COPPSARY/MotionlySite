@@ -4,7 +4,7 @@ import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reve
 @Component({
   selector: 'app-showcase-section',
   standalone: true,
-  imports: [ScrollRevealDirective, LucideBookOpen],
+  imports: [ScrollRevealDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './showcase-section.component.html',
   styleUrl: './showcase-section.component.css',
