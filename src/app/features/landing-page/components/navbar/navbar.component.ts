@@ -8,12 +8,9 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import {
   LucideArrowUpRight,
-  LucideBookOpen,
   LucideHome,
-  LucideInfo,
   LucideMenu,
   LucideLogIn,
-  LucideTerminal,
   LucideX,
 } from '@lucide/angular';
 import { GithubStarBadgeComponent } from '../../../../shared/components/github-star-badge/github-star-badge.component';
@@ -31,12 +28,9 @@ import type { MotionlyUser } from '../../../../shared/services/auth.service';
     GithubStarBadgeComponent,
     ProductHuntBadgeComponent,
     LucideArrowUpRight,
-    LucideBookOpen,
     LucideHome,
-    LucideInfo,
     LucideMenu,
     LucideLogIn,
-    LucideTerminal,
     LucideX,
   ],
   templateUrl: './navbar.component.html',

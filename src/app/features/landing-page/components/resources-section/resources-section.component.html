@@ -2,7 +2,7 @@
   <div class="resources__inner">
     <div class="resources__copy" [appScrollReveal]="0">
       <p class="resources__eyebrow">Built for teams shipping</p>
-      <h2>Everything you need to make motion that moves.</h2>
+      <h2>Everything you need to make <span class="heading-accent heading-typed">motion that moves.</span></h2>
       <p>
         Turn your product story into polished motion ads, refine every detail by
         chatting, and ship high-quality video for every channel.
@@ -23,7 +23,10 @@
       </div>
       <a class="resources__cta-link" [href]="editorUrl" (click)="openEditor($event)">
         Open Motionly
-        <span aria-hidden="true">↗</span>
+        <svg class="resources__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 17 17 7" />
+          <path d="M7 7h10v10" />
+        </svg>
       </a>
     </div>
   </div>
