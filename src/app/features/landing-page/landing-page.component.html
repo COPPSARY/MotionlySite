@@ -4,36 +4,43 @@
     <app-hero-section />
     <section id="about" class="problem" aria-labelledby="problem-title">
       <div class="problem__inner">
-        <h2 id="problem-title">
-          Why teams use Motionly
+        <h2 id="problem-title" [appScrollReveal]="0">
+          Why teams use <span class="heading-accent heading-swipe">Motionly</span>
         </h2>
         <p class="problem__lead">
-          Move from a product idea to a polished launch video without starting
-          from a blank canvas or giving up control of the final details.
+          Turn a prompt into polished video you can still edit—scenes, timeline,
+          and details included.
         </p>
         <div class="problem__points">
-          <article>
-            <span>01</span>
-              <h3>Start with your story</h3>
+          <article [appScrollReveal]="80">
+            <svg class="problem__point-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m12 3 1.45 4.55L18 9l-4.55 1.45L12 15l-1.45-4.55L6 9l4.55-1.45L12 3Z" />
+              <path d="m19 15 .65 2.35L22 18l-2.35.65L19 21l-.65-2.35L16 18l2.35-.65L19 15Z" />
+            </svg>
+            <h3>Start with your story</h3>
             <p>
-              Paste your website or describe your product, audience, and launch
-              moment in plain language.
+              Give Motionly a link or a simple brief to create your first draft.
             </p>
           </article>
-          <article>
-            <span>02</span>
-              <h3>Shape the direction</h3>
+          <article [appScrollReveal]="140">
+            <svg class="problem__point-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+              <path d="M8 4v4M15 10v4M11 16v4" />
+            </svg>
+            <h3>Shape the direction</h3>
             <p>
-              Choose the tone, pacing, and visual direction, then refine the
-              composition on the canvas and timeline.
+              Set the tone, pacing, and visual direction before you refine it.
             </p>
           </article>
-          <article>
-            <span>03</span>
-              <h3>Make it feel finished</h3>
+          <article [appScrollReveal]="200">
+            <svg class="problem__point-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="4" y="4" width="16" height="16" rx="3" />
+              <path d="m8 12 2.5 2.5L16 9" />
+            </svg>
+            <h3>Make it feel finished</h3>
             <p>
-              Keep the source editable while Motionly handles the motion system
-              behind every polished scene.
+              Edit scenes and timing directly—no need to start over with a new
+              prompt.
             </p>
           </article>
         </div>
@@ -43,7 +50,7 @@
       <div class="workflow__pin">
         <div class="workflow__heading" [appScrollReveal]="0">
           <p class="workflow__eyebrow">How Motionly works</p>
-          <h2 id="workflow-title">From idea to launch-ready motion.</h2>
+          <h2 id="workflow-title">From idea to <span class="heading-accent heading-typed">launch-ready</span> motion.</h2>
           <p>Follow the flow from your product story to a polished video you can keep refining.</p>
         </div>
         <div class="workflow__roadmap" aria-label="Motionly workflow progress">
@@ -84,21 +91,36 @@
       <app-features-section />
     </section>
     <app-showcase-section />
-    <section class="founder-note" aria-labelledby="founder-note-title">
-      <div class="founder-note__content">
-        <blockquote>
-          <p>
-            "I spent hours trying to find inspiration, specific templates to get
-            started on a promotion video on our new feature. Some animations are
-            so specific, I can't find it on the internet. So I started Motionly,
-            to hopefully solve that."
-          </p>
-          <footer id="founder-note-title">Prom Sereyreaksa</footer>
-        </blockquote>
+    <section class="testimonials" aria-labelledby="testimonials-title">
+      <div class="testimonials__content">
+        <p class="testimonials__eyebrow">What teams say about Motionly</p>
+        <h2 id="testimonials-title">Built to keep your ideas <span class="heading-accent">editable.</span></h2>
+        <div class="testimonials__stage" aria-live="polite">
+          <blockquote>
+            <p>“{{ testimonials[activeTestimonial()].quote }}”</p>
+            <footer>
+              <strong>{{ testimonials[activeTestimonial()].author }}</strong>
+              <span>{{ testimonials[activeTestimonial()].role }}</span>
+            </footer>
+          </blockquote>
+        </div>
+        <div class="testimonials__controls">
+          <button type="button" aria-label="Previous testimonial" (click)="previousTestimonial()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+          </button>
+          <div class="testimonials__dots">
+            @for (testimonial of testimonials; track testimonial.author; let i = $index) {
+              <button type="button" [class.testimonials__dot--active]="activeTestimonial() === i" [attr.aria-label]="'Show testimonial ' + (i + 1)" (click)="goToTestimonial(i)"></button>
+            }
+          </div>
+          <button type="button" aria-label="Next testimonial" (click)="nextTestimonial()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+          </button>
+        </div>
       </div>
     </section>
     <section class="team-love" aria-labelledby="team-love-title">
-      <h2 id="team-love-title">Built with love by COPPSARY</h2>
+      <h2 id="team-love-title" [appScrollReveal]="0">Built with love by COPPSARY</h2>
       <div class="team-love__avatars" aria-label="COPPSARY members">
         @for (member of members; track member.github) {
           <a
@@ -129,7 +151,7 @@
     </section>
     <section id="faq" class="faq" aria-labelledby="faq-title">
       <div class="faq__inner">
-        <h2 id="faq-title">Get to know Motionly</h2>
+        <h2 id="faq-title" [appScrollReveal]="0">Get to know Motionly</h2>
         <div class="faq__list">
           <details>
             <summary>What can I create with Motionly?</summary>
