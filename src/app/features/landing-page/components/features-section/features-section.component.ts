@@ -1,6 +1,5 @@
-import { afterNextRender, ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   LucideArrowUpRight,
   LucideCode2,
@@ -19,7 +18,6 @@ import { AuthService } from '../../../../shared/services/auth.service';
   selector: 'app-features-section',
   standalone: true,
   imports: [
-    RouterLink,
     ScrollRevealDirective,
     LucideArrowUpRight,
     LucideCode2,
@@ -36,15 +34,10 @@ export class FeaturesSectionComponent {
   private readonly router = inject(Router);
   private readonly auth = inject(AuthService);
   readonly editorUrl = EXTERNAL_LINKS.editor;
-  readonly editorEmbedUrl: SafeResourceUrl;
   readonly features: readonly Feature[] = FEATURES;
-  readonly isAuthenticated = signal(false);
 
-  constructor(sanitizer: DomSanitizer) {
-    this.editorEmbedUrl = sanitizer.bypassSecurityTrustResourceUrl(EXTERNAL_LINKS.editor);
-    afterNextRender(() => {
-      void this.auth.currentUser().then((user) => this.isAuthenticated.set(!!user));
-    });
+  playPreview(video: HTMLVideoElement): void {
+    void video.play().catch(() => undefined);
   }
 
   async openEditor(event: MouseEvent): Promise<void> {

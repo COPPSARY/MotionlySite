@@ -1,15 +1,7 @@
 #top {
   position: relative;
   isolation: isolate;
-  background:
-    linear-gradient(
-      180deg,
-      #171a22 0%,
-      #11141a 18%,
-      #0b0d12 42%,
-      #060709 68%,
-      #020203 100%
-    );
+  background: #07080a;
 }
 
 #top,
@@ -49,6 +41,10 @@ main > app-showcase-section {
   font-size: var(--motionly-type-section);
   line-height: 1.02;
   text-align: center;
+}
+
+.problem h2 .heading-swipe {
+  padding-bottom: 0.12em;
 }
 
 .problem__lead {
@@ -209,9 +205,66 @@ main > app-showcase-section {
   letter-spacing: -0.05em;
 }
 
+.testimonials__title {
+  animation: testimonials-heading-type 1.6s steps(28, end) 180ms both;
+}
+
+.testimonials__think {
+  position: relative;
+  display: inline-grid;
+  min-width: 3.45ch;
+  place-items: center;
+  vertical-align: baseline;
+}
+
+.testimonials__think-word,
+.testimonials__think-icon {
+  grid-area: 1 / 1;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.testimonials__think-word {
+  opacity: 1;
+}
+
+.testimonials__think-icon {
+  width: 1.55em;
+  height: 1.35em;
+  color: var(--motionly-logo-end);
+  opacity: 0;
+  transform: scale(0.7) rotate(-8deg);
+}
+
+.testimonials__title .testimonials__think-word {
+  animation: testimonials-think-word 4.8s ease-in-out 2s infinite;
+}
+
+.testimonials__title .testimonials__think-icon {
+  animation: testimonials-think-icon 4.8s ease-in-out 2s infinite;
+}
+
+@keyframes testimonials-heading-type {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes testimonials-think-word {
+  0%, 48% { opacity: 1; transform: scale(1); }
+  58%, 88% { opacity: 0; transform: scale(0.72); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes testimonials-think-icon {
+  0%, 48% { opacity: 0; transform: scale(0.7) rotate(-8deg); }
+  58%, 88% { opacity: 1; transform: scale(1) rotate(0); }
+  100% { opacity: 0; transform: scale(0.7) rotate(8deg); }
+}
+
 .testimonials__stage {
   min-height: 12rem;
   display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
   place-items: center;
   margin-top: var(--motionly-space-10);
   padding: var(--motionly-space-8) var(--motionly-space-6);
@@ -219,9 +272,36 @@ main > app-showcase-section {
   border-bottom: 1px solid var(--motionly-border);
 }
 
+.testimonials__stage > button {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--motionly-border-strong);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--motionly-text-secondary);
+  cursor: pointer;
+  transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.testimonials__stage > button:hover,
+.testimonials__stage > button:focus-visible {
+  border-color: var(--motionly-logo-end);
+  color: var(--motionly-logo-end);
+  transform: translateY(-2px);
+}
+
+.testimonials__stage > button svg {
+  width: 1rem;
+  height: 1rem;
+}
+
 .testimonials blockquote {
   max-width: 48rem;
   margin: 0;
+  padding: 0 var(--motionly-space-6);
 }
 
 .testimonials blockquote p {
@@ -247,65 +327,6 @@ main > app-showcase-section {
 .testimonials footer span {
   color: var(--motionly-text-muted);
   font-size: var(--motionly-type-small);
-}
-
-.testimonials__controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--motionly-space-6);
-  margin-top: var(--motionly-space-6);
-}
-
-.testimonials__controls > button {
-  display: grid;
-  width: 2.25rem;
-  height: 2.25rem;
-  place-items: center;
-  padding: 0;
-  border: 1px solid var(--motionly-border-strong);
-  border-radius: 50%;
-  background: transparent;
-  color: var(--motionly-text-secondary);
-  cursor: pointer;
-  transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
-}
-
-.testimonials__controls > button:hover,
-.testimonials__controls > button:focus-visible {
-  border-color: var(--motionly-logo-end);
-  color: var(--motionly-logo-end);
-  transform: translateY(-2px);
-}
-
-.testimonials__controls svg {
-  width: 1rem;
-  height: 1rem;
-}
-
-.testimonials__dots {
-  display: flex;
-  gap: 0.45rem;
-}
-
-.testimonials__dots button {
-  width: 0.42rem;
-  height: 0.42rem;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: var(--motionly-border-strong);
-  cursor: pointer;
-  transition: width 180ms ease, border-radius 180ms ease, background 180ms ease;
-}
-
-.testimonials__dots button:hover,
-.testimonials__dots button:focus-visible,
-.testimonials__dots .testimonials__dot--active {
-  width: 1.25rem;
-  border-radius: 1rem;
-  background: linear-gradient(90deg, var(--motionly-logo-start), var(--motionly-logo-end));
-  outline: none;
 }
 
 @keyframes testimonial-arrive {
@@ -454,6 +475,39 @@ main > app-showcase-section {
 
 .team-love__contribute a:hover {
   color: var(--motionly-accent);
+}
+
+.team-love__partnership {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.5rem;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--motionly-border);
+  border-radius: 999px;
+  color: var(--motionly-text-secondary);
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.team-love__partnership:hover,
+.team-love__partnership:focus-visible {
+  border-color: var(--motionly-logo-end);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.team-love__partnership img {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
+
+.team-love__partnership strong {
+  color: var(--motionly-text-primary);
+  font-weight: var(--motionly-weight-semibold);
 }
 
 @media (max-width: 640px) {
@@ -680,8 +734,13 @@ main > app-showcase-section {
 .workflow__heading { gap: 0.7rem; }
 .workflow__eyebrow { color: var(--motionly-logo-start); }
 .workflow__heading h2 { color: var(--motionly-text-primary); }
+.workflow__heading h2 .heading-accent {
+  display: inline-block;
+  padding-inline-end: 0.08em;
+  overflow: visible;
+}
 .workflow__heading > p:last-child { color: var(--motionly-text-secondary); }
-.workflow__timeline { padding-inline: 8vw; gap: clamp(2rem, 5vw, 5rem); }
+.workflow__timeline { padding-inline: 14vw; gap: clamp(2rem, 5vw, 5rem); }
 .workflow__step,
 .workflow__step--reverse,
 .workflow__step--idea {
@@ -708,11 +767,15 @@ main > app-showcase-section {
   grid-column: 1;
   grid-row: 1;
   max-width: 22rem;
+  margin-left: 4vw;
   justify-self: start;
   text-align: left;
 }
 .workflow__step--reverse .workflow__visual { grid-column: 2; }
 .workflow__step--reverse .workflow__copy { grid-column: 1; text-align: left; }
+.workflow__step,
+.workflow__step--reverse,
+.workflow__step--idea { margin-left: 5vw; }
 .workflow__number { color: var(--motionly-logo-start); }
 .workflow__copy h3 { color: var(--motionly-text-primary); font-size: clamp(1.8rem, 3vw, 2.45rem); letter-spacing: -0.045em; }
 .workflow__copy p { color: var(--motionly-text-secondary); }
@@ -738,16 +801,34 @@ main > app-showcase-section {
   .workflow__visual { grid-column: 1; grid-row: 1; height: 12rem; }
   .workflow__step--idea .workflow__copy,
   .workflow__copy,
-  .workflow__step--reverse .workflow__copy { grid-column: 1; grid-row: 2; max-width: none; text-align: left; }
+  .workflow__step--reverse .workflow__copy { grid-column: 1; grid-row: 2; max-width: none; margin-left: 0; text-align: left; }
+  .workflow__step,
+  .workflow__step--reverse,
+  .workflow__step--idea { margin-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials__title,
+  .testimonials__think-word,
+  .testimonials__think-icon {
+    animation: none;
+  }
+
+  .testimonials__think-word { opacity: 0; }
+  .testimonials__think-icon { opacity: 1; transform: none; }
 }
 
 /* Step graphics stay transparent and explain the action they represent. */
 .workflow__visual--direction {
   display: grid;
   grid-template-columns: repeat(3, 4rem);
-  grid-template-rows: 5rem auto;
+  grid-template-rows: 4rem auto;
   gap: 0.6rem 1.2rem;
+  width: min(100%, 26rem);
+  height: 12rem;
+  justify-self: center;
   overflow: visible;
+  background: transparent;
 }
 .workflow__visual--direction i { grid-row: 1; justify-self: center; }
 .workflow__visual--direction i:nth-child(2) { align-self: center; }
@@ -845,6 +926,28 @@ main > app-showcase-section {
 .workflow__launch-export { width: 2.25rem; height: 2.25rem; font-size: 1.15rem; }
 @media (max-width: 640px) {
   .workflow__visual--launch .workflow__launch-frame { width: min(18rem, 100%); }
+}
+
+/* Keep each storyboard graphic compact and let the individual visual carry the focus. */
+.workflow__visual--story,
+.workflow__visual--direction,
+.workflow__visual--timeline,
+.workflow__visual--launch {
+  width: min(100%, 30rem);
+  height: 14rem;
+  justify-self: center;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+@media (max-width: 640px) {
+  .workflow__visual--story,
+  .workflow__visual--direction,
+  .workflow__visual--timeline,
+  .workflow__visual--launch {
+    height: 11rem;
+  }
 }
 
 .faq {

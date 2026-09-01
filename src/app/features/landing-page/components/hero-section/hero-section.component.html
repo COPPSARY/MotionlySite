@@ -11,20 +11,20 @@
     <span class="hero__background-particle hero__background-particle--three"></span>
   </div>
   <div class="hero__content" [appScrollReveal]="0">
-    <h1 class="hero__headline">Showcase your product <span class="heading-accent heading-swipe">professionally.</span></h1>
+    <h1 class="hero__headline">Present your product <span class="heading-accent heading-swipe">professionally.</span></h1>
     <p class="hero__subheadline">
-      Paste your website or tell us about your brand and product. Describe how
-      you want the video to feel, and get a polished launch video in minutes.
+      Tell us about your product, describe the feeling, and get a polished
+      launch video in minutes.
     </p>
 
     <form class="hero__composer" (ngSubmit)="submitPrompt()">
-      <label class="sr-only" for="motion-prompt">Describe your motion graphic</label>
+      <label class="sr-only" for="motion-prompt">Describe your video</label>
       <textarea
         id="motion-prompt"
         name="prompt"
         [(ngModel)]="prompt"
         rows="2"
-        [placeholder]="typedPrompt() || 'Describe your motion graphic...'"
+        [placeholder]="typedPrompt() || 'Describe your video...'"
       ></textarea>
       <div class="hero__composer-actions">
         <div class="hero__asset-picker">
