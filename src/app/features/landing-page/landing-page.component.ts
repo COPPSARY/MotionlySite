@@ -8,6 +8,7 @@ import { ShowcaseSectionComponent } from './components/showcase-section/showcase
 import { ResourcesSectionComponent } from './components/resources-section/resources-section.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
+import { LucideMessagesSquare } from '@lucide/angular';
 
 const COPPSARY_MEMBERS = [
   { name: 'Reaksa', github: 'PromSereyreaksa' },
@@ -51,6 +52,7 @@ const TESTIMONIALS = [
     ResourcesSectionComponent,
     FooterComponent,
     ScrollRevealDirective,
+    LucideMessagesSquare,
   ],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css',
@@ -136,8 +138,18 @@ export class LandingPageComponent implements OnDestroy {
 
   updateWorkflowStep(): void {
     if (!this.workflowTrack || !this.workflowSection) return;
-    const panelWidth = Math.max(1, this.workflowTrack.clientWidth);
-    const step = Math.max(0, Math.min(3, Math.round(this.workflowTrack.scrollLeft / panelWidth)));
+    const trackBounds = this.workflowTrack.getBoundingClientRect();
+    const trackCenter = trackBounds.left + trackBounds.width / 2;
+    const panels = Array.from(this.workflowTrack.querySelectorAll<HTMLElement>('.workflow__step'));
+    const step = panels.reduce((closestIndex, panel, index) => {
+      const panelBounds = panel.getBoundingClientRect();
+      const closestPanel = panels[closestIndex]?.getBoundingClientRect();
+      if (!closestPanel) return index;
+      return Math.abs(panelBounds.left + panelBounds.width / 2 - trackCenter)
+        < Math.abs(closestPanel.left + closestPanel.width / 2 - trackCenter)
+        ? index
+        : closestIndex;
+    }, 0);
     this.activeWorkflowStep.set(step);
     this.changeDetector.detectChanges();
   }

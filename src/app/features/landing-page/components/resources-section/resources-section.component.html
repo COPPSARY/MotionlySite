@@ -1,11 +1,10 @@
 <section class="resources">
   <div class="resources__inner">
     <div class="resources__copy" [appScrollReveal]="0">
-      <p class="resources__eyebrow">Built for teams shipping</p>
-      <h2>Everything you need to make <span class="heading-accent heading-typed">motion that moves.</span></h2>
+      <h2>Everything you need to ship <span class="heading-accent heading-typed">motion.</span></h2>
       <p>
-        Turn your product story into polished motion ads, refine every detail by
-        chatting, and ship high-quality video for every channel.
+        Turn your product story into a polished ad, refine it by chatting, and
+        ship it anywhere.
       </p>
     </div>
 
@@ -19,15 +18,32 @@
       <div>
         <span>Free to start. No card required.</span>
         <strong>Ready to ship your first ad?</strong>
-        <p>Paste your link, watch the ad build, then change anything by typing.</p>
+        <p>Paste a link, watch it build, then refine it by prompting.</p>
       </div>
-      <a class="resources__cta-link" [href]="editorUrl" (click)="openEditor($event)">
-        Open Motionly
-        <svg class="resources__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M7 17 17 7" />
-          <path d="M7 7h10v10" />
-        </svg>
-      </a>
+      <form class="resources__composer" (ngSubmit)="submitPrompt()">
+        <label class="sr-only" for="resources-prompt">Describe your video</label>
+        <textarea
+          id="resources-prompt"
+          name="resourcesPrompt"
+          [(ngModel)]="prompt"
+          rows="2"
+          placeholder="Describe your video..."
+        ></textarea>
+        <div class="resources__composer-actions">
+          <div class="resources__asset-picker">
+            <button class="resources__round-button" type="button" aria-label="Add an asset" [attr.aria-expanded]="assetMenuOpen" (click)="toggleAssetMenu()"><svg lucidePlus aria-hidden="true"></svg></button>
+            @if (assetMenuOpen) {
+              <div class="resources__asset-menu">
+                <button type="button" (click)="chooseAsset('image')">Upload image</button>
+                <button type="button" (click)="chooseAsset('video')">Upload video</button>
+              </div>
+            }
+          </div>
+          @if (selectedAsset) { <span class="resources__asset-name" title="Attached asset">{{ selectedAsset }}</span> }
+          <button class="resources__enhance-button" type="button" aria-label="Enhance prompt" title="Enhance prompt" (click)="enhancePrompt()"><svg lucideSparkles aria-hidden="true"></svg></button>
+          <button class="resources__submit" type="submit" aria-label="Start creating"><svg lucideArrowUp aria-hidden="true"></svg></button>
+        </div>
+      </form>
     </div>
   </div>
 </section>

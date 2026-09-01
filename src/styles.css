@@ -174,7 +174,7 @@ body {
 
 @keyframes heading-type {
   from { max-width: 0; }
-  to { max-width: 12ch; }
+  to { max-width: 22ch; }
 }
 
 @keyframes heading-swipe {

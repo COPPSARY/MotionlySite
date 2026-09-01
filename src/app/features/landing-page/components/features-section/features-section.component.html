@@ -15,22 +15,18 @@
 
     <figure class="features__editor" [appScrollReveal]="80">
       <div class="features__editor-scale">
-        @if (isAuthenticated()) {
-          <iframe
-            [src]="editorEmbedUrl"
-            title="Motionly live editor"
-            width="1920"
-            height="954"
-            loading="lazy"
-          ></iframe>
-        } @else {
-          <div class="features__editor-login">
-            <svg lucideSparkles aria-hidden="true"></svg>
-            <h3>Sign in to open the editor</h3>
-            <p>Your Motionly workspace is waiting.</p>
-            <a [routerLink]="['/login']" [queryParams]="{ returnUrl: '/editor' }">Log in to continue <svg lucideArrowUpRight aria-hidden="true"></svg></a>
-          </div>
-        }
+        <video
+          #previewVideo
+          class="features__editor-video"
+          src="/assets/motionly-web.mp4"
+          autoplay
+          [muted]="true"
+          loop
+          playsinline
+          preload="auto"
+          (canplay)="playPreview(previewVideo)"
+          aria-label="Motionly editor preview"
+        ></video>
       </div>
     </figure>
 

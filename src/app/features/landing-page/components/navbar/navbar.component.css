@@ -46,10 +46,11 @@
 }
 
 .navbar__links {
+  position: static;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--motionly-space-1);
+  gap: 0.35rem;
   min-width: 0;
 }
 
@@ -181,6 +182,7 @@
     grid-template-columns: 1fr;
     justify-content: stretch;
     gap: 0.25rem;
+    transform: none;
     padding: 0.6rem;
     border: 1px solid var(--motionly-border);
     border-radius: var(--motionly-radius-md);
