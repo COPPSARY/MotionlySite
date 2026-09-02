@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "start": "node scripts/write-runtime-config.mjs --development && ng serve",
+    "build": "node scripts/write-runtime-config.mjs && ng build",
+    "watch": "node scripts/write-runtime-config.mjs --development && ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:motionly": "node dist/motionly/server/server.mjs"
   },

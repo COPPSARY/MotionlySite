@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LucideArrowUp, LucidePlus, LucideSparkles } from '@lucide/angular';
 import { AuthService } from '../../../../shared/services/auth.service';
 import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reveal.directive';
+import { motionlyEditorUrl } from '../../../../shared/config/runtime-config';
 
 @Component({
   selector: 'app-hero-section',
@@ -85,13 +86,15 @@ export class HeroSectionComponent implements OnDestroy {
   }
 
   async submitPrompt(): Promise<void> {
-    const returnUrl = `/editor?prompt=${encodeURIComponent(this.prompt.trim())}`;
+    const prompt = this.prompt.trim();
+    if (!prompt) return;
+    const returnUrl = `/editor?prompt=${encodeURIComponent(prompt)}`;
     if (!await this.auth.currentUser()) {
       this.auth.setPendingReturnUrl(returnUrl);
       void this.router.navigate(['/login'], { queryParams: { returnUrl } });
       return;
     }
-    window.location.href = `https://app.motionly.site/?prompt=${encodeURIComponent(this.prompt.trim())}`;
+    window.location.href = motionlyEditorUrl(prompt);
   }
 
   enhancePrompt(): void {
