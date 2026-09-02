@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { motionlyApiUrl } from '../config/runtime-config';
 
 export interface MotionlyUser {
   readonly id: string;
@@ -17,29 +18,12 @@ interface AuthResponse {
   };
 }
 
-interface ApiConfig {
-  readonly motionlyApiUrl?: string;
-}
-
-const LOCAL_API_URL = 'http://localhost:3000';
-const PRODUCTION_API_URL = 'https://api.motionly.site';
 const PENDING_RETURN_KEY = 'motionly-pending-return-url';
-
-function apiBaseUrl(): string {
-  if (typeof window !== 'undefined') {
-    const config = (window as Window & { __MOTIONLY_CONFIG__?: ApiConfig }).__MOTIONLY_CONFIG__;
-    return config?.motionlyApiUrl?.replace(/\/$/, '') ||
-      (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-        ? LOCAL_API_URL
-        : PRODUCTION_API_URL);
-  }
-  return LOCAL_API_URL;
-}
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private readonly http = inject(HttpClient);
-  readonly apiUrl = apiBaseUrl();
+  readonly apiUrl = motionlyApiUrl();
 
   async currentUser(): Promise<MotionlyUser | null> {
     try {

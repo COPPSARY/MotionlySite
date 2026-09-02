@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { LucideArrowRight } from '@lucide/angular';
 import { AuthService } from '../../shared/services/auth.service';
 import { SeoService } from '../../shared/services/seo.service';
+import { editorUrlForReturnPath } from '../../shared/config/runtime-config';
 
 @Component({
   selector: 'app-login-page',
@@ -48,7 +49,7 @@ export class LoginPageComponent {
       return;
     }
     if (this.returnUrl.startsWith('/editor')) {
-      window.location.href = `https://app.motionly.site/${this.returnUrl.split('?')[1] ? `?${this.returnUrl.split('?')[1]}` : ''}`;
+      window.location.href = editorUrlForReturnPath(this.returnUrl);
       return;
     }
     void this.router.navigateByUrl(this.returnUrl.startsWith('/') ? this.returnUrl : '/');

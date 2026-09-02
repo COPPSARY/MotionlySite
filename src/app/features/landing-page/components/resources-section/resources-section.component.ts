@@ -7,6 +7,7 @@ import { EXTERNAL_LINKS, RESOURCE_LINKS } from '../../../../shared/constants/ext
 import { ResourceLink } from '../../../../shared/models/landing.models';
 import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reveal.directive';
 import { AuthService } from '../../../../shared/services/auth.service';
+import { motionlyEditorUrl } from '../../../../shared/config/runtime-config';
 
 @Component({
   selector: 'app-resources-section',
@@ -50,12 +51,14 @@ export class ResourcesSectionComponent {
   }
 
   async submitPrompt(): Promise<void> {
-    const returnUrl = `/editor?prompt=${encodeURIComponent(this.prompt.trim())}`;
+    const prompt = this.prompt.trim();
+    if (!prompt) return;
+    const returnUrl = `/editor?prompt=${encodeURIComponent(prompt)}`;
     if (!await this.auth.currentUser()) {
       this.auth.setPendingReturnUrl(returnUrl);
       void this.router.navigate(['/login'], { queryParams: { returnUrl } });
       return;
     }
-    window.location.href = `${this.editorUrl}?prompt=${encodeURIComponent(this.prompt.trim())}`;
+    window.location.href = motionlyEditorUrl(prompt);
   }
 }

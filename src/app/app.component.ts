@@ -1,6 +1,7 @@
 import { afterNextRender, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AuthService } from './shared/services/auth.service';
+import { editorUrlForReturnPath } from './shared/config/runtime-config';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ export class AppComponent {
         if (!user) return;
         const returnUrl = this.auth.consumePendingReturnUrl();
         if (!returnUrl || !returnUrl.startsWith('/editor')) return;
-        window.location.href = `https://app.motionly.site/${returnUrl.split('?')[1] ? `?${returnUrl.split('?')[1]}` : ''}`;
+        window.location.href = editorUrlForReturnPath(returnUrl);
       });
     });
   }
