@@ -11,7 +11,6 @@ declare global {
 
 const LOCAL_API_URL = 'http://localhost:3000';
 const LOCAL_EDITOR_URL = 'http://localhost:5173/';
-const PRODUCTION_API_URL = 'https://api.motionly.site';
 const PRODUCTION_EDITOR_URL = 'https://app.motionly.site/';
 
 function isLocalBrowser(): boolean {
@@ -23,7 +22,9 @@ export function motionlyApiUrl(): string {
   const configured = typeof window === 'undefined'
     ? undefined
     : window.__MOTIONLY_CONFIG__?.motionlyApiUrl;
-  return trimTrailingSlash(configured || (isLocalBrowser() ? LOCAL_API_URL : PRODUCTION_API_URL));
+  // Production deployments must provide MOTIONLY_API_URL through the
+  // generated runtime config; never silently target an old API origin.
+  return trimTrailingSlash(configured || (isLocalBrowser() ? LOCAL_API_URL : ''));
 }
 
 export function motionlyEditorUrl(prompt?: string): string {
