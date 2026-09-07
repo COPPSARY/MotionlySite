@@ -22,6 +22,11 @@ main > app-showcase-section {
   display: block;
 }
 
+main > app-spatial-showcase-section {
+  display: block;
+  margin-top: calc(-1 * var(--motionly-section-gap));
+}
+
 .problem {
   padding: 6rem 1.5rem;
 }
@@ -29,13 +34,13 @@ main > app-showcase-section {
 .problem__inner {
   display: grid;
   justify-items: center;
-  gap: 1.5rem;
+  gap: 1.75rem;
   width: min(74rem, 100%);
   margin: 0 auto;
 }
 
 .problem h2 {
-  max-width: 21ch;
+  max-width: 18ch;
   margin: 0;
   color: var(--motionly-text-primary);
   font-size: var(--motionly-type-section);
@@ -48,7 +53,7 @@ main > app-showcase-section {
 }
 
 .problem__lead {
-  max-width: 42rem;
+  max-width: 44rem;
   margin: 0;
   color: var(--motionly-text-secondary);
   font-size: 1.15rem;
@@ -60,16 +65,24 @@ main > app-showcase-section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: 100%;
-  margin-top: 2rem;
-  border-top: 1px solid var(--motionly-border-strong);
+  gap: 1rem;
+  margin-top: 2.5rem;
 }
 
 .problem__points article {
+  min-height: 14rem;
   padding: 1.5rem;
+  border: 1px solid var(--motionly-border);
+  border-radius: 1rem;
+  background: rgba(8, 9, 11, 0.62);
+  box-shadow: var(--motionly-shell-shadow);
+  transition: border-color 300ms ease, background 300ms ease, transform 300ms var(--motionly-ease-standard);
 }
 
-.problem__points article + article {
-  border-left: 1px solid var(--motionly-border);
+.problem__points article:hover {
+  border-color: var(--motionly-border-strong);
+  background: rgba(18, 21, 27, 0.72);
+  transform: translateY(-0.35rem);
 }
 
 .problem__point-icon {
@@ -85,7 +98,7 @@ main > app-showcase-section {
 }
 
 .problem__points h3 {
-  margin: 1.5rem 0 0.75rem;
+  margin: 1.4rem 0 0.75rem;
   color: var(--motionly-text-primary);
   font-size: 1.2rem;
 }
@@ -94,6 +107,12 @@ main > app-showcase-section {
   margin: 0;
   color: var(--motionly-text-secondary);
   line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .problem__points {
+    grid-template-columns: 1fr;
+  }
 }
 
 .workflow { padding: 6rem 1.5rem 7rem; }
@@ -134,48 +153,6 @@ main > app-showcase-section {
 @keyframes workflow-track { 50% { transform: scaleX(0.82); transform-origin: left; opacity: 0.65; } }
 @keyframes workflow-playhead { 50% { left: 72%; } }
 @keyframes workflow-launch { 50% { transform: rotate(8deg) scale(1.12); border-radius: 50%; } }
-
-.founder-note {
-  display: flex;
-  justify-content: center;
-  padding: 1rem 1.5rem 5rem;
-  background: none;
-  box-shadow: none;
-  filter: none;
-}
-
-.founder-note__content {
-  max-width: 70rem;
-  width: 100%;
-  padding: 2.4rem 0;
-  text-align: center;
-  background: none;
-  box-shadow: none;
-  filter: none;
-}
-
-.founder-note blockquote {
-  max-width: 54rem;
-  margin: 0 auto;
-  background: none;
-  box-shadow: none;
-  filter: none;
-}
-
-.founder-note p {
-  margin: 0;
-  color: var(--motionly-text-primary);
-  font-size: 1.35rem;
-  line-height: 1.55;
-  text-shadow: none;
-}
-
-.founder-note footer {
-  margin-top: 1rem;
-  color: var(--motionly-text-secondary);
-  font-weight: 700;
-  text-shadow: none;
-}
 
 .testimonials {
   display: flex;
@@ -532,23 +509,6 @@ main > app-showcase-section {
 
   .problem__points {
     grid-template-columns: 1fr;
-  }
-
-  .problem__points article + article {
-    border-top: 1px solid var(--motionly-border);
-    border-left: 0;
-  }
-
-  .founder-note {
-    padding: 0 1rem 3rem;
-  }
-
-  .founder-note__content {
-    padding: 1.5rem;
-  }
-
-  .founder-note p {
-    font-size: 1.1rem;
   }
 
   .team-love {

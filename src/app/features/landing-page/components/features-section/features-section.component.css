@@ -153,7 +153,8 @@
 
 .features__grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(17rem, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(18rem, auto);
   gap: 1rem;
   width: 100%;
 }
@@ -178,19 +179,18 @@
 
   .features__grid {
     grid-template-columns: 1fr;
+    grid-auto-rows: auto;
   }
 }
 
 @media (min-width: 641px) and (max-width: 1000px) {
-  .features__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+  .features__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 .feature-card {
   position: relative;
   display: flex;
-  min-height: 27rem;
+  min-height: 20rem;
   flex-direction: column;
   gap: 1.25rem;
   overflow: hidden;
@@ -201,6 +201,26 @@
     radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.08), transparent 52%),
     rgba(8, 9, 11, 0.72);
   box-shadow: var(--motionly-shell-shadow);
+}
+
+.feature-card:first-child {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.75fr) minmax(0, 1.25fr);
+  grid-template-rows: auto 1fr;
+  column-gap: 2rem;
+  min-height: 20rem;
+}
+
+.feature-card:first-child .feature-card__visual {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  align-items: center;
+  margin: 0 -1rem 0 0;
+}
+
+.feature-card:first-child .feature-card__visual img {
+  min-height: 14rem;
 }
 
 .feature-card__icon {
@@ -243,52 +263,19 @@
 
 .feature-card__visual {
   display: flex;
-  flex: 1;
+  flex: 0 0 auto;
   align-items: flex-end;
-  margin: 0 -1rem -0.8rem;
+  margin: auto -1rem -0.8rem;
   opacity: 0.78;
 }
 
-.feature-card__visual svg {
+.feature-card__visual img {
   width: 100%;
   height: auto;
-  min-height: 11rem;
-  fill: none;
-  stroke: rgba(245, 247, 250, 0.38);
-  stroke-width: 3;
-}
-
-.scene__panel,
-.scene__pulse,
-.scene__dot {
-  fill: rgba(245, 247, 250, 0.055);
-}
-
-.feature-card__scene * {
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.scene__line,
-.scene__clip,
-.scene__spark,
-.scene__bracket,
-.scene__arrow,
-.scene__arrow-head {
-  stroke-dasharray: 140;
-  animation: scene-draw 3s ease-in-out infinite;
-}
-
-.scene__panel {
-  animation: scene-glow 4s ease-in-out infinite;
-}
-
-.scene__cursor,
-.scene__pulse,
-.scene__scan,
-.scene__marker,
-.scene__dot {
-  animation: scene-shift 3.2s ease-in-out infinite;
+  display: block;
+  min-height: 0;
+  object-fit: contain;
+  object-position: center bottom;
 }
 
 .feature-card--mouse-pointer {
@@ -313,4 +300,33 @@
   background:
     radial-gradient(circle at 50% 100%, rgba(255, 99, 99, 0.16), transparent 52%),
     rgba(8, 9, 11, 0.72);
+}
+
+.feature-card--mouse-pointer,
+.feature-card--timeline,
+.feature-card--download {
+  background: rgba(8, 9, 11, 0.72);
+}
+
+.feature-card--download .feature-card__visual img {
+  width: 82%;
+  margin-inline: auto;
+}
+
+.feature-card--timeline .feature-card__visual {
+  padding-inline: 0.75rem;
+  padding-bottom: 1rem;
+}
+
+@media (max-width: 640px) {
+  .feature-card:first-child {
+    display: flex;
+    min-height: 20rem;
+    grid-column: auto;
+  }
+
+  .feature-card:first-child .feature-card__visual {
+    align-items: flex-end;
+    margin: 0 -1rem -0.8rem;
+  }
 }

@@ -3,8 +3,8 @@ import { Feature } from '../models/landing.models';
 export const FEATURES: readonly Feature[] = [
   {
     id: 'first-draft',
-    title: 'Create the first draft',
-    description: 'Start with familiar HTML and CSS, then turn your idea into a first scene.',
+    title: 'Prompt the first draft',
+    description: 'Describe your product or idea, then turn it into a polished first scene.',
     icon: 'mouse-pointer',
   },
   {
