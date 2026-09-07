@@ -4,7 +4,7 @@ import { SeoService } from '../../shared/services/seo.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeroSectionComponent } from './components/hero-section/hero-section.component';
 import { FeaturesSectionComponent } from './components/features-section/features-section.component';
-import { ShowcaseSectionComponent } from './components/showcase-section/showcase-section.component';
+import { SpatialShowcaseSectionComponent } from './components/spatial-showcase-section/spatial-showcase-section.component';
 import { ResourcesSectionComponent } from './components/resources-section/resources-section.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
@@ -48,7 +48,7 @@ const TESTIMONIALS = [
     NavbarComponent,
     HeroSectionComponent,
     FeaturesSectionComponent,
-    ShowcaseSectionComponent,
+    SpatialShowcaseSectionComponent,
     ResourcesSectionComponent,
     FooterComponent,
     ScrollRevealDirective,

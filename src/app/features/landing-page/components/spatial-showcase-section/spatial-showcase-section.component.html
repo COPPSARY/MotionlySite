@@ -1,0 +1,31 @@
+<section
+  class="spatial-showcase"
+  aria-labelledby="spatial-showcase-title"
+  [style.--pointer-x.px]="pointerX()"
+  [style.--pointer-y.px]="pointerY()"
+  (pointermove)="onPointerMove($event)"
+  (pointerleave)="resetPointer()"
+>
+  <div class="spatial-showcase__wall">
+    <div class="spatial-showcase__glow" aria-hidden="true"></div>
+    @for (video of videos; track video.src) {
+      <figure class="spatial-showcase__card spatial-showcase__card--{{ video.position }}">
+        <video
+          [src]="video.src"
+          [attr.aria-label]="video.label"
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="metadata"
+        ></video>
+        <figcaption>{{ video.label }}</figcaption>
+      </figure>
+    }
+    <div class="spatial-showcase__center">
+      <span aria-hidden="true">✦</span>
+      <h2 id="spatial-showcase-title">SaaS stories,<br />in <span class="heading-accent">motion.</span></h2>
+      <p>AI-powered videos for product marketing, launches, and promos.</p>
+    </div>
+  </div>
+</section>

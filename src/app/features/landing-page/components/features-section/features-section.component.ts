@@ -36,6 +36,19 @@ export class FeaturesSectionComponent {
   readonly editorUrl = EXTERNAL_LINKS.editor;
   readonly features: readonly Feature[] = FEATURES;
 
+  visualAsset(icon: string): string {
+    switch (icon) {
+      case 'mouse-pointer':
+        return 'assets/prompt.png';
+      case 'timeline':
+        return 'assets/timeframe.png';
+      case 'download':
+        return 'assets/export.png';
+      default:
+        return 'assets/prompt.png';
+    }
+  }
+
   playPreview(video: HTMLVideoElement): void {
     void video.play().catch(() => undefined);
   }
