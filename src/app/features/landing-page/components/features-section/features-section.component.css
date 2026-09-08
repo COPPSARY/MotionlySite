@@ -14,63 +14,6 @@
   width: min(74rem, 100%);
 }
 
-.features__copy {
-  display: grid;
-  grid-template-columns: 0.8fr 1fr;
-  gap: 1.5rem;
-  align-items: start;
-}
-
-.features__copy h2,
-.features__copy p {
-  margin: 0;
-}
-
-.features__copy h2 {
-  max-width: 16ch;
-  font-size: 2.65rem;
-  line-height: 1.02;
-  letter-spacing: 0;
-}
-
-.features__description {
-  display: grid;
-  justify-items: start;
-  gap: 1rem;
-}
-
-.features__description p {
-  max-width: 38rem;
-  color: var(--motionly-text-secondary);
-  font-size: 1.08rem;
-  line-height: 1.6;
-}
-
-.features__editor-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.7rem 1rem;
-  border: 1px solid var(--motionly-logo-start);
-  border-radius: 0.65rem;
-  background: var(--motionly-accent-gradient);
-  color: var(--motionly-text-primary);
-  font-weight: 750;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: transform 180ms ease, box-shadow 180ms ease;
-}
-
-.features__editor-link:hover {
-  box-shadow: 0 0 1.5rem rgba(124, 247, 197, 0.25);
-  transform: translateY(-2px);
-}
-
-.features__editor-link svg {
-  width: 0.9rem;
-  height: 0.9rem;
-}
-
 .features__eyebrow {
   grid-column: 1 / -1;
   color: var(--motionly-text-muted);
@@ -164,13 +107,8 @@
     padding: 4.5rem 1rem;
   }
 
-  .features__copy,
   .features__workflow-copy {
     grid-template-columns: 1fr;
-  }
-
-  .features__copy h2 {
-    font-size: 2.35rem;
   }
 
   .features__editor {
