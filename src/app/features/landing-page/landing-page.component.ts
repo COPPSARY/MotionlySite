@@ -67,9 +67,6 @@ export class LandingPageComponent implements OnDestroy {
   }));
   readonly testimonials = TESTIMONIALS;
   readonly activeTestimonial = signal(0);
-  readonly activeWorkflowStep = signal(0);
-  private workflowTrack?: HTMLElement;
-  private workflowSection?: HTMLElement;
   private testimonialTimer?: number;
 
   ngOnDestroy(): void {
@@ -113,11 +110,6 @@ export class LandingPageComponent implements OnDestroy {
       window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
 
       this.testimonialTimer = window.setInterval(() => this.nextTestimonial(), 6500);
-
-      this.workflowTrack = document.querySelector<HTMLElement>('.workflow__timeline') ?? undefined;
-      this.workflowSection = document.querySelector<HTMLElement>('.workflow') ?? undefined;
-      if (!this.workflowTrack || !this.workflowSection) return;
-      this.updateWorkflowStep();
     });
   }
 
@@ -136,38 +128,23 @@ export class LandingPageComponent implements OnDestroy {
     this.changeDetector.markForCheck();
   }
 
-  updateWorkflowStep(): void {
-    if (!this.workflowTrack || !this.workflowSection) return;
-    const trackBounds = this.workflowTrack.getBoundingClientRect();
-    const trackCenter = trackBounds.left + trackBounds.width / 2;
-    const panels = Array.from(this.workflowTrack.querySelectorAll<HTMLElement>('.workflow__step'));
-    const step = panels.reduce((closestIndex, panel, index) => {
-      const panelBounds = panel.getBoundingClientRect();
-      const closestPanel = panels[closestIndex]?.getBoundingClientRect();
-      if (!closestPanel) return index;
-      return Math.abs(panelBounds.left + panelBounds.width / 2 - trackCenter)
-        < Math.abs(closestPanel.left + closestPanel.width / 2 - trackCenter)
-        ? index
-        : closestIndex;
-    }, 0);
-    this.activeWorkflowStep.set(step);
-    this.changeDetector.detectChanges();
+  updateWorkflowGlow(event: PointerEvent): void {
+    const card = event.currentTarget as HTMLElement | null;
+    if (!card) return;
+    const bounds = card.getBoundingClientRect();
+    const x = ((event.clientX - bounds.left) / bounds.width) * 100;
+    const y = ((event.clientY - bounds.top) / bounds.height) * 100;
+    card.style.setProperty('--glow-x', `${x}%`);
+    card.style.setProperty('--glow-y', `${y}%`);
+    card.style.setProperty('--glow-intensity', '1');
+    card.style.setProperty('--border-intensity', '1');
   }
 
-  goToWorkflowStep(step: number): void {
-    if (!this.workflowTrack) return;
-    const safeStep = Math.max(0, Math.min(3, step));
-    const panels = this.workflowTrack.querySelectorAll<HTMLElement>('.workflow__step');
-    const targetPanel = panels.item(safeStep);
-    if (!targetPanel) return;
-    this.activeWorkflowStep.set(safeStep);
-    this.changeDetector.markForCheck();
-    const trackBounds = this.workflowTrack.getBoundingClientRect();
-    const panelBounds = targetPanel.getBoundingClientRect();
-    const targetLeft = Math.max(
-      0,
-      this.workflowTrack.scrollLeft + panelBounds.left - trackBounds.left,
-    );
-    this.workflowTrack.scrollLeft = targetLeft;
+  resetWorkflowGlow(event: PointerEvent): void {
+    const card = event.currentTarget as HTMLElement | null;
+    if (!card) return;
+    card.style.setProperty('--glow-intensity', '0');
+    card.style.setProperty('--border-intensity', '0');
   }
+
 }
