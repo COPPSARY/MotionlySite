@@ -188,15 +188,15 @@ main > app-spatial-showcase-section {
 
 .testimonials__think {
   position: relative;
-  display: inline-grid;
-  min-width: 3.45ch;
-  place-items: center;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35em;
   vertical-align: baseline;
 }
 
 .testimonials__think-word,
 .testimonials__think-icon {
-  grid-area: 1 / 1;
+  flex: 0 0 auto;
   transition: opacity 220ms ease, transform 220ms ease;
 }
 
@@ -207,6 +207,7 @@ main > app-spatial-showcase-section {
 .testimonials__think-icon {
   width: 1.55em;
   height: 1.35em;
+  vertical-align: middle;
   color: var(--motionly-logo-end);
   opacity: 0;
   transform: scale(0.7) rotate(-8deg);
@@ -1093,7 +1094,7 @@ main > app-spatial-showcase-section {
   .workflow__roadmap { width: calc(100% - 2rem); margin-bottom: 1.25rem; }
 }
 
-.workflow { position: relative; isolation: isolate; display: block; height: auto; min-height: 0; padding: 6rem 1.5rem 7rem; overflow: hidden; background: #07080a; }
+.workflow { position: relative; isolation: isolate; display: block; height: auto; min-height: 0; padding: 6rem 1.5rem 7rem; overflow: hidden; overscroll-behavior: auto; background: #07080a; }
 .workflow__pin { position: relative; z-index: 1; width: min(74rem, 100%); margin: 0 auto; padding: 0; }
 .workflow__heading { display: grid; grid-template-columns: 1fr auto; align-items: end; justify-items: stretch; gap: 2rem; width: 100%; max-width: none; margin: 0 0 2rem; text-align: left; }
 .workflow__heading h2 { margin: 0; font-size: clamp(2.5rem, 5vw, 4.5rem); }
