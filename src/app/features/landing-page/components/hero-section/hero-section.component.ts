@@ -1,10 +1,8 @@
 import { afterNextRender, ChangeDetectionStrategy, Component, inject, OnDestroy, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { LucideArrowUp, LucidePlus, LucideSparkles } from '@lucide/angular';
-import { AuthService } from '../../../../shared/services/auth.service';
+import { motionlyEditorUrl } from '../../../../shared/constants/external-links';
 import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reveal.directive';
-import { motionlyEditorUrl } from '../../../../shared/config/runtime-config';
 
 @Component({
   selector: 'app-hero-section',
@@ -21,8 +19,6 @@ import { motionlyEditorUrl } from '../../../../shared/config/runtime-config';
   styleUrl: './hero-section.component.css',
 })
 export class HeroSectionComponent implements OnDestroy {
-  private readonly router = inject(Router);
-  private readonly auth = inject(AuthService);
   prompt = '';
   assetMenuOpen = false;
   selectedAsset = '';
@@ -64,6 +60,13 @@ export class HeroSectionComponent implements OnDestroy {
     input.click();
   }
 
+  onPromptKeydown(event: KeyboardEvent): void {
+    if (event.key !== 'Enter' || event.shiftKey) return;
+
+    event.preventDefault();
+    void this.submitPrompt();
+  }
+
   private startPromptTyping(): void {
     let exampleIndex = 0;
     let characterIndex = 0;
@@ -86,15 +89,7 @@ export class HeroSectionComponent implements OnDestroy {
   }
 
   async submitPrompt(): Promise<void> {
-    const prompt = this.prompt.trim();
-    if (!prompt) return;
-    const returnUrl = `/editor?prompt=${encodeURIComponent(prompt)}`;
-    if (!await this.auth.currentUser()) {
-      this.auth.setPendingReturnUrl(returnUrl);
-      void this.router.navigate(['/login'], { queryParams: { returnUrl } });
-      return;
-    }
-    window.location.href = motionlyEditorUrl(prompt);
+    window.location.href = `${motionlyEditorUrl()}?prompt=${encodeURIComponent(this.prompt.trim())}`;
   }
 
   enhancePrompt(): void {

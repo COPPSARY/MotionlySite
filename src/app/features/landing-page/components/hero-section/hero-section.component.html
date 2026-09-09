@@ -25,6 +25,7 @@
         [(ngModel)]="prompt"
         rows="2"
         [placeholder]="typedPrompt() || 'Describe your video...'"
+        (keydown)="onPromptKeydown($event)"
       ></textarea>
       <div class="hero__composer-actions">
         <div class="hero__asset-picker">

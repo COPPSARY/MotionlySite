@@ -19,17 +19,10 @@
       <span>Editor</span>
       <svg lucideArrowUpRight aria-hidden="true"></svg>
     </a>
-    @if (currentUser(); as user) {
-      <span class="navbar__account" title="Signed in">
-        <span class="navbar__account-dot" aria-hidden="true"></span>
-        {{ user.displayName || user.email }}
-      </span>
-    } @else {
-      <a class="navbar__link" routerLink="/login" (click)="closeMenu()">
-        <svg lucideLogIn aria-hidden="true"></svg>
-        <span>Log in</span>
-      </a>
-    }
+    <a class="navbar__link" routerLink="/login" (click)="closeMenu()">
+      <svg lucideLogIn aria-hidden="true"></svg>
+      <span>Log in</span>
+    </a>
     <div class="navbar__mobile-badges">
       <app-product-hunt-badge size="compact" />
       <app-github-star-badge size="compact" />
