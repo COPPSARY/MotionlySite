@@ -12,6 +12,13 @@ export const EXTERNAL_LINKS = {
   contactEmail: 'mailto:coppsary@gmail.com',
 } as const;
 
+export function motionlyEditorUrl(): string {
+  if (typeof window !== 'undefined' && ['localhost', '127.0.0.1'].includes(window.location.hostname)) {
+    return 'http://localhost:5173/';
+  }
+  return EXTERNAL_LINKS.editor;
+}
+
 export const RESOURCE_LINKS: readonly ResourceLink[] = [
   {
     id: 'docs',
