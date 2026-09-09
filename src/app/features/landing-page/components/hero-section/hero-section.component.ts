@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { LucideArrowUp, LucidePlus, LucideSparkles } from '@lucide/angular';
 import { motionlyEditorUrl } from '../../../../shared/constants/external-links';
 import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reveal.directive';
+import { motionlyEditorUrl } from '../../../../shared/config/runtime-config';
 
 @Component({
   selector: 'app-hero-section',
