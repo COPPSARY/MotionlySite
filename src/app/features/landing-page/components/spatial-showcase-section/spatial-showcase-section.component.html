@@ -1,31 +1,30 @@
-<section
-  class="spatial-showcase"
-  aria-labelledby="spatial-showcase-title"
-  [style.--pointer-x.px]="pointerX()"
-  [style.--pointer-y.px]="pointerY()"
-  (pointermove)="onPointerMove($event)"
-  (pointerleave)="resetPointer()"
->
-  <div class="spatial-showcase__wall">
-    <div class="spatial-showcase__glow" aria-hidden="true"></div>
-    @for (video of videos; track video.src) {
-      <figure class="spatial-showcase__card spatial-showcase__card--{{ video.position }}">
-        <video
-          [src]="video.src"
-          [attr.aria-label]="video.label"
-          autoplay
-          loop
-          muted
-          playsinline
-          preload="metadata"
-        ></video>
-        <figcaption>{{ video.label }}</figcaption>
-      </figure>
-    }
-    <div class="spatial-showcase__center">
-      <span aria-hidden="true">✦</span>
-      <h2 id="spatial-showcase-title">SaaS stories,<br />in <span class="heading-accent">motion.</span></h2>
-      <p>AI-powered videos for product marketing, launches, and promos.</p>
+<section class="spatial-showcase" aria-labelledby="spatial-showcase-title">
+  <header class="spatial-showcase__heading" [appScrollReveal]="0">
+    <h2 id="spatial-showcase-title">SaaS stories, in <span class="heading-accent">motion.</span></h2>
+    <p>AI-powered videos for product marketing, launches, and promos.</p>
+  </header>
+  <div class="spatial-showcase__stage">
+    <div class="spatial-showcase__plane">
+      @for (row of rows; track $index; let r = $index) {
+        <div class="spatial-showcase__track" [class.spatial-showcase__track--reverse]="r === 1">
+          @for (copy of copies; track copy) {
+            @for (video of row; track video.src) {
+              <div class="spatial-showcase__tile" [attr.aria-hidden]="copy > 0 ? 'true' : null">
+                <video
+                  [src]="video.src"
+                  [poster]="video.poster"
+                  [attr.aria-label]="copy === 0 ? video.label : null"
+                  autoplay
+                  loop
+                  [muted]="true"
+                  playsinline
+                  preload="metadata"
+                ></video>
+              </div>
+            }
+          }
+        </div>
+      }
     </div>
   </div>
 </section>

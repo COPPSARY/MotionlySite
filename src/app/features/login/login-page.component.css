@@ -31,7 +31,7 @@
   position: absolute; top: 1.6rem; left: 1.8rem; z-index: 2;
   display: inline-flex; align-items: center; gap: 0.6rem;
   color: var(--motionly-text-primary); font-size: 1rem; font-weight: 750;
-  letter-spacing: -0.03em; text-decoration: none;
+  letter-spacing: -0.01em; text-decoration: none;
 }
 .login-page__brand img { object-fit: contain; }
 .login-card {
@@ -50,7 +50,7 @@
 .login-card__mark img { object-fit: contain; }
 .login-card h1 {
   margin: 0; color: var(--motionly-text-primary); font-size: clamp(2.4rem, 6vw, 3.35rem);
-  letter-spacing: -0.065em;
+  letter-spacing: -0.025em;
 }
 .login-card__subtitle {
   margin: 0.8rem 0 0;
