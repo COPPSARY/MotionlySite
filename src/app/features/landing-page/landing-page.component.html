@@ -2,14 +2,16 @@
   <app-navbar />
   <main>
     <app-hero-section />
+    <app-spatial-showcase-section />
     <section id="about" class="problem" aria-labelledby="problem-title">
       <div class="problem__inner">
         <h2 id="problem-title" [appScrollReveal]="0">
-          Why teams use <span class="heading-accent heading-swipe">Motionly</span>
+          Your first draft
+          <span class="heading-accent heading-swipe">doesn’t have to be your final one.</span>
         </h2>
         <p class="problem__lead">
-          Turn a prompt into polished video you can still edit—scenes, timeline,
-          and details included.
+          Create launch videos, promos, and SaaS explainers designed to market
+          your product—without giving up creative control.
         </p>
         <div class="problem__points">
           <article [appScrollReveal]="80">
@@ -17,9 +19,9 @@
               <path d="m12 3 1.45 4.55L18 9l-4.55 1.45L12 15l-1.45-4.55L6 9l4.55-1.45L12 3Z" />
               <path d="m19 15 .65 2.35L22 18l-2.35.65L19 21l-.65-2.35L16 18l2.35-.65L19 15Z" />
             </svg>
-            <h3>Start with your story</h3>
+            <h3>Move faster</h3>
             <p>
-              Give Motionly a link or a simple brief to create your first draft.
+              Go from a simple brief to a polished first direction in minutes.
             </p>
           </article>
           <article [appScrollReveal]="140">
@@ -27,9 +29,9 @@
               <path d="M4 6h16M4 12h16M4 18h16" />
               <path d="M8 4v4M15 10v4M11 16v4" />
             </svg>
-            <h3>Shape the direction</h3>
+            <h3>Keep creative control</h3>
             <p>
-              Set the tone, pacing, and visual direction before you refine it.
+              Refine scenes, pacing, and details instead of settling for a fixed result.
             </p>
           </article>
           <article [appScrollReveal]="200">
@@ -37,52 +39,40 @@
               <rect x="4" y="4" width="16" height="16" rx="3" />
               <path d="m8 12 2.5 2.5L16 9" />
             </svg>
-            <h3>Make it feel finished</h3>
+            <h3>Stay on brand</h3>
             <p>
-              Edit scenes and timing directly—no need to start over with a new
-              prompt.
+              Shape every explainer and launch video around your product and voice.
             </p>
           </article>
         </div>
       </div>
     </section>
-    <app-showcase-section />
     <section id="get-started" class="workflow" aria-labelledby="workflow-title">
       <div class="workflow__pin">
         <div class="workflow__heading" [appScrollReveal]="0">
-          <h2 id="workflow-title">How Motionly <span class="heading-accent">works</span></h2>
-          <p>From idea to <span class="heading-accent heading-typed">launch-ready</span> motion.</p>
+          <h2 id="workflow-title">Motionly <span class="heading-accent">AI Pipeline</span></h2>
+          <p>From intent to a <span class="heading-accent heading-typed">production-ready</span> animation.</p>
         </div>
-        <div class="workflow__roadmap" aria-label="Motionly workflow progress">
-          <span class="workflow__roadmap-progress" [style.width.%]="(activeWorkflowStep() / 3) * 100"></span>
-          <button class="workflow__roadmap-step" type="button" aria-label="Go to step 1" [class.workflow__roadmap-step--active]="activeWorkflowStep() === 0" [class.workflow__roadmap-step--past]="activeWorkflowStep() > 0" (click)="goToWorkflowStep(0)">01</button>
-          <button class="workflow__roadmap-step" type="button" aria-label="Go to step 2" [class.workflow__roadmap-step--active]="activeWorkflowStep() === 1" [class.workflow__roadmap-step--past]="activeWorkflowStep() > 1" (click)="goToWorkflowStep(1)">02</button>
-          <button class="workflow__roadmap-step" type="button" aria-label="Go to step 3" [class.workflow__roadmap-step--active]="activeWorkflowStep() === 2" [class.workflow__roadmap-step--past]="activeWorkflowStep() > 2" (click)="goToWorkflowStep(2)">03</button>
-          <button class="workflow__roadmap-step" type="button" aria-label="Go to step 4" [class.workflow__roadmap-step--active]="activeWorkflowStep() === 3" (click)="goToWorkflowStep(3)">04</button>
-        </div>
-        <div class="workflow__timeline" (scroll)="updateWorkflowStep()">
-          <div class="workflow__line" aria-hidden="true"><span></span></div>
-          <article class="workflow__step workflow__step--idea" [class.workflow__step--active]="activeWorkflowStep() === 0" [appScrollReveal]="40">
-          <div class="workflow__visual workflow__visual--story" aria-hidden="true">
-            <div class="workflow__prompt-card">
-              <div class="workflow__prompt-top"><span class="workflow__prompt-dot"></span><span>Motionly</span><i></i><i></i><i></i></div>
-              <div class="workflow__prompt-body"><span class="workflow__prompt-text">Create a bold launch video for our new product...</span><b class="workflow__prompt-caret"></b></div>
-              <div class="workflow__prompt-footer"><span>Enhance prompt</span><strong>↑</strong></div>
-            </div>
-          </div>
-          <div class="workflow__copy"><h3>Bring the idea</h3><p>Paste your site or describe your product. Motionly turns a simple brief into the first motion direction.</p></div>
+        <div class="workflow__cards">
+          <article class="workflow__step" [appScrollReveal]="40" (pointermove)="updateWorkflowGlow($event)" (pointerleave)="resetWorkflowGlow($event)">
+          <img class="workflow__pipeline-image" src="assets/pipeline-intent.png" alt="Abstract blue intent illustration" />
+          <div class="workflow__copy"><h3>Intent Understanding</h3><p>Understand what the user wants to communicate, their product, audience, and goal.</p></div>
           </article>
-          <article class="workflow__step workflow__step--reverse" [class.workflow__step--active]="activeWorkflowStep() === 1" [appScrollReveal]="100">
-          <div class="workflow__visual workflow__visual--direction" aria-hidden="true"><i></i><i></i><i></i><span></span><b>tone</b><b>pace</b><b>style</b></div>
-          <div class="workflow__copy"><h3>Set the direction</h3><p>Choose the feeling, pacing, and visual style that fits your product.</p></div>
+          <article class="workflow__step" [appScrollReveal]="100" (pointermove)="updateWorkflowGlow($event)" (pointerleave)="resetWorkflowGlow($event)">
+          <img class="workflow__pipeline-image" src="assets/pipeline-director.png" alt="Abstract storyboard and camera illustration" />
+          <div class="workflow__copy"><h3>Creative Director</h3><p>Turn that intent into a visual story—planning the scenes, composition, camera, pacing, and transitions.</p></div>
           </article>
-          <article class="workflow__step" [class.workflow__step--active]="activeWorkflowStep() === 2" [appScrollReveal]="160">
-          <div class="workflow__visual workflow__visual--timeline" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
-          <div class="workflow__copy"><h3>Shape the motion</h3><p>Refine scenes, timing, easing, and transitions on the visual timeline.</p></div>
+          <article class="workflow__step" [appScrollReveal]="160" (pointermove)="updateWorkflowGlow($event)" (pointerleave)="resetWorkflowGlow($event)">
+          <img class="workflow__pipeline-image" src="assets/pipeline-marketing.png" alt="Abstract marketing megaphone illustration" />
+          <div class="workflow__copy"><h3>Marketing</h3><p>Strengthen the story using the right messaging framework, such as PAS: Problem → Agitation → Solution.</p></div>
           </article>
-          <article class="workflow__step workflow__step--reverse" [class.workflow__step--active]="activeWorkflowStep() === 3" [appScrollReveal]="220">
-          <div class="workflow__visual workflow__visual--launch" aria-hidden="true"><div class="workflow__launch-frame"><span class="workflow__launch-export">↓</span><i></i><i></i><i></i></div><strong>READY TO POST</strong></div>
-          <div class="workflow__copy"><h3>Export the final cut</h3><p>Preview the finished video, export it in the right format, and post it wherever your audience is.</p></div>
+          <article class="workflow__step" [appScrollReveal]="220" (pointermove)="updateWorkflowGlow($event)" (pointerleave)="resetWorkflowGlow($event)">
+          <img class="workflow__pipeline-image" src="assets/pipeline-generation.png" alt="Abstract animation generation illustration" />
+          <div class="workflow__copy"><h3>Generation</h3><p>Pass the structured plan to the AI, which writes the actual animation using Motionly’s skills and capabilities.</p></div>
+          </article>
+          <article class="workflow__step" [appScrollReveal]="280" (pointermove)="updateWorkflowGlow($event)" (pointerleave)="resetWorkflowGlow($event)">
+          <img class="workflow__pipeline-image" src="assets/pipeline-quality.png" alt="Abstract quality check shield illustration" />
+          <div class="workflow__copy"><h3>Quality Gate</h3><p>The AI checks its output against Motionly’s creative and technical rules, identifies problems, and repairs them before returning the final animation.</p></div>
           </article>
         </div>
       </div>

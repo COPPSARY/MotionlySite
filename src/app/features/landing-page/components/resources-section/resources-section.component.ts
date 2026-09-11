@@ -1,13 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { LucideArrowUp, LucidePlus, LucideSparkles } from '@lucide/angular';
 import { ExternalLinkCardComponent } from '../../../../shared/components/external-link-card/external-link-card.component';
-import { EXTERNAL_LINKS, RESOURCE_LINKS } from '../../../../shared/constants/external-links';
+import { RESOURCE_LINKS, motionlyEditorUrl } from '../../../../shared/constants/external-links';
 import { ResourceLink } from '../../../../shared/models/landing.models';
 import { ScrollRevealDirective } from '../../../../shared/directives/scroll-reveal.directive';
-import { AuthService } from '../../../../shared/services/auth.service';
-import { motionlyEditorUrl } from '../../../../shared/config/runtime-config';
 
 @Component({
   selector: 'app-resources-section',
@@ -18,10 +15,7 @@ import { motionlyEditorUrl } from '../../../../shared/config/runtime-config';
   styleUrl: './resources-section.component.css',
 })
 export class ResourcesSectionComponent {
-  private readonly router = inject(Router);
-  private readonly auth = inject(AuthService);
   readonly resources: readonly ResourceLink[] = RESOURCE_LINKS;
-  readonly editorUrl = EXTERNAL_LINKS.editor;
   prompt = '';
   assetMenuOpen = false;
   selectedAsset = '';
@@ -43,6 +37,13 @@ export class ResourcesSectionComponent {
     input.click();
   }
 
+  onPromptKeydown(event: KeyboardEvent): void {
+    if (event.key !== 'Enter' || event.shiftKey) return;
+
+    event.preventDefault();
+    void this.submitPrompt();
+  }
+
   enhancePrompt(): void {
     const prompt = this.prompt.trim();
     this.prompt = prompt
@@ -51,14 +52,6 @@ export class ResourcesSectionComponent {
   }
 
   async submitPrompt(): Promise<void> {
-    const prompt = this.prompt.trim();
-    if (!prompt) return;
-    const returnUrl = `/editor?prompt=${encodeURIComponent(prompt)}`;
-    if (!await this.auth.currentUser()) {
-      this.auth.setPendingReturnUrl(returnUrl);
-      void this.router.navigate(['/login'], { queryParams: { returnUrl } });
-      return;
-    }
-    window.location.href = motionlyEditorUrl(prompt);
+    window.location.href = `${motionlyEditorUrl()}?prompt=${encodeURIComponent(this.prompt.trim())}`;
   }
 }

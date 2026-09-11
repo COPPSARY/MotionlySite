@@ -22,6 +22,11 @@ main > app-showcase-section {
   display: block;
 }
 
+main > app-spatial-showcase-section {
+  display: block;
+  margin-top: calc(-1 * var(--motionly-section-gap));
+}
+
 .problem {
   padding: 6rem 1.5rem;
 }
@@ -29,13 +34,13 @@ main > app-showcase-section {
 .problem__inner {
   display: grid;
   justify-items: center;
-  gap: 1.5rem;
+  gap: 1.75rem;
   width: min(74rem, 100%);
   margin: 0 auto;
 }
 
 .problem h2 {
-  max-width: 21ch;
+  max-width: 18ch;
   margin: 0;
   color: var(--motionly-text-primary);
   font-size: var(--motionly-type-section);
@@ -48,7 +53,7 @@ main > app-showcase-section {
 }
 
 .problem__lead {
-  max-width: 42rem;
+  max-width: 44rem;
   margin: 0;
   color: var(--motionly-text-secondary);
   font-size: 1.15rem;
@@ -60,16 +65,24 @@ main > app-showcase-section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: 100%;
-  margin-top: 2rem;
-  border-top: 1px solid var(--motionly-border-strong);
+  gap: 1rem;
+  margin-top: 2.5rem;
 }
 
 .problem__points article {
+  min-height: 14rem;
   padding: 1.5rem;
+  border: 1px solid var(--motionly-border);
+  border-radius: 1rem;
+  background: rgba(8, 9, 11, 0.62);
+  box-shadow: var(--motionly-shell-shadow);
+  transition: border-color 300ms ease, background 300ms ease, transform 300ms var(--motionly-ease-standard);
 }
 
-.problem__points article + article {
-  border-left: 1px solid var(--motionly-border);
+.problem__points article:hover {
+  border-color: var(--motionly-border-strong);
+  background: rgba(18, 21, 27, 0.72);
+  transform: translateY(-0.35rem);
 }
 
 .problem__point-icon {
@@ -85,7 +98,7 @@ main > app-showcase-section {
 }
 
 .problem__points h3 {
-  margin: 1.5rem 0 0.75rem;
+  margin: 1.4rem 0 0.75rem;
   color: var(--motionly-text-primary);
   font-size: 1.2rem;
 }
@@ -94,6 +107,12 @@ main > app-showcase-section {
   margin: 0;
   color: var(--motionly-text-secondary);
   line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .problem__points {
+    grid-template-columns: 1fr;
+  }
 }
 
 .workflow { padding: 6rem 1.5rem 7rem; }
@@ -135,48 +154,6 @@ main > app-showcase-section {
 @keyframes workflow-playhead { 50% { left: 72%; } }
 @keyframes workflow-launch { 50% { transform: rotate(8deg) scale(1.12); border-radius: 50%; } }
 
-.founder-note {
-  display: flex;
-  justify-content: center;
-  padding: 1rem 1.5rem 5rem;
-  background: none;
-  box-shadow: none;
-  filter: none;
-}
-
-.founder-note__content {
-  max-width: 70rem;
-  width: 100%;
-  padding: 2.4rem 0;
-  text-align: center;
-  background: none;
-  box-shadow: none;
-  filter: none;
-}
-
-.founder-note blockquote {
-  max-width: 54rem;
-  margin: 0 auto;
-  background: none;
-  box-shadow: none;
-  filter: none;
-}
-
-.founder-note p {
-  margin: 0;
-  color: var(--motionly-text-primary);
-  font-size: 1.35rem;
-  line-height: 1.55;
-  text-shadow: none;
-}
-
-.founder-note footer {
-  margin-top: 1rem;
-  color: var(--motionly-text-secondary);
-  font-weight: 700;
-  text-shadow: none;
-}
-
 .testimonials {
   display: flex;
   justify-content: center;
@@ -211,15 +188,15 @@ main > app-showcase-section {
 
 .testimonials__think {
   position: relative;
-  display: inline-grid;
-  min-width: 3.45ch;
-  place-items: center;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35em;
   vertical-align: baseline;
 }
 
 .testimonials__think-word,
 .testimonials__think-icon {
-  grid-area: 1 / 1;
+  flex: 0 0 auto;
   transition: opacity 220ms ease, transform 220ms ease;
 }
 
@@ -230,6 +207,7 @@ main > app-showcase-section {
 .testimonials__think-icon {
   width: 1.55em;
   height: 1.35em;
+  vertical-align: middle;
   color: var(--motionly-logo-end);
   opacity: 0;
   transform: scale(0.7) rotate(-8deg);
@@ -532,23 +510,6 @@ main > app-showcase-section {
 
   .problem__points {
     grid-template-columns: 1fr;
-  }
-
-  .problem__points article + article {
-    border-top: 1px solid var(--motionly-border);
-    border-left: 0;
-  }
-
-  .founder-note {
-    padding: 0 1rem 3rem;
-  }
-
-  .founder-note__content {
-    padding: 1.5rem;
-  }
-
-  .founder-note p {
-    font-size: 1.1rem;
   }
 
   .team-love {
@@ -1131,4 +1092,106 @@ main > app-showcase-section {
   }
   .workflow__heading { margin-bottom: 1.25rem; }
   .workflow__roadmap { width: calc(100% - 2rem); margin-bottom: 1.25rem; }
+}
+
+.workflow { position: relative; isolation: isolate; display: block; height: auto; min-height: 0; padding: 6rem 1.5rem 7rem; overflow: hidden; overscroll-behavior: auto; background: #07080a; }
+.workflow__pin { position: relative; z-index: 1; width: min(74rem, 100%); margin: 0 auto; padding: 0; }
+.workflow__heading { display: grid; grid-template-columns: 1fr auto; align-items: end; justify-items: stretch; gap: 2rem; width: 100%; max-width: none; margin: 0 0 2rem; text-align: left; }
+.workflow__heading h2 { margin: 0; font-size: clamp(2.5rem, 5vw, 4.5rem); }
+.workflow__heading > p:last-child { margin: 0 0 0.3rem; text-align: right; }
+.workflow__cards { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0; width: 100%; border-top: 1px solid var(--motionly-border); border-left: 1px solid var(--motionly-border); }
+.workflow__step { position: relative; display: grid; grid-template-columns: 1fr; grid-template-rows: 1fr auto; gap: 1.5rem; width: auto; min-width: 0; min-height: 27rem; overflow: hidden; padding: 2.5rem 2rem 2rem; border-right: 1px solid var(--motionly-border); border-bottom: 1px solid var(--motionly-border); border-radius: 0; background: transparent; box-shadow: none; }
+.workflow__step:nth-of-type(1) { grid-column: span 7; }
+.workflow__step:nth-of-type(2) { grid-column: span 5; }
+.workflow__step:nth-of-type(3) { grid-column: span 5; }
+.workflow__step:nth-of-type(4) { grid-column: span 7; }
+.workflow__step--reverse > *, .workflow__step--idea > * { grid-column: 1; grid-row: auto; text-align: left; }
+.workflow__step-index { position: absolute; top: 0.9rem; left: 1rem; color: var(--motionly-text-muted); font: 0.56rem monospace; letter-spacing: 0.12em; }
+.workflow__visual { flex: 0 0 auto; width: 100%; height: 18rem; min-height: 0; overflow: hidden; justify-self: stretch; }
+.workflow__prompt-card { width: 100%; }
+.workflow__visual--story .workflow__prompt-card { width: min(100%, 28rem); margin: 0 auto; transform: scale(0.8); transform-origin: center; }
+.workflow__visual--direction { width: min(100%, 17rem); transform: scale(0.62); transform-origin: center; }
+.workflow__visual--timeline { width: min(100%, 19rem); transform: scale(0.7); transform-origin: center; }
+.workflow__visual--launch { width: min(100%, 22rem); transform: scale(0.7); transform-origin: center; }
+.workflow__launch-frame { min-width: 0; max-width: 100%; }
+.workflow__copy { max-width: none; margin: 0; }
+.workflow__copy h3 { margin-top: 0; font-size: 1.35rem; }
+.workflow__copy p { font-size: 0.92rem; line-height: 1.55; }
+@media (max-width: 640px) {
+  .workflow { padding: 5rem 1rem; }
+  .workflow__heading { grid-template-columns: 1fr; gap: 0.65rem; }
+  .workflow__heading > p:last-child { margin: 0; text-align: left; }
+  .workflow__cards { display: block; }
+  .workflow__step { min-height: 25rem; gap: 1rem; }
+  .workflow__visual { height: 14rem; }
+}
+
+/* AI pipeline cards: the section explains Motionly's internal process, not a user's editing steps. */
+.workflow__cards { width: 100%; max-width: none; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(6, minmax(7rem, auto)); gap: 0.65rem; margin: 0; border: 0; }
+.workflow__step { display: flex; flex-direction: column; justify-content: space-between; min-height: 0; margin-left: 0; padding: 1.5rem; border: 1px solid #2f293a; border-radius: 20px; background: #101217; font-weight: 300; transition: all 300ms ease; box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.04); }
+.workflow__step:nth-of-type(1) { background: radial-gradient(circle at 85% 15%, rgba(138, 180, 255, 0.16), transparent 42%), linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(14, 17, 23, 0.82)); }
+.workflow__step:nth-of-type(2) { background: radial-gradient(circle at 85% 20%, rgba(255, 134, 217, 0.14), transparent 42%), linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(14, 17, 23, 0.82)); }
+.workflow__step:nth-of-type(3) { background: radial-gradient(circle at 18% 85%, rgba(138, 180, 255, 0.14), transparent 42%), linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(14, 17, 23, 0.82)); }
+.workflow__step:nth-of-type(4) { background: radial-gradient(circle at 82% 82%, rgba(124, 247, 197, 0.14), transparent 42%), linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(14, 17, 23, 0.82)); }
+.workflow__step:nth-of-type(5) { background: radial-gradient(circle at 20% 18%, rgba(124, 247, 197, 0.14), transparent 42%), linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(14, 17, 23, 0.82)); }
+.workflow__step:nth-of-type(1),
+.workflow__step:nth-of-type(2),
+.workflow__step:nth-of-type(3),
+.workflow__step:nth-of-type(4),
+.workflow__step:nth-of-type(5) { background: linear-gradient(145deg, rgba(255, 255, 255, 0.065), rgba(14, 17, 23, 0.86)); }
+.workflow__step:nth-of-type(1), .workflow__step:nth-of-type(4) { grid-row: span 3; }
+.workflow__step:nth-of-type(2), .workflow__step:nth-of-type(3), .workflow__step:nth-of-type(5) { grid-row: span 2; }
+.workflow__step-index { position: static; display: block; margin-bottom: 2rem; }
+.workflow__pipeline-image { display: block; width: min(100%, 20rem); aspect-ratio: 1; height: auto; margin: 0 auto; object-fit: contain; }
+.workflow__step:nth-of-type(1) .workflow__pipeline-image,
+.workflow__step:nth-of-type(4) .workflow__pipeline-image { width: min(100%, 18rem); max-height: 14rem; }
+.workflow__step:nth-of-type(2) .workflow__pipeline-image,
+.workflow__step:nth-of-type(3) .workflow__pipeline-image,
+.workflow__step:nth-of-type(5) .workflow__pipeline-image { width: min(100%, 9rem); max-height: 5.5rem; margin-bottom: 0.5rem; }
+.workflow__step { display: block; position: relative; overflow: visible; --glow-x: 50%; --glow-y: 50%; --glow-intensity: 0; --border-intensity: 0; --glow-radius: 150px; transition: all 300ms ease; }
+.workflow__step::before { content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none; padding: 6px; border-radius: inherit; background: radial-gradient(var(--glow-radius) circle at var(--glow-x) var(--glow-y), rgba(124, 247, 197, calc(var(--glow-intensity) * 0.8)) 0%, rgba(124, 247, 197, calc(var(--glow-intensity) * 0.4)) 30%, transparent 60%); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; opacity: 1; transition: opacity 300ms ease; }
+.workflow__step::after { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; border-radius: inherit; background: radial-gradient(var(--glow-radius) circle at var(--glow-x) var(--glow-y), rgba(124, 247, 197, calc(var(--glow-intensity) * 0.16)), rgba(124, 247, 197, calc(var(--glow-intensity) * 0.06)) 36%, transparent 74%); opacity: var(--glow-intensity); transition: opacity 300ms ease, background 120ms ease; }
+.workflow__copy { position: relative; top: 0; left: 0; z-index: 1; width: min(58%, 25rem); margin: 0; justify-self: start; align-self: start; text-align: left; }
+.workflow__pipeline-image { position: absolute; right: 1.5rem; bottom: 1.25rem; z-index: 0; width: min(42%, 17rem); height: auto; margin: 0; }
+.workflow__step:nth-of-type(1) .workflow__pipeline-image,
+.workflow__step:nth-of-type(4) .workflow__pipeline-image { width: min(42%, 17rem); max-height: 15rem; }
+.workflow__step:nth-of-type(2) .workflow__pipeline-image,
+.workflow__step:nth-of-type(3) .workflow__pipeline-image,
+.workflow__step:nth-of-type(5) .workflow__pipeline-image { width: min(35%, 10rem); max-height: 6rem; margin: 0; }
+.workflow__step:nth-of-type(3) .workflow__pipeline-image { width: min(48%, 14rem); max-height: 9rem; }
+.workflow__step:nth-of-type(5) .workflow__pipeline-image { width: min(48%, 12rem); max-height: 8rem; }
+.workflow__pipeline-image { max-width: calc(100% - 3rem); max-height: calc(100% - 3rem); }
+.workflow__step:nth-of-type(3) .workflow__pipeline-image { width: min(42%, 12rem); max-height: 7rem; }
+.workflow__step:nth-of-type(5) .workflow__pipeline-image { width: min(42%, 10rem); max-height: 6rem; }
+.workflow__copy h3 { margin: 0 0 0.7rem; font-size: clamp(1.35rem, 2vw, 1.7rem); }
+.workflow__copy p { max-width: 25rem; margin: 0; font-size: 0.95rem; line-height: 1.65; }
+.workflow__step:nth-of-type(4) .workflow__copy { position: absolute; top: 1.5rem; left: 1.5rem; margin: 0; align-self: auto; }
+
+.workflow__step:hover {
+  z-index: 3;
+  box-shadow: 0 4px 20px rgba(20, 70, 58, 0.4), 0 0 30px rgba(124, 247, 197, 0.14);
+}
+
+@media (max-width: 640px) {
+  .workflow__cards { display: grid; grid-template-columns: 1fr; grid-template-rows: none; }
+  .workflow__step:nth-of-type(1), .workflow__step:nth-of-type(2), .workflow__step:nth-of-type(3), .workflow__step:nth-of-type(4), .workflow__step:nth-of-type(5) { grid-column: auto; grid-row: auto; }
+  .workflow__copy { width: min(62%, 22rem); }
+  .workflow__pipeline-image,
+  .workflow__step:nth-of-type(1) .workflow__pipeline-image,
+  .workflow__step:nth-of-type(4) .workflow__pipeline-image { width: min(40%, 11rem); max-height: 9rem; }
+}
+
+@media (min-width: 641px) {
+  .workflow__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(9rem, 1fr)); gap: 0.65rem; }
+  .workflow__step { border-radius: 1.15rem; }
+  .workflow__step:nth-of-type(1) { grid-column: 1; grid-row: 1; }
+  .workflow__step:nth-of-type(2) { grid-column: 2; grid-row: 1; }
+  .workflow__step:nth-of-type(3) { grid-column: 2; grid-row: 2; }
+  .workflow__step:nth-of-type(4) { grid-column: 1; grid-row: 2 / span 2; }
+  .workflow__step:nth-of-type(5) { grid-column: 2; grid-row: 3; }
+  .workflow__step:nth-of-type(1) .workflow__pipeline-image,
+  .workflow__step:nth-of-type(2) .workflow__pipeline-image { width: min(34%, 10rem); max-height: 7rem; }
+  .workflow__step:nth-of-type(3) .workflow__pipeline-image,
+  .workflow__step:nth-of-type(5) .workflow__pipeline-image { width: min(36%, 10rem); max-height: 6rem; }
+  .workflow__step:nth-of-type(4) .workflow__pipeline-image { width: min(42%, 15rem); max-height: 12rem; }
 }
