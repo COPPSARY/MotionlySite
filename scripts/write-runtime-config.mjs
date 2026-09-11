@@ -5,7 +5,7 @@ const root = resolve(import.meta.dirname, '..');
 const development = process.argv.includes('--development');
 const values = { ...(await readDotEnv(resolve(root, '.env'))), ...process.env };
 const config = {
-  motionlyApiUrl: values.MOTIONLY_API_URL || (development ? 'http://localhost:3000' : ''),
+  motionlyApiUrl: values.MOTIONLY_API_URL || (development ? 'http://localhost:3000' : 'https://motionly-backend.onrender.com'),
   motionlyEditorUrl: values.MOTIONLY_EDITOR_URL || (development ? 'http://localhost:5173/' : 'https://app.motionly.site/'),
 };
 

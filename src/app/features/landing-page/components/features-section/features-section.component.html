@@ -1,22 +1,5 @@
 <section class="features">
   <div class="features__inner">
-    <figure class="features__editor" [appScrollReveal]="80">
-      <div class="features__editor-scale">
-        <video
-          #previewVideo
-          class="features__editor-video"
-          src="/assets/motionly-web.mp4"
-          autoplay
-          [muted]="true"
-          loop
-          playsinline
-          preload="auto"
-          (canplay)="playPreview(previewVideo)"
-          aria-label="Motionly editor preview"
-        ></video>
-      </div>
-    </figure>
-
     <div class="features__workflow" [appScrollReveal]="120">
       <div class="features__workflow-copy">
       <h2>With Motionly, everything stays <span class="heading-accent heading-typed">editable.</span></h2>

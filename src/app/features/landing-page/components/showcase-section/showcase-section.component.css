@@ -120,7 +120,7 @@
   padding-block: 1.5rem;
 }
 .showcase__eyebrow { color: var(--motionly-logo-end); }
-.showcase__heading { max-width: 10ch; font-size: clamp(2.5rem, 5vw, 4.25rem); letter-spacing: -0.06em; }
+.showcase__heading { max-width: 10ch; font-size: clamp(2.5rem, 5vw, 4.25rem); letter-spacing: -0.025em; }
 .showcase__subheading { max-width: 27rem; }
 .showcase__visual {
   position: relative;
@@ -158,7 +158,7 @@
 .showcase__scene-orbit--two { border-color: rgba(255,134,217,0.23); transform: rotate(-25deg); animation-delay: -2s; }
 .showcase__scene-card { position: relative; z-index: 2; display: grid; gap: 0.4rem; width: 11rem; padding: 1.25rem; border: 1px solid rgba(138,180,255,0.4); border-radius: 0.9rem; background: rgba(12,14,18,0.9); box-shadow: 0 0 2rem rgba(138,180,255,0.12); animation: showcase-card-float 4s ease-in-out infinite; }
 .showcase__scene-card small, .showcase__scene-card em { color: var(--motionly-text-muted); font: 0.52rem monospace; letter-spacing: 0.12em; font-style: normal; }
-.showcase__scene-card strong { color: var(--motionly-text-primary); font-size: 1.3rem; letter-spacing: -0.05em; }
+.showcase__scene-card strong { color: var(--motionly-text-primary); font-size: 1.3rem; letter-spacing: -0.015em; }
 .showcase__scene-dot { position: absolute; z-index: 3; width: 0.55rem; height: 0.55rem; border-radius: 50%; box-shadow: 0 0 1rem currentColor; animation: showcase-dot 5s ease-in-out infinite; }
 .showcase__scene-dot--blue { top: 24%; right: 22%; color: var(--motionly-logo-start); background: currentColor; }
 .showcase__scene-dot--pink { bottom: 23%; left: 20%; color: #ff86d9; background: currentColor; animation-delay: -2.2s; }

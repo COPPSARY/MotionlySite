@@ -77,7 +77,7 @@
 .resources__cta strong {
   color: var(--motionly-text-primary);
   font-size: clamp(2rem, 5vw, 3.75rem);
-  letter-spacing: -0.06em;
+  letter-spacing: -0.025em;
 }
 
 .resources__cta p {

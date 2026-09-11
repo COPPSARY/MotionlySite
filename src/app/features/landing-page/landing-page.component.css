@@ -61,64 +61,10 @@ main > app-spatial-showcase-section {
   text-align: center;
 }
 
-.problem__points {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: 100%;
-  gap: 1rem;
-  margin-top: 2.5rem;
-}
-
-.problem__points article {
-  min-height: 14rem;
-  padding: 1.5rem;
-  border: 1px solid var(--motionly-border);
-  border-radius: 1rem;
-  background: rgba(8, 9, 11, 0.62);
-  box-shadow: var(--motionly-shell-shadow);
-  transition: border-color 300ms ease, background 300ms ease, transform 300ms var(--motionly-ease-standard);
-}
-
-.problem__points article:hover {
-  border-color: var(--motionly-border-strong);
-  background: rgba(18, 21, 27, 0.72);
-  transform: translateY(-0.35rem);
-}
-
-.problem__point-icon {
-  width: 1.7rem;
-  height: 1.7rem;
-  color: var(--motionly-logo-end);
-  transition: transform 300ms var(--motionly-ease-standard), color 300ms ease;
-}
-
-.problem__points article:hover .problem__point-icon {
-  color: var(--motionly-logo-start);
-  transform: translateY(-0.2rem) rotate(-6deg);
-}
-
-.problem__points h3 {
-  margin: 1.4rem 0 0.75rem;
-  color: var(--motionly-text-primary);
-  font-size: 1.2rem;
-}
-
-.problem__points p {
-  margin: 0;
-  color: var(--motionly-text-secondary);
-  line-height: 1.6;
-}
-
-@media (max-width: 700px) {
-  .problem__points {
-    grid-template-columns: 1fr;
-  }
-}
-
 .workflow { padding: 6rem 1.5rem 7rem; }
 .workflow__heading { display: grid; justify-items: center; gap: 0.8rem; max-width: 44rem; margin: 0 auto 4rem; text-align: center; }
 .workflow__eyebrow { margin: 0; color: var(--motionly-logo-end); font-size: 0.72rem; font-weight: 750; letter-spacing: 0.18em; text-transform: uppercase; }
-.workflow__heading h2 { margin: 0; color: var(--motionly-text-primary); font-size: var(--motionly-type-section); line-height: 1; letter-spacing: -0.06em; }
+.workflow__heading h2 { margin: 0; color: var(--motionly-text-primary); font-size: var(--motionly-type-section); line-height: 1; letter-spacing: -0.025em; }
 .workflow__heading > p:last-child { max-width: 32rem; margin: 0; color: var(--motionly-text-secondary); line-height: 1.6; }
 .workflow__timeline { position: relative; display: grid; gap: 3.5rem; width: min(68rem, 100%); margin: 0 auto; }
 .workflow__line { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: linear-gradient(180deg, transparent, var(--motionly-border-strong) 12%, var(--motionly-border-strong) 88%, transparent); transform: translateX(-50%); }
@@ -179,7 +125,7 @@ main > app-spatial-showcase-section {
   color: var(--motionly-text-primary);
   font-size: var(--motionly-type-subheading);
   font-weight: var(--motionly-weight-bold);
-  letter-spacing: -0.05em;
+  letter-spacing: -0.015em;
 }
 
 .testimonials__title {
@@ -287,7 +233,7 @@ main > app-spatial-showcase-section {
   color: var(--motionly-text-primary);
   font-size: clamp(1.15rem, 2.2vw, 1.65rem);
   line-height: 1.5;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.01em;
   animation: testimonial-arrive 500ms var(--motionly-ease-standard) both;
 }
 
@@ -506,10 +452,6 @@ main > app-spatial-showcase-section {
 
   .problem__inner {
     gap: 1.5rem;
-  }
-
-  .problem__points {
-    grid-template-columns: 1fr;
   }
 
   .team-love {
@@ -738,7 +680,7 @@ main > app-spatial-showcase-section {
 .workflow__step--reverse,
 .workflow__step--idea { margin-left: 5vw; }
 .workflow__number { color: var(--motionly-logo-start); }
-.workflow__copy h3 { color: var(--motionly-text-primary); font-size: clamp(1.8rem, 3vw, 2.45rem); letter-spacing: -0.045em; }
+.workflow__copy h3 { color: var(--motionly-text-primary); font-size: clamp(1.8rem, 3vw, 2.45rem); letter-spacing: -0.015em; }
 .workflow__copy p { color: var(--motionly-text-secondary); }
 .workflow__prompt-card { background: rgba(8, 9, 11, 0.8); border-color: rgba(138, 180, 255, 0.45); box-shadow: var(--motionly-shell-shadow); }
 .workflow__prompt-top,
@@ -932,7 +874,7 @@ main > app-spatial-showcase-section {
   margin: 0 0 2.5rem;
   color: var(--motionly-text-primary);
   font-size: clamp(2.2rem, 5vw, 4rem);
-  letter-spacing: -0.06em;
+  letter-spacing: -0.025em;
   text-align: center;
 }
 .faq__list { border-top: 1px solid var(--motionly-border-strong); }

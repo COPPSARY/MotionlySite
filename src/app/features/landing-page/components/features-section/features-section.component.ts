@@ -40,8 +40,4 @@ export class FeaturesSectionComponent {
         return 'assets/prompt.png';
     }
   }
-
-  playPreview(video: HTMLVideoElement): void {
-    void video.play().catch(() => undefined);
-  }
 }

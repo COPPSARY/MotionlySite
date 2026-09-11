@@ -7,6 +7,7 @@ import { FeaturesSectionComponent } from './components/features-section/features
 import { SpatialShowcaseSectionComponent } from './components/spatial-showcase-section/spatial-showcase-section.component';
 import { ResourcesSectionComponent } from './components/resources-section/resources-section.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ValuePointsComponent } from './components/value-points/value-points.component';
 import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
 import { LucideMessagesSquare } from '@lucide/angular';
 
@@ -51,6 +52,7 @@ const TESTIMONIALS = [
     SpatialShowcaseSectionComponent,
     ResourcesSectionComponent,
     FooterComponent,
+    ValuePointsComponent,
     ScrollRevealDirective,
     LucideMessagesSquare,
   ],
